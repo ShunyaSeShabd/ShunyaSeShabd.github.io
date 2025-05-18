@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shree Gita - Week 1</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f3f3f3;
+      color: #222;
+    }
+
+    header {
+      background-color: #603e26;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 2rem;
+    }
+
+    .toggle {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .toggle button {
+      background-color: #eee;
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      margin: 0 5px;
+      font-weight: bold;
+    }
+
+    .toggle button.active {
+      background-color: #603e26;
+      color: white;
+    }
+
+    .section {
+      background: white;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+
+    .sanskrit {
+      font-size: 1.4rem;
+      color: #a52a2a;
+      margin-bottom: 1rem;
+    }
+
+    .translation, .explanation, .reflect {
+      display: none;
+    }
+
+    .reflect {
+      font-style: italic;
+      background: #f9f2ec;
+      padding: 1rem;
+      border-left: 4px solid #d28c49;
+      margin-top: 1rem;
+    }
+
+    .label {
+      font-weight: bold;
+      color: #603e26;
+      margin-top: 1rem;
+    }
+
+    .audio-player {
+      margin: 2rem 0;
+      text-align: center;
+    }
+    
+    .progress {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #ddd;
+      box-shadow: 0.5px 1px 3px rgba(0,0,0,0.1);
+    }
+
+.progress-bar {
+  width: 10%;
+  height: 15px;
+  background: #ff8080;
+  transition: width 1s ease-in-out;
+  position: relative;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.striped {
+  background-image: linear-gradient(45deg,
+      rgba(255, 255, 255, 0.2) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0.2) 75%,
+      transparent 75%,
+      transparent);
+  background-size: 40px 40px;
+  ।
+}
+
+
+.animated {
+  animation: progress-bar-stripes 2s linear infinite;
+}
+
+@keyframes progress-bar-stripes {
+  from {
+    background-position: 40px 0;
+  }
+  
+  to {
+    background-position: 0 0;
+  }
+}
+
+    .next-day {
+      text-align: center;
+      margin: 3rem 0 1rem;
+    }
+          
+    .next-day a{
+      background-color: #603e26;
+      color: white;
+      padding: 0.7rem 1.5rem;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    
+    .word-meaning {   background: #f4f8fb;   border-left: 4px solid #D28C49;   padding: 1rem;   margin: 1rem 0;   border-radius: 8px;   font-family: 'Segoe UI', sans-serif;   line-height: 1.7;   font-size: 1rem;   color: #333; }  .word-meaning strong {   display: block;   font-size: 1.1rem;   color: #603e26;   font-weight: 600;   border-bottom: 1px solid #d0e2f2; }   @media screen and (max-width: 600px) {   .word-meaning {     font-size: 0.95rem;     padding: 0.8rem;   } }   .transliteration {   background: #fffbe6;   border-left: 4px solid #f1c40f;   padding: 0;   margin: 10px 0;   border-radius: 8px;   font-family: 'Times New Roman', serif;   font-size: 1.05rem;   color: #6b4e00;   line-height: 1; }  .transliteration strong {   display: block;   font-size: 1.1rem;   color: #b37f00;   font-weight: bold;   border-bottom: 1px solid #f9e79f;   padding-bottom: 4px; }  @media screen and (max-width: 600px) {   .transliteration {     font-size: 1rem;     padding: 0.8rem;   } }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>श्रीमद्भगवद्गीता - Day 3</h1>
+    <p>शंखनाद: शुरुआत का संकेत (Shlok 12 to 19)</p>
+  </header>
+
+  <div class="toggle">
+    <button id="btn-hindi" class="active" onclick="showLang('hindi')">हिंदी</button>
+    <button id="btn-english" onclick="showLang('english')">English</button>
+  </div>
+
+  <div class="container">
+
+    <!-- SHLOK 12 -->
+<div class="section">
+  <div class="sanskrit">तस्य सञ्जनयन्हर्षं कुरुवृद्धः पितामहः |<br> सिंहनादं विनद्योच्चैः शङ्खं दध्मौ प्रतापवान् ॥12॥</div>
+  
+<!-- SHLOK 12 -->
+<div class="transliteration iast">
+  <strong>Pronunciation Guide :</strong><br>
+  tasya sañjanayan harṣaṁ kuruvṛddhaḥ pitāmahaḥ<br>
+  siṁha-nādaṁ vinadyoccaiḥ śaṅkhaṁ dadhmau pratāpavān
+</div>
+
+<div class="word-meaning hindi">
+  <strong>शब्दार्थ:</strong><br>
+  तस्य – उसका (दुर्योधन का)<br>
+  सञ्जनयन् – उत्पन्न करते हुए<br>
+  हर्षम् – हर्ष (उल्लास)<br>
+  कुरुवृद्धः – कौरवों में वृद्ध<br>
+  पितामहः – पितामह (भीष्म)<br>
+  सिंहनादम् – सिंह की गर्जना समान<br>
+  विनद्य – गर्जना करके<br>
+  उच्चैः – जोर से<br>
+  शङ्खम् – शंख<br>
+  दध्मौ – बजाया<br>
+  प्रतापवान् – पराक्रमी
+</div>
+
+<div class="word-meaning english">
+  <strong>Word Meaning:</strong><br>
+  tasya – his (Duryodhana's)<br>
+  sañjanayan – causing<br>
+  harṣam – joy<br>
+  kuruvṛddhaḥ – the oldest of the Kurus<br>
+  pitāmahaḥ – grandsire (Bhishma)<br>
+  siṁha-nādam – lion’s roar<br>
+  vinadya – roaring<br>
+  uccaiḥ – loudly<br>
+  śaṅkham – conch<br>
+  dadhmau – blew<br>
+  pratāpavān – the powerful one
+</div>
+  
+  <div class="translation hindi">         <strong>हिन्दी अनुवाद:</strong><br>
+    उस समय कुरुवंश के वृद्ध और प्रतापी पितामह भीष्म ने दुर्योधन को हर्षित करते हुए सिंह के समान गर्जना करके ऊँचे स्वर में शंख बजाया।
+  </div>
+  <div class="translation english">     <strong>English Translation:</strong><br>
+    Then, the grand old man of the Kuru dynasty, the glorious patriarch Bhishma, roaring like a lion, blew his conch loudly, bringing joy to Duryodhana.
+  </div>
+  
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    भीष्म पितामह ने शंखनाद करके दुर्योधन का उत्साह बढ़ाया।<br><br>
+    यह श्लोक दर्शाता है कि नेतृत्व में अनुभवी व्यक्तियों की भूमिका कितनी महत्वपूर्ण होती है।<br>
+    उनका आत्मविश्वास पूरी सेना को प्रेरित करता है।
+  </div>
+  <div class="reflect hindi">सोचिए: क्या हम अपने जीवन में वरिष्ठों के अनुभव से प्रेरणा लेते हैं?</div>
+  
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    Bhishma's conch blast uplifted Duryodhana’s spirits.<br>
+    It highlights how seasoned leaders can inspire confidence in challenging times.<br>
+    Their presence and actions can energize an entire team.
+  </div>
+  <div class="reflect english">Reflect: Do we draw strength from the wisdom of our elders?</div>
+</div>
+
+<!-- SHLOK 13 -->
+<div class="section">
+  <div class="sanskrit">ततः शङ्खाश्च भेर्यश्च पणवानकगोमुखाः |<br> सहसैवाभ्यहन्यन्त स शब्दस्तुमुलोऽभवत् ॥13॥</div>
+  
+<!-- SHLOK 13 -->
+<div class="transliteration iast">
+  <strong>Pronunciation Guide :</strong><br>
+  tataḥ śaṅkhāś ca bheryaś ca paṇavānakagomukhāḥ<br>
+  sahasaivābhyahanyanta sa śabdas tumulo ’bhavat
+</div>
+
+<div class="word-meaning hindi">
+  <strong>शब्दार्थ:</strong><br>
+  ततः – तब<br>
+  शङ्खाः – शंख<br>
+  च – और<br>
+  भेर्यः – भेरी (ढोल जैसे वाद्य)<br>
+  च – और<br>
+  पणवाः – पनव (डमरू जैसे)<br>
+  आनकाः – आनक (बड़े नगाड़े)<br>
+  गोमुखाः – गोमुख (सींग जैसे वाद्य)<br>
+  सहसा – अचानक<br>
+  एव – ही<br>
+  अभ्यहन्यन्त – बजाए गए<br>
+  सः – वह<br>
+  शब्दः – ध्वनि<br>
+  तुमुलः – गम्भीर<br>
+  अभवत् – हो गई
+</div>
+
+<div class="word-meaning english">
+  <strong>Word Meaning:</strong><br>
+  tataḥ – then<br>
+  śaṅkhāḥ – conches<br>
+  ca – and<br>
+  bheryaḥ – kettle-drums<br>
+  paṇavāḥ – small drums<br>
+  ānakāḥ – large drums<br>
+  gomukhāḥ – cow-horn shaped trumpets<br>
+  sahasā – suddenly<br>
+  eva – indeed<br>
+  abhyahanyanta – were sounded<br>
+  saḥ – that<br>
+  śabdaḥ – sound<br>
+  tumulaḥ – tumultuous<br>
+  abhavat – arose
+</div>
+  
+  <div class="translation hindi">         <strong>हिन्दी अनुवाद:</strong><br>
+    इसके बाद शंख, भेरी, नगाड़े, डमरू और सींग आदि वाद्ययंत्र एक साथ बजने लगे, जिससे एक भयंकर ध्वनि उत्पन्न हुई।
+  </div>
+  <div class="translation english">     <strong>English Translation:</strong><br>
+    Then, conches, kettledrums, tabors, trumpets, and cow-horns blared forth all at once, producing a tumultuous sound.
+  </div>
+  
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    विभिन्न वाद्ययंत्रों की संयुक्त ध्वनि युद्ध के आरंभ का संकेत थी।<br><br>
+    यह श्लोक बताता है कि कैसे एकजुटता और समन्वय से शक्ति का प्रदर्शन होता है।<br>
+    सामूहिक प्रयासों से ही बड़े कार्य संभव होते हैं।
+  </div>
+  <div class="reflect hindi">सोचिए: क्या हम टीमवर्क के महत्व को समझते हैं?</div>
+  
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    The simultaneous sound of various instruments signaled the commencement of battle.<br>
+    It emphasizes the power of unity and coordination.<br>
+    Collective efforts amplify strength and impact.
+  </div>
+  <div class="reflect english">Reflect: Do we recognize the value of teamwork in our endeavors?</div>
+</div>
+
+<!-- SHLOK 14 -->
+<div class="section">
+  <div class="sanskrit">ततः श्वेतैर्हयैर्युक्ते महति स्यन्दने स्थितौ |<br> माधवः पाण्डवश्चैव दिव्यौ शङ्खौ प्रदध्मतुः ॥14॥</div>
+  
+<!-- SHLOK 14 -->
+<div class="transliteration iast">
+  <strong>Pronunciation Guide :</strong><br>
+  tataḥ śvetair hayair yukte mahati syandane sthitau<br>
+  mādhavaḥ pāṇḍavaś caiva divyau śaṅkhau pradaghmatuḥ
+</div>
+
+<div class="word-meaning hindi">
+  <strong>शब्दार्थ:</strong><br>
+  ततः – तब<br>
+  श्वेतैः – श्वेत (सफेद)<br>
+  हयैः – घोड़ों से<br>
+  युक्ते – जुते हुए<br>
+  महति – विशाल<br>
+  स्यन्दने – रथ में<br>
+  स्थितौ – स्थित<br>
+  माधवः – श्रीकृष्ण<br>
+  पाण्डवः – अर्जुन<br>
+  च – और<br>
+  एव – ही<br>
+  दिव्यौ – दिव्य (अलौकिक)<br>
+  शङ्खौ – शंख<br>
+  प्रदघ्मतुः – बजाए
+</div>
+
+<div class="word-meaning english">
+  <strong>Word Meaning:</strong><br>
+  tataḥ – then<br>
+  śvetaiḥ – white<br>
+  hayaiḥ – horses<br>
+  yukte – yoked<br>
+  mahati – in the great<br>
+  syandane – chariot<br>
+  sthitau – standing<br>
+  mādhavaḥ – Madhava (Krishna)<br>
+  pāṇḍavaḥ – Pandava (Arjuna)<br>
+  ca – and<br>
+  eva – also<br>
+  divyau – divine<br>
+  śaṅkhau – conches<br>
+  pradaghmatuḥ – blew
+</div>
+  
+  <div class="translation hindi">         <strong>हिन्दी अनुवाद:</strong><br>
+    इसके बाद सफेद घोड़ों से युक्त भव्य रथ में स्थित माधव (श्रीकृष्ण) और पाण्डव (अर्जुन) ने भी अपने दिव्य शंख बजाए।
+  </div>
+  <div class="translation english">     <strong>English Translation:</strong><br>
+    Then, seated in their magnificent chariot drawn by white horses, Madhava (Krishna) and Pandava (Arjuna) blew their divine conches.
+  </div>
+  
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    श्रीकृष्ण और अर्जुन का शंखनाद आत्मविश्वास और धर्म की घोषणा है।<br><br>
+    यह श्लोक दर्शाता है कि जब ईश्वर और मनुष्य एक साथ हों, तो कोई भी कार्य असंभव नहीं होता।<br>
+    यह दिव्य और मानवीय सहयोग का प्रतीक है।
+  </div>
+  <div class="reflect hindi">सोचिए: क्या हम अपने कार्यों में दिव्यता और समर्पण का समावेश करते हैं?</div>
+  
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    The conch blast by Krishna and Arjuna symbolizes confidence and righteousness.<br>
+    It reflects the synergy between the divine and the human.<br>
+    With such alignment, even the greatest challenges can be overcome.
+  </div>
+  <div class="reflect english">Reflect: Do we integrate divinity and dedication in our actions?</div>
+</div>
+
+<!-- SHLOK 15 -->
+<div class="section">
+  <div class="sanskrit">पाञ्चजन्यं हृषीकेशो देवदत्तं धनञ्जयः |<br> पौण्ड्रं दध्मौ महाशङ्खं भीमकर्मा वृकोदरः ॥15॥</div>
+  
+<!-- SHLOK 15 -->
+<div class="transliteration iast">
+  <strong>Pronunciation Guide :</strong><br>
+  pāñcajanyaṁ hṛṣīkeśo devadattaṁ dhanañjayaḥ<br>
+  pauṇḍraṁ dadhmau mahā-śaṅkhaṁ bhīma-karmā vṛkodaraḥ
+</div>
+
+<div class="word-meaning hindi">
+  <strong>शब्दार्थ:</strong><br>
+  पांचजन्यम् – पांचजन्य (कृष्ण का शंख)<br>
+  हृषीकेशः – हृषीकेश (कृष्ण)<br>
+  देवदत्तम् – देवदत्त (अर्जुन का शंख)<br>
+  धनञ्जयः – अर्जुन<br>
+  पौण्ड्रम् – पौण्ड्र नामक शंख<br>
+  दध्मौ – बजाया<br>
+  महा-शङ्खम् – महान शंख<br>
+  भीमकर्मा – भीम कर्म करने वाला<br>
+  वृकोदरः – वृक उदर (भीम)
+</div>
+
+<div class="word-meaning english">
+  <strong>Word Meaning:</strong><br>
+  pāñcajanyam – Panchajanya (Krishna’s conch)<br>
+  hṛṣīkeśaḥ – Hrishikesha (Krishna)<br>
+  devadattam – Devadatta (Arjuna’s conch)<br>
+  dhanañjayaḥ – Dhananjaya (Arjuna)<br>
+  pauṇḍram – Paundra (a mighty conch)<br>
+  dadhmau – blew<br>
+  mahā-śaṅkham – great conch<br>
+  bhīma-karmā – doer of mighty deeds<br>
+  vṛkodaraḥ – wolf-bellied (Bhima)
+</div>
+  
+  <div class="translation hindi">         <strong>हिन्दी अनुवाद:</strong><br>
+    हृषीकेश (श्रीकृष्ण) ने पाञ्चजन्य शंख, धनञ्जय (अर्जुन) ने देवदत्त शंख और भीमकर्मा वृकोदर (भीम) ने महाशंख पौण्ड्र बजाया।
+  </div>
+  <div class="translation english">     <strong>English Translation:</strong><br>
+    Hrishikesha (Krishna) blew the Panchajanya conch, Dhananjaya (Arjuna) blew the Devadatta, and the mighty Bhima, doer of formidable deeds, blew the great conch Paundra.
+  </div>
+  
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    प्रत्येक योद्धा का शंखनाद उसकी विशिष्टता और भूमिका को दर्शाता है।<br><br>
+    यह श्लोक बताता है कि हर व्यक्ति की अपनी पहचान और योगदान होता है।<br>
+    सभी का सामूहिक प्रयास ही सफलता की कुंजी है।
+  </div>
+  <div class="reflect hindi">सोचिए: क्या हम अपनी विशेषताओं को पहचानते और उनका सदुपयोग करते हैं?</div>
+  
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    Each warrior's conch blast signifies their unique identity and role.<br>
+    It highlights that every individual has distinct strengths and contributions.<br>
+    Collective success relies on recognizing and utilizing these individual qualities.
+  </div>
+  <div class="reflect english">Reflect: Do we acknowledge and harness our unique strengths?</div>
+</div>
+
+<!-- SHLOK 16 -->
+<div class="section">
+  <div class="sanskrit">अनन्तविजयं राजा कुन्तीपुत्रो युधिष्ठिरः |<br> नकुलः सहदेवश्च सुघोषमणिपुष्पकौ ॥16॥</div>
+  
+<!-- SHLOK 16 -->
+<div class="transliteration iast">
+  <strong>Pronunciation Guide :</strong><br>
+  anantavijayaṁ rājā kuntī-putro yudhiṣṭhiraḥ<br>
+  nakulaḥ sahadevaś ca sughoṣa-maṇipuṣpakau
+</div>
+
+<div class="word-meaning hindi">
+  <strong>शब्दार्थ:</strong><br>
+  अनन्तविजयम् – अनन्तविजय (युधिष्ठिर का शंख)<br>
+  राजा – राजा<br>
+  कुन्तीपुत्रः – कुन्ती के पुत्र<br>
+  युधिष्ठिरः – युधिष्ठिर<br>
+  नकुलः – नकुल<br>
+  सहदेवः – सहदेव<br>
+  च – और<br>
+  सुघोष-मणिपुष्पकौ – सुघोष और मणिपुष्पक (नकुल और सहदेव के शंख)
+</div>
+
+<div class="word-meaning english">
+  <strong>Word Meaning:</strong><br>
+  anantavijayam – Anantavijaya (Yudhishthira’s conch)<br>
+  rājā – king<br>
+  kuntī-putraḥ – son of Kunti<br>
+  yudhiṣṭhiraḥ – Yudhishthira<br>
+  nakulaḥ – Nakula<br>
+  sahadevaḥ – Sahadeva<br>
+  ca – and<br>
+  sughoṣa-maṇipuṣpakau – Sughosha and Manipushpaka (their conches)
+</div>
+  
+  <div class="translation hindi">         <strong>हिन्दी अनुवाद:</strong><br>
+    कुन्तीपुत्र राजा युधिष्ठिर ने अनन्तविजय, नकुल ने सुघोष और सहदेव ने मणिपुष्पक नामक शंख बजाए।
+  </div>
+  <div class="translation english">     <strong>English Translation:</strong><br>
+    King Yudhishthira, the son of Kunti, blew the Anantavijaya conch; Nakula and Sahadeva blew the Sughosha and Manipushpaka conches, respectively.
+  </div>
+  
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    पांडवों के शंखनाद से उनके एकजुटता और संकल्प का प्रदर्शन होता है।<br><br>
+    यह श्लोक दर्शाता है कि परिवार और टीम की एकता से बड़ी से बड़ी चुनौतियों का सामना किया जा सकता है।<br>
+    सामूहिक प्रयासों की शक्ति अपार होती है।
+  </div>
+  <div class="reflect hindi">सोचिए: क्या हम अपने परिवार और टीम के साथ मिलकर कार्य करते हैं?</div>
+  
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    The Pandavas' conch blasts reflect their unity and determination.<br>
+    It emphasizes that familial and team cohesion can overcome significant challenges.<br>
+    The strength of collective effort is immense.
+  </div>
+  <div class="reflect english">Reflect: Do we collaborate effectively with our family and team?</div>
+</div>
+
+<!-- SHLOK 17 -->
+<div class="section">
+  <div class="sanskrit">काश्यश्च परमेष्वासः शिखण्डी च महारथः |<br> धृष्टद्युम्नो विराटश्च सात्यकिश्चापराजितः ॥17॥</div>
+  
+<!-- SHLOK 17 -->
+<div class="transliteration iast">
+  <strong>Pronunciation Guide :</strong><br>
+  kāśyaś ca parameṣvāsaḥ śikhaṇḍī ca mahā-rathaḥ<br>
+  dhṛṣṭadyumno virāṭaś ca sātyakiś cāparājitaḥ
+</div>
+
+<div class="word-meaning hindi">
+  <strong>शब्दार्थ:</strong><br>
+  काश्यः – काशी देश का राजा<br>
+  च – और<br>
+  परमेष्वासः – महान धनुर्धर<br>
+  शिखण्डी – शिखण्डी<br>
+  च – और<br>
+  महारथः – महान रथी<br>
+  धृष्टद्युम्नः – धृष्टद्युम्न<br>
+  विराटः – विराट<br>
+  च – और<br>
+  सात्यकि – सात्यकि<br>
+  च – और<br>
+  अपराजितः – अजेय
+</div>
+
+<div class="word-meaning english">
+  <strong>Word Meaning:</strong><br>
+  kāśyaḥ – the king of Kashi<br>
+  ca – and<br>
+  parameṣvāsaḥ – the great archer<br>
+  śikhaṇḍī – Shikhandi<br>
+  ca – and<br>
+  mahā-rathaḥ – a great chariot-warrior<br>
+  dhṛṣṭadyumnaḥ – Dhrishtadyumna<br>
+  virāṭaḥ – Virata<br>
+  ca – and<br>
+  sātyakiḥ – Satyaki<br>
+  ca – and<br>
+  aparājitaḥ – unconquerable
+</div>
+  
+  <div class="translation hindi">         <strong>हिन्दी अनुवाद:</strong><br>
+    परम धनुर्धारी काशिराज, महारथी शिखण्डी, धृष्टद्युम्न, विराट और अपराजित सात्यकि ने भी अपने शंख बजाए।
+  </div>
+  <div class="translation english">     <strong>English Translation:</strong><br>
+    The great archer King of Kashi, the mighty warrior Shikhandi, Dhrishtadyumna, King Virata, and the invincible Satyaki also blew their conches.
+  </div>
+  
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    विभिन्न योद्धाओं का शंखनाद उनके युद्ध में भाग लेने की तत्परता और उत्साह को दर्शाता है।<br><br>
+    यह श्लोक बताता है कि जब हर व्यक्ति पूरे समर्पण से अपना कर्तव्य निभाए, तो विजय निश्चित हो जाती है।
+  </div>
+  <div class="reflect hindi">सोचिए: क्या हम अपने कर्तव्यों को पूरे समर्पण से निभा रहे हैं?</div>
+  
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    The warriors' conch blasts signify readiness and enthusiasm for battle.<br>
+    It shows that when each individual fulfills their duty with commitment, success becomes inevitable.
+  </div>
+  <div class="reflect english">Reflect: Are we fulfilling our duties with full dedication?</div>
+</div>
+
+<!-- SHLOK 18 -->
+<div class="section">
+  <div class="sanskrit">द्रुपदो द्रौपदेयाश्च सर्वशः पृथिवीपते |<br> सौभद्रश्च महाबाहुः शङ्खान् दध्मुः पृथक् पृथक् ॥18॥</div>
+  
+<!-- SHLOK 18 -->
+<div class="transliteration iast">
+  <strong>Pronunciation Guide :</strong><br>
+  drupado draupadeyāś ca sarvaśaḥ pṛthivī-pate<br>
+  saubhadraś ca mahā-bāhuḥ śaṅkhān dadhmuḥ pṛthak pṛthak
+</div>
+
+<div class="word-meaning hindi">
+  <strong>शब्दार्थ:</strong><br>
+  द्रुपदः – द्रुपद राजा<br>
+  द्रौपदेयाः – द्रौपदी के पुत्र<br>
+  च – और<br>
+  सर्वशः – सभी<br>
+  पृथिवी-पते – हे पृथ्वी के स्वामी (राजन्)<br>
+  सौभद्रः – सुभद्रा का पुत्र (अभिमन्यु)<br>
+  च – और<br>
+  महाबाहुः – बलवान भुजाओं वाला<br>
+  शङ्खान् – शंख<br>
+  दध्मुः – बजाए<br>
+  पृथक् पृथक् – अलग-अलग
+</div>
+
+<div class="word-meaning english">
+  <strong>Word Meaning:</strong><br>
+  drupadaḥ – Drupada<br>
+  draupadeyāḥ – sons of Draupadi<br>
+  ca – and<br>
+  sarvaśaḥ – all<br>
+  pṛthivī-pate – O lord of the earth (Dhritarashtra)<br>
+  saubhadraḥ – son of Subhadra (Abhimanyu)<br>
+  ca – and<br>
+  mahā-bāhuḥ – mighty-armed<br>
+  śaṅkhān – conches<br>
+  dadhmuḥ – blew<br>
+  pṛthak pṛthak – separately
+</div>
+  
+  <div class="translation hindi">         <strong>हिन्दी अनुवाद:</strong><br>
+    राजन्! राजा द्रुपद, द्रौपदी के पुत्र और बलशाली अभिमन्यु ने भी अपने-अपने शंख बजाए।
+  </div>
+  <div class="translation english">     <strong>English Translation:</strong><br>
+    O King! Drupada, the sons of Draupadi, and the mighty-armed son of Subhadra (Abhimanyu) blew their respective conches.
+  </div>
+  
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    यह श्लोक आने वाली पीढ़ियों की भागीदारी को दर्शाता है—द्रौपदीपुत्र और अभिमन्यु।<br><br>
+    यह हमें सिखाता है कि युवा भी धर्म और कर्तव्य की रक्षा में आगे आ सकते हैं।
+  </div>
+  <div class="reflect hindi">सोचिए: क्या हम अगली पीढ़ी को प्रेरित कर रहे हैं कर्तव्यपथ पर चलने के लिए?</div>
+  
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    This verse highlights the involvement of the younger generation—Draupadi’s sons and Abhimanyu.<br>
+    It teaches that youth can also step forward to uphold righteousness and responsibility.
+  </div>
+  <div class="reflect english">Reflect: Are we inspiring the next generation to walk the path of duty?</div>
+</div>
+
+<!-- SHLOK 19 -->
+<div class="section">
+  <div class="sanskrit">स घोषो धार्तराष्ट्राणां हृदयानि व्यदारयत् |<br> नभश्च पृथिवीं चैव तुमुलो व्यनुनादयन् ॥19॥</div>
+  
+<!-- SHLOK 19 -->
+<div class="transliteration iast">
+  <strong>Pronunciation Guide :</strong><br>
+  sa ghoṣo dhārtarāṣṭrāṇāṁ hṛdayāni vyadārayat<br>
+  nabhaś ca pṛthivīṁ caiva tumulo ’bhyanunādayan
+</div>
+
+<div class="word-meaning hindi">
+  <strong>शब्दार्थ:</strong><br>
+  सः – वह<br>
+  घोषः – शब्द<br>
+  धार्तराष्ट्राणाम् – धृतराष्ट्र के पुत्रों के<br>
+  हृदयानि – हृदय<br>
+  व्यदायरत् – विदीर्ण कर दिया (फाड़ दिया)<br>
+  नभः – आकाश को<br>
+  च – और<br>
+  पृथिवीम् – पृथ्वी को<br>
+  च – और<br>
+  एव – भी<br>
+  तुमुलः – प्रचण्ड<br>
+  अभ्यनुनादयन् – गूँजता हुआ
+</div>
+
+<div class="word-meaning english">
+  <strong>Word Meaning:</strong><br>
+  saḥ – that<br>
+  ghoṣaḥ – sound<br>
+  dhārtarāṣṭrāṇām – of the sons of Dhritarashtra<br>
+  hṛdayāni – hearts<br>
+  vyadārayat – shattered<br>
+  nabhaḥ – sky<br>
+  ca – and<br>
+  pṛthivīm – earth<br>
+  ca – and<br>
+  eva – also<br>
+  tumulaḥ – tremendous<br>
+  abhy-anunādayan – reverberating
+</div>
+  
+  <div class="translation hindi">         <strong>हिन्दी अनुवाद:</strong><br>
+    वह भयंकर घोष (शंखध्वनि) आकाश और पृथ्वी में गूंज उठा और धृतराष्ट्र के पुत्रों के हृदयों को विदीर्ण कर गया।
+  </div>
+  <div class="translation english">     <strong>English Translation:</strong><br>
+    That terrible sound echoed across the sky and the earth, piercing the hearts of Dhritarashtra’s sons.
+  </div>
+  
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    शंखध्वनि केवल बाहरी नहीं थी, बल्कि उसमें आत्मबल और सत्य का घोष था, जिसने अधर्मियों के हृदय में भय उत्पन्न किया।<br><br>
+    जब आत्मबल और सच्चाई से युक्त संकल्प होता है, तो वह शत्रु के भीतर भी डर भर देता है।
+  </div>
+  <div class="reflect hindi">सोचिए: क्या हमारे विचार और कार्य इतने सशक्त हैं कि असत्य खुद पीछे हट जाए?</div>
+  
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    The conch sound was not just physical—it carried the force of inner strength and righteousness, striking fear into the hearts of the unrighteous.<br>
+    When backed by truth and determination, our actions can unnerve even the strongest opposition.
+  </div>
+  <div class="reflect english">Reflect: Are our thoughts and actions powerful enough for falsehood to retreat on its own?</div>
+</div>
+
+    
+  <div class="next-day">
+    <a href="Day4.html">Next Day →</a>
+  </div>
+
+  <div class="progress">
+  <div class="progress-bar striped animated" style="width:42.9%;">
+       42.9%
+     </div>
+</div>
+
+  <script>
+    function showLang(lang) {
+      const btnHindi = document.getElementById("btn-hindi");
+      const btnEnglish = document.getElementById("btn-english");
+
+      const hindi = document.querySelectorAll('.hindi');
+      const english = document.querySelectorAll('.english');
+
+      if (lang === 'hindi') {
+        btnHindi.classList.add("active");
+        btnEnglish.classList.remove("active");
+
+        hindi.forEach(el => el.style.display = 'block');
+        english.forEach(el => el.style.display = 'none');
+      } else {
+        btnHindi.classList.remove("active");
+        btnEnglish.classList.add("active");
+
+        hindi.forEach(el => el.style.display = 'none');
+        english.forEach(el => el.style.display = 'block');
+      }
+    }
+
+    // Default show Hindi
+    showLang('hindi');
+  </script>
+
+</body>
+</html>

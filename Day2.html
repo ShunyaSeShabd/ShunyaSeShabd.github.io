@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shree Gita - Week 1</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f3f3f3;
+      color: #222;
+    }
+
+    header {
+      background-color: #603e26;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 2rem;
+    }
+
+    .toggle {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .toggle button {
+      background-color: #eee;
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      margin: 0 5px;
+      font-weight: bold;
+    }
+
+    .toggle button.active {
+      background-color: #603e26;
+      color: white;
+    }
+
+    .section {
+      background: white;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+
+    .sanskrit {
+      font-size: 1.4rem;
+      color: #a52a2a;
+      margin-bottom: 1rem;
+    }
+
+    .translation, .explanation, .reflect {
+      display: none;
+    }
+
+    .reflect {
+      font-style: italic;
+      background: #f9f2ec;
+      padding: 1rem;
+      border-left: 4px solid #d28c49;
+      margin-top: 1rem;
+    }
+
+    .label {
+      font-weight: bold;
+      color: #603e26;
+      margin-top: 1rem;
+    }
+
+    .audio-player {
+      margin: 2rem 0;
+      text-align: center;
+    }
+
+    .progress {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: #ddd;
+      box-shadow: 0.5px 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .progress-bar {
+      width: 10%;
+      height: 15px;
+      background: #ff8080;
+      transition: width 1s ease-in-out;
+      position: relative;
+      text-align: center;
+      border-radius: 5px;
+    }
+    
+    .striped {
+        background-image: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.2) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(255, 255, 255, 0.2) 50%,
+        rgba(255, 255, 255, 0.2) 75%,
+        transparent 75%,
+        transparent
+    );
+        background-size: 40px 40px;
+।   }
+
+
+        .animated {
+            animation: progress-bar-stripes 2s linear infinite;
+        }
+
+        @keyframes progress-bar-stripes {
+            from {
+                background-position: 40px 0;
+            }
+            to {
+                background-position: 0 0;
+            }
+        }
+
+
+    .next-day {
+      text-align: center;
+      margin: 3rem 0 1rem;
+    }
+
+    .next-day a{
+      background-color: #603e26;
+      color: white;
+      padding: 0.7rem 1.5rem;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .word-meaning {   background: #f4f8fb;   border-left: 4px solid #D28C49;   padding: 1rem;   margin: 1rem 0;   border-radius: 8px;   font-family: 'Segoe UI', sans-serif;   line-height: 1.7;   font-size: 1rem;   color: #333; }  .word-meaning strong {   display: block;   font-size: 1.1rem;   color: #603e26;   font-weight: 600;   border-bottom: 1px solid #d0e2f2; }   @media screen and (max-width: 600px) {   .word-meaning {     font-size: 0.95rem;     padding: 0.8rem;   } }   .transliteration {   background: #fffbe6;   border-left: 4px solid #f1c40f;   padding: 0;   margin: 10px 0;   border-radius: 8px;   font-family: 'Times New Roman', serif;   font-size: 1.05rem;   color: #6b4e00;   line-height: 1; }  .transliteration strong {   display: block;   font-size: 1.1rem;   color: #b37f00;   font-weight: bold;   border-bottom: 1px solid #f9e79f;   padding-bottom: 4px; }  @media screen and (max-width: 600px) {   .transliteration {     font-size: 1rem;     padding: 0.8rem;   } }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>श्रीमद्भगवद्गीता - Day 2</h1>
+    <p>युद्धभूमि की तैयारी और महान योद्धाओं का वर्णन (Shlok 4 to 11)</p>
+  </header>
+
+  <div class="toggle">
+    <button id="btn-hindi" class="active" onclick="showLang('hindi')">हिंदी</button>
+    <button id="btn-english" onclick="showLang('english')">English</button>
+  </div>
+
+  <div class="container">
+
+    <!-- SHLOK 4 -->
+<div class="section">
+  <div class="sanskrit">अत्र शूरा महेष्वासा भीमार्जुनसमा युधि |<br> युयुधानो विराटश्च द्रुपदश्च महारथः ॥4॥</div>
+  
+<div class="transliteration iast">
+  <strong>Pronunciation Guide :</strong><br>
+  atra śūrā maheṣvāsā bhīmārjuna-samā yudhi<br>
+  yuyudhāno virāṭaśca drupadaśca mahā-rathaḥ
+</div>
+
+<div class="word-meaning hindi">
+  <strong>शब्दार्थ:</strong><br>
+  अत्र – यहाँ<br>
+  शूराः – वीर योद्धा<br>
+  महेष्वासाः – महान धनुर्धारी<br>
+  भीम-अर्जुन-समाः – भीम और अर्जुन के समान<br>
+  युद्धि – युद्ध में<br>
+  युयुधानः – युयुधान<br>
+  विराटः च – और विराट<br>
+  द्रुपदः च – और द्रुपद<br>
+  महारथः – महान योद्धा
+</div>
+
+<div class="word-meaning english">
+  <strong>Word Meaning:</strong><br>
+  atra – here<br>
+  śūrāḥ – valiant warriors<br>
+  maheṣvāsāḥ – great bowmen<br>
+  bhīma-arjuna-samāḥ – equal to Bhima and Arjuna<br>
+  yudhi – in battle<br>
+  yuyudhānaḥ – Yuyudhana<br>
+  virāṭaḥ ca – and Virata<br>
+  drupadaḥ ca – and Drupada<br>
+  mahā-rathaḥ – great chariot-warrior
+</div>
+  
+  <div class="translation hindi">         <strong>हिन्दी अनुवाद:</strong><br>
+    यहाँ (पांडवों की सेना में) महान धनुर्धारी और युद्ध में भीम व अर्जुन के समान पराक्रमी योद्धा हैं — युयुधान, विराट और महारथी द्रुपद।
+  </div>
+  <div class="translation english">     <strong>English Translation:</strong><br>
+    Here in this army are many heroic bowmen equal in fighting to Bhima and Arjuna—Yuyudhana, Virata, and the great warrior Drupada.
+  </div>
+  
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    दुर्योधन पांडवों की सेना में उपस्थित पराक्रमी योद्धाओं की गिनती करता है।<br><br>
+    वह मानता है कि पांडवों के पास भीम और अर्जुन जैसे वीरों की बराबरी करने वाले कई योद्धा हैं – यह उसकी चिंता का संकेत है।<br>
+    साथ ही यह भी दर्शाता है कि वह अपने शत्रु की शक्ति को कम करके नहीं देख रहा – एक अच्छा रणनीतिकार शत्रु की ताकत पहचानता है।
+  </div>
+  <div class="reflect hindi">सोचिए: क्या हम प्रतिस्पर्धा को समझते हुए उसका सम्मान कर पाते हैं?</div>
+  
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    Duryodhana names the warriors in the Pandava army who are as mighty as Bhima and Arjuna.<br>
+    This shows he acknowledges the strength of his opponents—a mark of a vigilant strategist.<br>
+    It also reveals his inner anxiety. Recognizing others’ strength is the first step to effective preparation.
+  </div>
+  <div class="reflect english">Reflect: Do we acknowledge the strength of our competition with humility?</div>
+</div>
+
+<!-- SHLOK 5 -->
+<div class="section">
+  <div class="sanskrit">धृष्टकेतुश्चेकितानः काशिराजश्च वीर्यवान् |<br> पुरुजित्कुन्तिभोजश्च शैब्यश्च नरपुङ्गवः ॥5॥</div>
+  
+<!-- SHLOK 5 -->
+<div class="transliteration iast">
+  <strong>Pronunciation Guide :</strong><br>
+  dhṛṣṭaketuś cekitānaḥ kāśirājaś ca vīryavān<br>
+  purujit kuntibhojaś ca śaibyaś ca nara-puṅgavaḥ
+</div>
+
+<div class="word-meaning hindi">
+  <strong>शब्दार्थ:</strong><br>
+  धृष्टकेतुः – धृष्टकेतु<br>
+  चेकितानः – चेकितान<br>
+  काशिराजः – काशी का राजा<br>
+  च – और<br>
+  वीर्यवान् – पराक्रमी<br>
+  पुरुजित् – पुरुजित<br>
+  कुन्तिभोजः – कुन्तिभोज<br>
+  शैब्यः – शैब्य<br>
+  नरपुंगवः – श्रेष्ठ पुरुष
+</div>
+
+<div class="word-meaning english">
+  <strong>Word Meaning:</strong><br>
+  dhṛṣṭaketuḥ – Dhrishtaketu<br>
+  cekitānaḥ – Cekitana<br>
+  kāśirājaḥ – King of Kashi<br>
+  ca – and<br>
+  vīryavān – powerful<br>
+  purujit – Purujit<br>
+  kuntibhojaḥ – Kuntibhoja<br>
+  śaibyaḥ – Shaibya<br>
+  nara-puṅgavaḥ – best of men
+</div>
+
+  <div class="translation hindi">         <strong>हिन्दी अनुवाद:</strong><br>
+    धृष्टकेतु, चेकितान, पराक्रमी काशी के राजा, पुरुजित, कुन्तिभोज और शैब्य जैसे महान पुरुष भी वहाँ उपस्थित हैं।
+  </div>
+  <div class="translation english">     <strong>English Translation:</strong><br>
+    Dhrishtaketu, Chekitana, the valiant King of Kashi, Purujit, Kuntibhoja, and Shaibya—the best among men—are also present.
+  </div>
+  
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    दुर्योधन पांडव पक्ष की सेना में उपस्थित अन्य वीरों का भी उल्लेख करता है।<br><br>
+    यह दिखाता है कि वह पूरी तरह से सजग है, और पांडवों की पूरी शक्ति को आंक रहा है।<br>
+    एक रणनीतिक दृष्टिकोण से यह आवश्यक है कि हम हर पहलू को देख और समझ सकें – चाहे वह प्रतिद्वंद्वी की ताकत ही क्यों न हो।
+  </div>
+  <div class="reflect hindi">सोचिए: क्या हम मुश्किल हालात में सभी पहलुओं पर ध्यान देते हैं?</div>
+  
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    Duryodhana continues listing other heroes in the Pandava army.<br>
+    His assessment is detailed, indicating how seriously he takes this battle.<br>
+    It's a reminder: preparedness begins with awareness—of strengths and threats alike.
+  </div>
+  <div class="reflect english">Reflect: In tough times, do we consider all aspects before acting?</div>
+</div>
+
+<!-- SHLOK 6 -->
+<div class="section">
+  <div class="sanskrit">युधामन्युश्च विक्रान्त उत्तमौजाश्च वीर्यवान् |<br> सौभद्रो द्रौपदेयाश्च सर्व एव महारथाः ॥6॥</div>
+
+<!-- SHLOK 6 -->
+<div class="transliteration iast">
+  <strong>Pronunciation Guide :</strong><br>
+  yudhāmanyuś ca vikrānta uttamaujāś ca vīryavān<br>
+  saubhadro draupadeyāś ca sarva eva mahā-rathāḥ
+</div>
+
+<div class="word-meaning hindi">
+  <strong>शब्दार्थ:</strong><br>
+  युधामन्युः – युधामन्यु<br>
+  च – और<br>
+  विक्रान्तः – पराक्रमी<br>
+  उत्तमौजाः – उत्तमौजा<br>
+  च – और<br>
+  वीर्यवान् – बलशाली<br>
+  सौभद्रः – सुभद्रा का पुत्र (अभिमन्यु)<br>
+  द्रौपदेयाः – द्रौपदी के पुत्र<br>
+  च – और<br>
+  सर्वे – सभी<br>
+  एव – निश्चय ही<br>
+  महारथाः – महायोद्धा
+</div>
+
+<div class="word-meaning english">
+  <strong>Word Meaning:</strong><br>
+  yudhāmanyuḥ – Yudhamanyu<br>
+  ca – and<br>
+  vikrāntaḥ – mighty<br>
+  uttamaujāḥ – Uttamaujas<br>
+  ca – and<br>
+  vīryavān – powerful<br>
+  saubhadraḥ – son of Subhadra (Abhimanyu)<br>
+  draupadeyāḥ – sons of Draupadi<br>
+  ca – and<br>
+  sarve – all<br>
+  eva – indeed<br>
+  mahā-rathāḥ – great chariot-warriors
+</div>
+
+  <div class="translation hindi">         <strong>हिन्दी अनुवाद:</strong><br>
+    युधामन्यु, पराक्रमी उत्तमौजा, सुभद्रा का पुत्र अभिमन्यु और द्रौपदी के पाँचों पुत्र – ये सभी महारथी हैं।
+  </div>
+  <div class="translation english">     <strong>English Translation:</strong><br>
+    Yudhamanyu, the valiant Uttamaujas, the son of Subhadra (Abhimanyu), and the sons of Draupadi—all these are mighty warriors.
+  </div>
+  
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    यहाँ दुर्योधन अभिमन्यु और द्रौपदी के पुत्रों का उल्लेख करता है – जो नई पीढ़ी के योद्धा हैं।<br><br>
+    इससे यह भी पता चलता है कि पांडव पक्ष में केवल अनुभव नहीं, बल्कि नई ऊर्जा और साहस से भरपूर योद्धा भी हैं।<br>
+    यह श्लोक बताता है कि युवा जोश और नई शक्ति भी निर्णायक होती है।
+  </div>
+  <div class="reflect hindi">सोचिए: क्या हम युवा शक्ति को पर्याप्त अवसर और मार्गदर्शन देते हैं?</div>
+  
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    The verse highlights youthful and brave warriors on the Pandava side—Abhimanyu and Draupadi’s sons.<br>
+    It suggests that the Pandavas have a blend of experience and youthful energy.<br>
+    The presence of the next generation reminds us that courage and readiness transcend age.
+  </div>
+  <div class="reflect english">Reflect: Do we trust and empower the next generation in times of challenge?</div>
+</div>
+
+<!-- SHLOK 7 -->
+<div class="section">
+  <div class="sanskrit">अस्माकं तु विशिष्टा ये तान्निबोध द्विजोत्तम |<br> नायका मम सैन्यस्य संज्ञार्थं तान्ब्रवीमि ते ॥7॥</div>
+
+<!-- SHLOK 7 -->
+<div class="transliteration iast">
+  <strong>Pronunciation Guide :</strong><br>
+  asmākaṁ tu viśiṣṭā ye tān nibodha dvijottama<br>
+  nāyakā mama sainyasya saṁjñārthaṁ tān bravīmi te
+</div>
+
+<div class="word-meaning hindi">
+  <strong>शब्दार्थ:</strong><br>
+  अस्माकम् – हमारे<br>
+  तु – तो<br>
+  विशिष्टाः – प्रमुख<br>
+  ये – जो<br>
+  तान् – उनको<br>
+  निबोध – जानिए<br>
+  द्विजोत्तम – हे ब्राह्मणश्रेष्ठ (द्रोणाचार्य)<br>
+  नायकाः – सेनापति / नेता<br>
+  मम – मेरी<br>
+  सैन्यस्य – सेना की<br>
+  संज्ञार्थम् – जानकारी के लिए<br>
+  तान् – उन्हें<br>
+  ब्रवीमि – मैं बताता हूँ<br>
+  ते – आपको
+</div>
+
+<div class="word-meaning english">
+  <strong>Word Meaning:</strong><br>
+  asmākam – our<br>
+  tu – but<br>
+  viśiṣṭāḥ – distinguished<br>
+  ye – who<br>
+  tān – them<br>
+  nibodha – know<br>
+  dvijottama – O best of the twice-born (Drona)<br>
+  nāyakāḥ – leaders<br>
+  mama – my<br>
+  sainyasya – of the army<br>
+  saṁjñārtham – for your understanding<br>
+  tān – them<br>
+  bravīmi – I am naming<br>
+  te – to you
+</div>
+  
+  <div class="translation hindi">         <strong>हिन्दी अनुवाद:</strong><br>
+    अब, हे ब्राह्मणश्रेष्ठ! मेरी सेना में जो प्रमुख योद्धा हैं, उन्हें भी जानो; मैं तुम्हारे ज्ञान के लिए उनका वर्णन करता हूँ।
+  </div>
+  <div class="translation english">     <strong>English Translation:</strong><br>
+    But O best of the brahmins, learn about the distinguished commanders of my army; I will now name them for your information.
+  </div>
+  
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    पांडव पक्ष की ताकत गिनाने के बाद, दुर्योधन अब अपनी सेना के योद्धाओं की बात करता है।<br><br>
+    “नायका मम सैन्यस्य” – वह अपने पक्ष को श्रेष्ठ बताने का प्रयास करता है।<br>
+    यह श्लोक दिखाता है कि जब आत्मविश्वास डगमगाने लगता है, तो हम अपनी उपलब्धियों को दोहराकर मन को सांत्वना देते हैं।
+  </div>
+  <div class="reflect hindi">सोचिए: क्या आत्म-संवाद हमें आत्मबल देता है?</div>
+  
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    After recognizing the Pandava strength, Duryodhana now focuses on the leaders in his own army.<br>
+    He seeks to reaffirm confidence—both in himself and his listener.<br>
+    Sometimes, listing our strengths aloud helps us overcome fear and hesitation.
+  </div>
+  <div class="reflect english">Reflect: Do we remind ourselves of our strengths when fear creeps in?</div>
+</div>
+
+<!-- SHLOK 8 -->
+<div class="section">
+  <div class="sanskrit">भवान्भीष्मश्च कर्णश्च कृपश्च समितिंजयः |<br> अश्वत्थामा विकर्णश्च सौमदत्तिस्तथैव च ॥8॥</div>
+
+<!-- SHLOK 8 -->
+<div class="transliteration iast">
+  <strong>Pronunciation Guide :</strong><br>
+  bhavān bhīṣmaś ca karṇaś ca kṛpaś ca samitiñjayaḥ<br>
+  aśvatthāmā vikarṇaś ca saumadattis tathaiva ca
+</div>
+
+<div class="word-meaning hindi">
+  <strong>शब्दार्थ:</strong><br>
+  भवान् – आप<br>
+  भीष्मः च – और भीष्म<br>
+  कर्णः च – और कर्ण<br>
+  कृपः च – और कृपाचार्य<br>
+  समितिंजयः – युद्ध में विजयी<br>
+  अश्वत्थामा – अश्वत्थामा<br>
+  विकर्णः च – और विकर्ण<br>
+  सौमदत्तिः – सौमदत्त (भूरिश्रवा)<br>
+  तथैव च – और भी
+</div>
+
+<div class="word-meaning english">
+  <strong>Word Meaning:</strong><br>
+  bhavān – yourself<br>
+  bhīṣmaḥ ca – and Bhishma<br>
+  karṇaḥ ca – and Karna<br>
+  kṛpaḥ ca – and Kripa<br>
+  samitiñjayaḥ – victorious in battle<br>
+  aśvatthāmā – Ashvatthama<br>
+  vikarṇaḥ ca – and Vikarna<br>
+  saumadattiḥ – son of Somadatta (Bhurishrava)<br>
+  tathaiva ca – and likewise
+</div>
+  
+  <div class="translation hindi">         <strong>हिन्दी अनुवाद:</strong><br>
+    आप स्वयं (द्रोणाचार्य), भीष्म, कर्ण, संग्राम विजयी कृपाचार्य, अश्वत्थामा, विकर्ण और सोमदत्त का पुत्र (भूरिश्रवा) भी (मेरी सेना में) हैं।
+  </div>
+  <div class="translation english">     <strong>English Translation:</strong><br>
+    You yourself (Dronacharya), Bhishma, Karna, the victorious Kripacharya, Ashwatthama, Vikarna, and the son of Somadatta (Bhurishrava) are also here.
+  </div>
+  
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    दुर्योधन अपनी सेना में उपस्थित महायोद्धाओं की गिनती करता है। इनमें भीष्म, कर्ण और अश्वत्थामा जैसे योद्धा हैं।<br><br>
+    यह दर्शाता है कि दुर्योधन की सेना भी कमज़ोर नहीं है – बल्कि उसमें कई महारथी हैं।<br>
+    यह श्लोक संतुलित दृष्टिकोण का प्रतीक है – जो अपने पक्ष और शत्रु पक्ष दोनों का सही मूल्यांकन करता है।
+  </div>
+  <div class="reflect hindi">सोचिए: क्या हम अपने जीवन में संतुलन से मूल्यांकन करना जानते हैं?</div>
+  
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    Duryodhana lists mighty warriors from his own side, like Bhishma, Karna, and Ashwatthama.<br>
+    He wants to reassure himself and his teacher that they too are powerful.<br>
+    In strategy and life, it’s important to acknowledge both the strengths of others and our own.
+  </div>
+  <div class="reflect english">Reflect: Are we able to assess both sides of a situation fairly?</div>
+</div>
+
+<!-- SHLOK 9 -->
+<div class="section">
+  <div class="sanskrit">अन्ये च बहवः शूरा मदर्थे त्यक्तजीविताः |<br> नानाशस्त्रप्रहरणाः सर्वे युद्धविशारदाः ॥9॥</div>
+
+<!-- SHLOK 9 -->
+<div class="transliteration iast">
+  <strong>Pronunciation Guide :</strong><br>
+  anye ca bahavaḥ śūrā mad-arthe tyakta-jīvitāḥ<br>
+  nānā-śastra-praharaṇāḥ sarve yuddha-viśāradāḥ
+</div>
+
+<div class="word-meaning hindi">
+  <strong>शब्दार्थ:</strong><br>
+  अन्ये – अन्य<br>
+  च – और<br>
+  बहवः – अनेक<br>
+  शूराः – वीर<br>
+  मदर्थे – मेरे लिए<br>
+  त्यक्त-जीविताः – जीवन त्यागने को तत्पर<br>
+  नाना-शस्त्र-प्रहरणाः – विभिन्न शस्त्रों से सुसज्जित<br>
+  सर्वे – सभी<br>
+  युद्ध-विशारदाः – युद्ध में निपुण
+</div>
+
+<div class="word-meaning english">
+  <strong>Word Meaning:</strong><br>
+  anye – others<br>
+  ca – and<br>
+  bahavaḥ – many<br>
+  śūrāḥ – valiant warriors<br>
+  mad-arthe – for my sake<br>
+  tyakta-jīvitāḥ – ready to lay down their lives<br>
+  nānā-śastra-praharaṇāḥ – armed with various weapons<br>
+  sarve – all<br>
+  yuddha-viśāradāḥ – skilled in warfare
+</div>
+  
+  <div class="translation hindi">         <strong>हिन्दी अनुवाद:</strong><br>
+    और भी बहुत से वीर योद्धा हैं, जो मेरे लिए अपने प्राणों की आहुति देने को तैयार हैं। वे सभी युद्ध में निपुण हैं और विविध अस्त्र-शस्त्रों से सुसज्जित हैं।
+  </div>
+  <div class="translation english">     <strong>English Translation:</strong><br>
+    There are many other brave warriors ready to lay down their lives for my sake, all well-armed and skilled in warfare.
+  </div>
+  
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    दुर्योधन को गर्व है कि उसकी सेना में ऐसे योद्धा हैं जो उसके लिए प्राण भी दे सकते हैं।<br><br>
+    यह दिखाता है कि नेतृत्व केवल शक्ति से नहीं, बल्कि विश्वास और समर्पण से भी चलता है।<br>
+    यह श्लोक समर्पित अनुयायियों की भूमिका को दर्शाता है।
+  </div>
+  <div class="reflect hindi">सोचिए: क्या हम अपने कार्य के प्रति इसी तरह समर्पित हैं?</div>
+  
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    Duryodhana expresses confidence in his warriors who are ready to sacrifice their lives for him.<br>
+    Leadership is built on loyalty and mutual trust, not just command.<br>
+    A true leader inspires dedication by standing firm for their people.
+  </div>
+  <div class="reflect english">Reflect: Do we lead and serve with such deep commitment?</div>
+</div>
+
+<!-- SHLOK 10 -->
+<div class="section">
+  <div class="sanskrit">अपर्याप्तं तदस्माकं बलं भीष्माभिरक्षितम् |<br> पर्याप्तं त्विदमेतेषां बलं भीमाभिरक्षितम् ॥10॥</div>
+  
+<!-- SHLOK 10 -->
+<div class="transliteration iast">
+  <strong>Pronunciation Guide :</strong><br>
+  aparyāptaṁ tad asmākaṁ balaṁ bhīṣmābhirakṣitam<br>
+  paryāptaṁ tv idam eteṣāṁ balaṁ bhīmābhirakṣitam
+</div>
+
+<div class="word-meaning hindi">
+  <strong>शब्दार्थ:</strong><br>
+  अपर्याप्तम् – अपर्याप्त (अथवा असीम)<br>
+  तत् – वह<br>
+  अस्माकम् – हमारा<br>
+  बलम् – बल / सेना<br>
+  भीष्म-अभिरक्षितम् – भीष्म द्वारा रक्षित<br>
+  पर्याप्तम् – पर्याप्त<br>
+  तु – परंतु<br>
+  इदम् – यह<br>
+  एतेषाम् – इन लोगों का (पांडवों का)<br>
+  बलम् – बल<br>
+  भीम-अभिरक्षितम् – भीम द्वारा रक्षित
+</div>
+
+<div class="word-meaning english">
+  <strong>Word Meaning:</strong><br>
+  aparyāptam – unlimited (or insufficient)<br>
+  tat – that<br>
+  asmākam – our<br>
+  balam – strength<br>
+  bhīṣma-abhirakṣitam – protected by Bhishma<br>
+  paryāptam – limited (or sufficient)<br>
+  tu – but<br>
+  idam – this<br>
+  eteṣām – of these (Pandavas)<br>
+  balam – strength<br>
+  bhīma-abhirakṣitam – protected by Bhima
+</div>
+  
+  <div class="translation hindi">         <strong>हिन्दी अनुवाद:</strong><br>
+    हमारी सेना, जो भीष्म द्वारा संरक्षित है, असीमित है; जबकि इनकी सेना, जिसे भीम संभाल रहे हैं, सीमित है।
+  </div>
+  <div class="translation english">     <strong>English Translation:</strong><br>
+    Our army, protected by Bhishma, is unlimited; but theirs, guarded by Bhima, is limited.
+  </div>
+  
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    दुर्योधन अब तुलना करता है – उसे अपनी सेना असीम लगती है क्योंकि उसका नेतृत्व भीष्म कर रहे हैं।<br><br>
+    यह आत्मविश्वास हो सकता है या आत्म-प्रशंसा भी।<br>
+    कभी-कभी हम अपनी बातों से खुद को मनोबल देते हैं – लेकिन सच्चाई मैदान में ही सिद्ध होती है।
+  </div>
+  <div class="reflect hindi">सोचिए: क्या हमारा आत्मविश्वास यथार्थ पर आधारित है?</div>
+  
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    Duryodhana compares the two armies. He believes his side is limitless because of Bhishma’s presence.<br>
+    Yet, such declarations often stem from anxiety masked as pride.<br>
+    True strength lies not just in numbers, but in conviction and righteousness.
+  </div>
+  <div class="reflect english">Reflect: Is our confidence rooted in truth—or illusion?</div>
+</div>
+
+<!-- SHLOK 11 -->
+<div class="section">
+  <div class="sanskrit">अयनेषु च सर्वेषु यथाभागमवस्थिताः |<br> भीष्ममेवाभिरक्षन्तु भवन्तः सर्व एव हि ॥11॥</div>
+
+<!-- SHLOK 11 -->
+<div class="transliteration iast">
+  <strong>Pronunciation Guide :</strong><br>
+  ayaneṣu ca sarveṣu yathā-bhāgam avasthitāḥ<br>
+  bhīṣmam evābhirakṣantu bhavantaḥ sarva eva hi
+</div>
+
+<div class="word-meaning hindi">
+  <strong>शब्दार्थ:</strong><br>
+  अयनेषु – मोर्चों पर<br>
+  च – और<br>
+  सर्वेषु – सभी में<br>
+  यथा-भागम् – अपने-अपने स्थान पर<br>
+  अवस्थिताः – स्थित<br>
+  भीष्मम् – भीष्म को<br>
+  एव – ही<br>
+  अभिरक्षन्तु – रक्षित करें<br>
+  भवन्तः – आप लोग<br>
+  सर्वे – सभी<br>
+  एव – ही<br>
+  हि – निश्चय ही
+</div>
+
+<div class="word-meaning english">
+  <strong>Word Meaning:</strong><br>
+  ayaneṣu – in the strategic positions<br>
+  ca – and<br>
+  sarveṣu – in all<br>
+  yathā-bhāgam – as per division<br>
+  avasthitāḥ – stationed<br>
+  bhīṣmam – Bhishma<br>
+  eva – indeed<br>
+  abhirakṣantu – protect<br>
+  bhavantaḥ – you all<br>
+  sarve – all<br>
+  eva hi – certainly
+</div>
+  
+  <div class="translation hindi">         <strong>हिन्दी अनुवाद:</strong><br>
+    आप सभी अपने-अपने स्थानों पर स्थित रहकर सभी ओर से भीष्म पितामह की रक्षा करें।
+  </div>
+  <div class="translation english">     <strong>English Translation:</strong><br>
+    Therefore, all of you stationed in your respective positions, support and protect Bhishma from all sides.
+  </div>
+  
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    यह श्लोक दर्शाता है कि दुर्योधन को भीष्म की रक्षा की चिंता है।<br><br>
+    यद्यपि भीष्म स्वयं अप्रतिम योद्धा हैं, फिर भी दुर्योधन जानता है कि युद्ध में सबसे महत्वपूर्ण व्यक्ति की रक्षा अत्यावश्यक है।<br>
+    यह नेतृत्व का एक संकेत है – कि हमें अपने स्तंभों को सुरक्षित रखना चाहिए।
+  </div>
+  <div class="reflect hindi">सोचिए: क्या हम अपने जीवन के मूल स्तंभों की रक्षा करते हैं?</div>
+  
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    Duryodhana orders his warriors to protect Bhishma at all costs.<br>
+    Though Bhishma is mighty, Duryodhana knows he is the moral and strategic anchor of their army.<br>
+    In life too, our foundations—our values, mentors, and family—must be safeguarded.
+  </div>
+  <div class="reflect english">Reflect: Do we protect the core values and people who support us?</div>
+</div>
+    <div class="next-day">
+      <a href="Day3.html">Next Day →</a>
+    </div>
+  </div>
+
+  <div class="progress">
+  <div class="progress-bar striped animated" style="width:28.6%;">
+     28.6%
+     </div>
+</div>
+
+  <script>
+    function showLang(lang) {
+      const btnHindi = document.getElementById("btn-hindi");
+      const btnEnglish = document.getElementById("btn-english");
+
+      const hindi = document.querySelectorAll('.hindi');
+      const english = document.querySelectorAll('.english');
+
+      if (lang === 'hindi') {
+        btnHindi.classList.add("active");
+        btnEnglish.classList.remove("active");
+
+        hindi.forEach(el => el.style.display = 'block');
+        english.forEach(el => el.style.display = 'none');
+      } else {
+        btnHindi.classList.remove("active");
+        btnEnglish.classList.add("active");
+
+        hindi.forEach(el => el.style.display = 'none');
+        english.forEach(el => el.style.display = 'block');
+      }
+    }
+
+    // Default show Hindi
+    showLang('hindi');
+  </script>
+
+</body>
+</html>

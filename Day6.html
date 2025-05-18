@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shree Gita - Week 1</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f3f3f3;
+      color: #222;
+    }
+
+    header {
+      background-color: #603e26;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 2rem;
+    }
+
+    .toggle {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .toggle button {
+      background-color: #eee;
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      margin: 0 5px;
+      font-weight: bold;
+    }
+
+    .toggle button.active {
+      background-color: #603e26;
+      color: white;
+    }
+
+    .section {
+      background: white;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+
+    .sanskrit {
+      font-size: 1.4rem;
+      color: #a52a2a;
+      margin-bottom: 1rem;
+    }
+
+    .translation, .explanation, .reflect {
+      display: none;
+    }
+
+    .reflect {
+      font-style: italic;
+      background: #f9f2ec;
+      padding: 1rem;
+      border-left: 4px solid #d28c49;
+      margin-top: 1rem;
+    }
+
+    .label {
+      font-weight: bold;
+      color: #603e26;
+      margin-top: 1rem;
+    }
+
+    .audio-player {
+      margin: 2rem 0;
+      text-align: center;
+    }
+    
+    .progress {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #ddd;
+      box-shadow: 0.5px 1px 3px rgba(0,0,0,0.1);
+    }
+
+
+    .progress-bar {
+  width: 10%;
+  height: 15px;
+  background: #ff8080;
+  transition: width 1s ease-in-out;
+  position: relative;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.striped {
+  background-image: linear-gradient(45deg,
+      rgba(255, 255, 255, 0.2) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0.2) 75%,
+      transparent 75%,
+      transparent);
+  background-size: 40px 40px;
+  ।
+}
+
+
+.animated {
+  animation: progress-bar-stripes 2s linear infinite;
+}
+
+@keyframes progress-bar-stripes {
+  from {
+    background-position: 40px 0;
+  }
+  
+  to {
+    background-position: 0 0;
+  }
+}
+
+    .next-day {
+      text-align: center;
+      margin: 3rem 0 1rem;
+    }
+
+    .next-day a {
+      background-color: #603e26;
+      color: white;
+      padding: 0.7rem 1.5rem;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    
+.word-meaning {
+  background: #f4f8fb;
+  border-left: 4px solid #D28C49;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 8px;
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.7;
+  font-size: 1rem;
+  color: #333;
+}
+
+.word-meaning strong {
+  display: block;
+  font-size: 1.1rem;
+  color: #603e26;
+  font-weight: 600;
+  border-bottom: 1px solid #d0e2f2;
+}
+
+
+@media screen and (max-width: 600px) {
+  .word-meaning {
+    font-size: 0.95rem;
+    padding: 0.8rem;
+  }
+}
+
+
+.transliteration {
+  background: #fffbe6;
+  border-left: 4px solid #f1c40f;
+  padding: 0;
+  margin: 10px 0;
+  border-radius: 8px;
+  font-family: 'Times New Roman', serif;
+  font-size: 1.05rem;
+  color: #6b4e00;
+  line-height: 1;
+}
+
+.transliteration strong {
+  display: block;
+  font-size: 1.1rem;
+  color: #b37f00;
+  font-weight: bold;
+  border-bottom: 1px solid #f9e79f;
+  padding-bottom: 4px;
+}
+
+@media screen and (max-width: 600px) {
+  .transliteration {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>श्रीमद्भगवद्गीता - Day 6</h1>
+    <p>अर्जुन का आत्मसमर्पण (Shlok 32 to 35)</p>
+  </header>
+
+  <div class="toggle">
+    <button id="btn-hindi" class="active" onclick="showLang('hindi')">हिंदी</button>
+    <button id="btn-english" onclick="showLang('english')">English</button>
+  </div>
+
+  <div class="container">
+<!--Shlok 32 -->
+<div class="section">
+  <div class="sanskrit">
+    न काङ्क्षे विजयं कृष्ण न च राज्यं सुखानि च।<br>
+    किं नो राज्येन गोविन्द किं भोगैर्जीवितेन वा ॥32॥
+  </div>
+  <div class="transliteration iast">
+    <strong>Pronunciation Guide :</strong><br>
+    na kāṅkṣe vijayaṁ kṛṣṇa na ca rājyaṁ sukhāni ca<br>
+    kiṁ no rājyena govinda kiṁ bhogair jīvitena vā
+  </div>
+  <div class="word-meaning hindi">
+    <strong>शब्दार्थ:</strong><br>
+    न – नहीं<br>
+    काङ्क्षे – चाहता हूँ<br>
+    विजयं – विजय<br>
+    कृष्ण – हे कृष्ण<br>
+    न च – और नहीं<br>
+    राज्यं – राज्य<br>
+    सुखानि – सुख<br>
+    किं – क्या<br>
+    नः – हमारे लिए<br>
+    राज्येन – राज्य से<br>
+    गोविन्द – हे गोविन्द<br>
+    भोगैः – भोगों से<br>
+    जीवितेन – जीवन से<br>
+    वा – अथवा
+  </div>
+  <div class="word-meaning english">
+    <strong>Word Meaning:</strong><br>
+    na – not<br>
+    kāṅkṣe – do I desire<br>
+    vijayam – victory<br>
+    kṛṣṇa – O Krishna<br>
+    na ca – nor<br>
+    rājyaṁ – kingdom<br>
+    sukhāni – pleasures<br>
+    kiṁ – what<br>
+    naḥ – to us<br>
+    rājyena – with kingdom<br>
+    govinda – O Govinda<br>
+    bhogaiḥ – with enjoyments<br>
+    jīvitena – with life<br>
+    vā – or
+  </div>
+  <div class="translation hindi">
+    <strong>हिन्दी अनुवाद:</strong><br>
+    हे कृष्ण! मुझे न विजय चाहिए, न राज्य और न सुख। हे गोविन्द! हमारे लिए राज्य, भोग और जीवन का क्या लाभ है?
+  </div>
+  <div class="translation english">
+    <strong>English Translation:</strong><br>
+    O Krishna! I do not desire victory, kingdom, or pleasures. O Govinda, what use is a kingdom, enjoyments, or even life to us?
+  </div>
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    अर्जुन का मोह और करुणा इस श्लोक में और गहरा होता जा रहा है। वह युद्ध की विजय, राज्य और भोगों को त्यागने को तत्पर है क्योंकि वे अब उसे निरर्थक लग रहे हैं। यह वैराग्य की भावना नहीं, मोह से उत्पन्न भ्रम है।
+  </div>
+  <div class="reflect hindi">
+    सोचिए: क्या कभी आपने ऐसा अनुभव किया है जब उपलब्धियाँ भी व्यर्थ लगने लगी हों?
+  </div>
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    Arjuna is overwhelmed by emotions. He finds victory, kingdom, and pleasures meaningless in the face of conflict with loved ones. This is not detachment but confusion caused by emotional turmoil.
+  </div>
+  <div class="reflect english">
+    Reflect: Have you ever felt that even success seems hollow in emotionally difficult times?
+  </div>
+</div>
+
+<!-- SHLOK 33 -->
+<div class="section">
+  <div class="sanskrit">
+    येषामर्थे काङ्क्षितं नो राज्यं भोगाः सुखानि च।<br>
+    त इमेऽवस्थिता युद्धे प्राणांस्त्यक्त्वा धनानि च ॥33॥
+  </div>
+  <div class="transliteration iast">
+    <strong>Pronunciation Guide :</strong><br>
+    yeṣām arthe kāṅkṣitaṁ no rājyaṁ bhogāḥ sukhāni ca<br>
+    te ime’vasthitā yuddhe prāṇāṁs tyaktvā dhanāni ca
+  </div>
+  <div class="word-meaning hindi">
+    <strong>शब्दार्थ:</strong><br>
+    येषाम् – जिनके लिए<br>
+    अर्थे – हेतु से<br>
+    काङ्क्षितम् – चाहा गया<br>
+    नः – हमारे द्वारा<br>
+    राज्यं – राज्य<br>
+    भोगाः – भोग<br>
+    सुखानि – सुख<br>
+    ते – वे<br>
+    इमे – ये<br>
+    अवस्थिता – स्थित हैं<br>
+    युद्धे – युद्ध में<br>
+    प्राणान् – प्राण<br>
+    त्यक्त्वा – त्यागकर<br>
+    धनानि – धन<br>
+    च – और
+  </div>
+  <div class="word-meaning english">
+    <strong>Word Meaning:</strong><br>
+    yeṣām – for whose sake<br>
+    arthe – for the purpose<br>
+    kāṅkṣitam – desired<br>
+    naḥ – by us<br>
+    rājyaṁ – kingdom<br>
+    bhogāḥ – enjoyments<br>
+    sukhāni – pleasures<br>
+    te – they<br>
+    ime – these<br>
+    avasthitāḥ – are situated<br>
+    yuddhe – in battle<br>
+    prāṇān – lives<br>
+    tyaktvā – having given up<br>
+    dhanāni – wealth<br>
+    ca – and
+  </div>
+  <div class="translation hindi">
+    <strong>हिन्दी अनुवाद:</strong><br>
+    जिनके लिए हम राज्य, सुख और भोग की इच्छा रखते हैं, वे ही लोग इस युद्ध में अपने प्राण और धन का त्याग करके खड़े हैं।
+  </div>
+  <div class="translation english">
+    <strong>English Translation:</strong><br>
+    Those for whose sake we desire kingdom, enjoyments, and pleasures are standing here in battle, having renounced their lives and wealth.
+  </div>
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    अर्जुन का दार्शनिक द्वंद्व और गहराता है। वह सोचता है कि जिनके लिए सब कुछ चाहा, वे ही युद्ध में मरने को तैयार हैं, तो ये भोग किस काम के? मोह व्यक्ति के सोचने की दिशा को उलझा देता है।
+  </div>
+  <div class="reflect hindi">
+    सोचिए: जब उद्देश्य खो जाए, तो साधनों का क्या मूल्य रह जाता है?
+  </div>
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    Arjuna’s inner turmoil intensifies. He feels that the very people for whom he desired pleasures are now ready to sacrifice their lives. When purpose is lost, means lose meaning too.
+  </div>
+  <div class="reflect english">
+    Reflect: What value do pleasures hold if the loved ones they are meant for are gone?
+  </div>
+</div>
+
+<!-- SHLOK 34 -->
+<div class="section">
+  <div class="sanskrit">
+    आचार्याः पितरः पुत्रास्तथैव च पितामहाः।<br>
+    मातुलाः श्वशुराः पौत्राः श्यालाः सम्बन्धिनस्तथा ॥34॥
+  </div>
+  <div class="transliteration iast">
+    <strong>Pronunciation Guide :</strong><br>
+    ācāryāḥ pitaraḥ putrās tathaiva ca pitāmahāḥ<br>
+    mātulāḥ śvaśurāḥ pautrāḥ śyālāḥ sambandhinas tathā
+  </div>
+  <div class="word-meaning hindi">
+    <strong>शब्दार्थ:</strong><br>
+    आचार्याः – गुरुजन<br>
+    पितरः – पिता<br>
+    पुत्राः – पुत्र<br>
+    तथा एव – और भी<br>
+    पितामहाः – पितामह<br>
+    मातुलाः – मामा<br>
+    श्वशुराः – ससुर<br>
+    पौत्राः – पोते<br>
+    श्यालाः – साले<br>
+    सम्बन्धिनः – अन्य संबंधी<br>
+    तथा – भी
+  </div>
+  <div class="word-meaning english">
+    <strong>Word Meaning:</strong><br>
+    ācāryāḥ – teachers<br>
+    pitaraḥ – fathers<br>
+    putrāḥ – sons<br>
+    tathaiva – likewise<br>
+    pitāmahāḥ – grandfathers<br>
+    mātulāḥ – maternal uncles<br>
+    śvaśurāḥ – fathers-in-law<br>
+    pautrāḥ – grandsons<br>
+    śyālāḥ – brothers-in-law<br>
+    sambandhinaḥ – relatives<br>
+    tathā – also
+  </div>
+  <div class="translation hindi">
+    <strong>हिन्दी अनुवाद:</strong><br>
+    (यहाँ युद्ध में) गुरुजन, पिता, पुत्र, पितामह, मामा, ससुर, पौत्र, साले और अन्य संबंधी उपस्थित हैं।
+  </div>
+  <div class="translation english">
+    <strong>English Translation:</strong><br>
+    Teachers, fathers, sons, grandfathers, maternal uncles, fathers-in-law, grandsons, brothers-in-law, and other relatives are present here.
+  </div>
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    अर्जुन केवल युद्ध के विरोध में नहीं है; वह अपनों के विरुद्ध हथियार उठाने की कल्पना से ही व्यथित है। यह संबंधों की गहराई और संवेदनशीलता को दर्शाता है।
+  </div>
+  <div class="reflect hindi">
+    सोचिए: जब रिश्ते ही सामने खड़े हों, तो क्या केवल तर्क से निर्णय संभव होता है?
+  </div>
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    Arjuna is disturbed not just by war, but by the thought of fighting his loved ones. This reflects the emotional complexity of human relationships and moral dilemmas.
+  </div>
+  <div class="reflect english">
+    Reflect: When loved ones stand opposite, can reason alone guide action?
+  </div>
+</div>
+
+<!-- SHLOK 35 -->
+<div class="section">
+  <div class="sanskrit">
+    एतान्न हन्तुमिच्छामि घ्नतोऽपि मधुसूदन।<br>
+    अपि त्रैलोक्यराज्यस्य हेतोः किं नु महीकृते ॥35॥
+  </div>
+  <div class="transliteration iast">
+    <strong>Pronunciation Guide :</strong><br>
+    etān na hantum icchāmi ghnato’pi madhusūdana<br>
+    api trailokya-rājyasya hetoḥ kiṁ nu mahī-kṛte
+  </div>
+  <div class="word-meaning hindi">
+    <strong>शब्दार्थ:</strong><br>
+    एतान् – इनको<br>
+    न – नहीं<br>
+    हन्तुम् – मारना<br>
+    इच्छामि – चाहता हूँ<br>
+    घ्नतः अपि – यदि ये मुझे मारें तब भी<br>
+    मधुसूदन – हे मधुसूदन<br>
+    अपि – यदि<br>
+    त्रैलोक्यराज्यस्य – तीनों लोकों के राज्य के लिए<br>
+    हेतोः – कारण से<br>
+    किं नु – तो भी क्यों<br>
+    महीकृते – पृथ्वी के लिए
+  </div>
+  <div class="word-meaning english">
+    <strong>Word Meaning:</strong><br>
+    etān – these<br>
+    na – not<br>
+    hantum – to kill<br>
+    icchāmi – do I wish<br>
+    ghnataḥ api – even if they kill me<br>
+    madhusūdana – O slayer of Madhu<br>
+    api – even<br>
+    trailokya-rājyasya – for the kingdom of the three worlds<br>
+    hetoḥ – for the sake of<br>
+    kiṁ nu – what then<br>
+    mahī-kṛte – for the earth (kingdom)
+  </div>
+  <div class="translation hindi">
+    <strong>हिन्दी अनुवाद:</strong><br>
+    हे मधुसूदन! यदि ये मुझे मारें तब भी मैं इन्हें मारना नहीं चाहता। फिर चाहे तीनों लोकों का राज्य ही क्यों न मिले, पृथ्वी के लिए तो क्या ही कहें।
+  </div>
+  <div class="translation english">
+    <strong>English Translation:</strong><br>
+    O Madhusudana! Even if they kill me, I do not wish to kill them – not even for the kingdom of the three worlds, much less for this earth.
+  </div>
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    अर्जुन का मोह उसे कर्तव्य से विरत कर रहा है। वह सोचता है कि भले ही ब्रह्मांड का राज्य क्यों न मिले, अपनों की हत्या स्वीकार्य नहीं है। यह युद्ध की नैतिकता को लेकर गहरा आंतरिक द्वंद्व दर्शाता है।
+  </div>
+  <div class="reflect hindi">
+    सोचिए: क्या हर युद्ध केवल बाहरी होता है, या अंदर भी कोई युद्ध चलता है?
+  </div>
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    Arjuna is torn between his emotions and duty. Even the greatest reward does not justify killing his own. This reveals the inner moral struggle that precedes every major decision.
+  </div>
+  <div class="reflect english">
+    Reflect: Are the toughest battles always on the battlefield, or sometimes within us?
+  </div>
+</div>
+
+
+    <div class="next-day">
+      <a href="Day7.html">Next Day →</a>
+    </div>
+  </div>
+
+  <div class="progress">
+    <div class="progress-bar striped animated" style="width:85.7%;">
+      86%
+    </div>
+  </div>
+
+  <script>
+    function showLang(lang) {
+      const btnHindi = document.getElementById("btn-hindi");
+      const btnEnglish = document.getElementById("btn-english");
+
+      const hindi = document.querySelectorAll('.hindi');
+      const english = document.querySelectorAll('.english');
+
+      if (lang === 'hindi') {
+        btnHindi.classList.add("active");
+        btnEnglish.classList.remove("active");
+
+        hindi.forEach(el => el.style.display = 'block');
+        english.forEach(el => el.style.display = 'none');
+      } else {
+        btnHindi.classList.remove("active");
+        btnEnglish.classList.add("active");
+
+        hindi.forEach(el => el.style.display = 'none');
+        english.forEach(el => el.style.display = 'block');
+      }
+    }
+
+    // Default show Hindi
+    showLang('hindi');
+  </script>
+
+</body>
+</html>

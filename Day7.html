@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shree Gita - Week 1</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f3f3f3;
+      color: #222;
+    }
+
+    header {
+      background-color: #603e26;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 2rem;
+    }
+
+    .toggle {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .toggle button {
+      background-color: #eee;
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      margin: 0 5px;
+      font-weight: bold;
+    }
+
+    .toggle button.active {
+      background-color: #603e26;
+      color: white;
+    }
+
+    .section {
+      background: white;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+
+    .sanskrit {
+      font-size: 1.4rem;
+      color: #a52a2a;
+      margin-bottom: 1rem;
+    }
+
+    .translation, .explanation, .reflect {
+      display: none;
+    }
+
+    .reflect {
+      font-style: italic;
+      background: #f9f2ec;
+      padding: 1rem;
+      border-left: 4px solid #d28c49;
+      margin-top: 1rem;
+    }
+
+    .label {
+      font-weight: bold;
+      color: #603e26;
+      margin-top: 1rem;
+    }
+
+    .audio-player {
+      margin: 2rem 0;
+      text-align: center;
+    }
+    
+    .progress {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #ddd;
+      box-shadow: 0.5px 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .progress-bar {
+  width: 10%;
+  height: 15px;
+  background: #ff8080;
+  transition: width 1s ease-in-out;
+  position: relative;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.striped {
+  background-image: linear-gradient(45deg,
+      rgba(255, 255, 255, 0.2) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0.2) 75%,
+      transparent 75%,
+      transparent);
+  background-size: 40px 40px;
+  ।
+}
+
+
+.animated {
+  animation: progress-bar-stripes 2s linear infinite;
+}
+
+@keyframes progress-bar-stripes {
+  from {
+    background-position: 40px 0;
+  }
+  
+  to {
+    background-position: 0 0;
+  }
+}
+
+    .next-day {
+      text-align: center;
+      margin: 3rem 0 1rem;
+    }
+
+    .next-day a {
+      background-color: #603e26;
+      color: white;
+      padding: 0.7rem 1.5rem;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    
+.word-meaning {
+  background: #f4f8fb;
+  border-left: 4px solid #D28C49;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 8px;
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.7;
+  font-size: 1rem;
+  color: #333;
+}
+
+.word-meaning strong {
+  display: block;
+  font-size: 1.1rem;
+  color: #603e26;
+  font-weight: 600;
+  border-bottom: 1px solid #d0e2f2;
+}
+
+
+@media screen and (max-width: 600px) {
+  .word-meaning {
+    font-size: 0.95rem;
+    padding: 0.8rem;
+  }
+}
+
+
+.transliteration {
+  background: #fffbe6;
+  border-left: 4px solid #f1c40f;
+  padding: 0;
+  margin: 10px 0;
+  border-radius: 8px;
+  font-family: 'Times New Roman', serif;
+  font-size: 1.05rem;
+  color: #6b4e00;
+  line-height: 1;
+}
+
+.transliteration strong {
+  display: block;
+  font-size: 1.1rem;
+  color: #b37f00;
+  font-weight: bold;
+  border-bottom: 1px solid #f9e79f;
+  padding-bottom: 4px;
+}
+
+@media screen and (max-width: 600px) {
+  .transliteration {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>श्रीमद्भगवद्गीता - Day 7</h1>
+    <p>अर्जुन का पूर्ण शरणागति और मौन (Shlok 36 to 47)</p>
+  </header>
+
+  <div class="toggle">
+    <button id="btn-hindi" class="active" onclick="showLang('hindi')">हिंदी</button>
+    <button id="btn-english" onclick="showLang('english')">English</button>
+  </div>
+
+  <div class="container">
+<!--Shlok 36 -->
+<div class="section">
+  <div class="sanskrit">
+    निहत्य धार्तराष्ट्रान्न: का प्रीतिः स्याज्जनार्दन।<br>
+    पापमेवाश्रयेदस्मान्हत्वैतानाततायिनः ॥36॥
+  </div>
+  <div class="transliteration iast">
+    <strong>Pronunciation Guide :</strong><br>
+    nihatya dhārtarāṣṭrān naḥ kā prītiḥ syāj janārdana<br>
+    pāpam ev āśrayed asmān hatvaitān ātatāyinaḥ
+  </div>
+  <div class="word-meaning hindi">
+    <strong>शब्दार्थ:</strong><br>
+    निहत्य – मारकर<br>
+    धार्तराष्ट्रान् – धृतराष्ट्र के पुत्रों को<br>
+    न: – हमें<br>
+    का – क्या<br>
+    प्रीतिः – प्रसन्नता<br>
+    स्यात् – होगी<br>
+    जनार्दन – हे जनार्दन<br>
+    पापम् – पाप<br>
+    एव – ही<br>
+    आश्रयेत् – प्राप्त होगा<br>
+    अस्मान् – हमें<br>
+    हत्वा – मारकर<br>
+    एतान् – इनको<br>
+    आततायिनः – अपराधियों को
+  </div>
+  <div class="word-meaning english">
+    <strong>Word Meaning:</strong><br>
+    nihatya – by killing<br>
+    dhārtarāṣṭrān – the sons of Dhritarashtra<br>
+    naḥ – to us<br>
+    kā – what<br>
+    prītiḥ – joy<br>
+    syāt – will there be<br>
+    janārdana – O Janardana<br>
+    pāpam – sin<br>
+    eva – only<br>
+    āśrayet – would accrue<br>
+    asmān – to us<br>
+    hatvā – by killing<br>
+    etān – these<br>
+    ātatāyinaḥ – aggressors
+  </div>
+  <div class="translation hindi">
+    <strong>हिन्दी अनुवाद:</strong><br>
+    हे जनार्दन! धृतराष्ट्र के पुत्रों को मारकर हमें कौन-सी प्रसन्नता होगी? हमें तो इन आततायियों को मारकर पाप ही लगेगा।
+  </div>
+  <div class="translation english">
+    <strong>English Translation:</strong><br>
+    O Janardana! What pleasure would we derive by killing the sons of Dhritarashtra? Sin alone would befall us for killing these aggressors.
+  </div>
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    अर्जुन के लिए यह युद्ध केवल शत्रुओं के विरुद्ध नहीं, बल्कि आत्मीय जनों के विरुद्ध है। वह सोचता है कि भले ही वे अपराधी हों, पर उन्हें मारना भी पाप है। यह धर्म और भावनाओं के बीच के संघर्ष को दर्शाता है।
+  </div>
+  <div class="reflect hindi">
+    सोचिए: क्या सभी पाप कर्म से होते हैं या भाव से भी?
+  </div>
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    Arjuna perceives this battle not just against enemies, but loved ones. He believes even killing aggressors brings sin if they are his own. This highlights the clash between duty and emotion.
+  </div>
+  <div class="reflect english">
+    Reflect: Is sin only about action, or also about intention?
+  </div>
+</div>
+
+<!-- SHLOK 37 -->
+<div class="section">
+  <div class="sanskrit">
+    तस्मान्नार्हा वयं हन्तुं धार्तराष्ट्रान्स्वबान्धवान्।<br>
+    स्वजनं हि कथं हत्वा सुखिनः स्याम माधव ॥37॥
+  </div>
+  <div class="transliteration iast">
+    <strong>Pronunciation Guide :</strong><br>
+    tasmān nārhā vayaṁ hantuṁ dhārtarāṣṭrān svabandhavān<br>
+    svajanaṁ hi kathaṁ hatvā sukhinaḥ syāma mādhava
+  </div>
+  <div class="word-meaning hindi">
+    <strong>शब्दार्थ:</strong><br>
+    तस्मात् – अतः<br>
+    न अर्हाः – योग्य नहीं हैं<br>
+    वयम् – हम<br>
+    हन्तुम् – मारने के लिए<br>
+    धार्तराष्ट्रान् – धृतराष्ट्र के पुत्रों को<br>
+    स्वबान्धवान् – अपने संबंधियों को<br>
+    स्वजनम् – अपने जनों को<br>
+    हि – निश्चय ही<br>
+    कथम् – कैसे<br>
+    हत्वा – मारकर<br>
+    सुखिनः – सुखी<br>
+    स्याम – होंगे<br>
+    माधव – हे माधव
+  </div>
+  <div class="word-meaning english">
+    <strong>Word Meaning:</strong><br>
+    tasmāt – therefore<br>
+    nārhāḥ – are not fit<br>
+    vayaṁ – we<br>
+    hantuṁ – to kill<br>
+    dhārtarāṣṭrān – the sons of Dhritarashtra<br>
+    svabandhavān – our own kinsmen<br>
+    svajanam – our own people<br>
+    hi – surely<br>
+    katham – how<br>
+    hatvā – having killed<br>
+    sukhinaḥ – happy<br>
+    syāma – can we be<br>
+    mādhava – O Madhava
+  </div>
+  <div class="translation hindi">
+    <strong>हिन्दी अनुवाद:</strong><br>
+    अतः हे माधव! हम अपने ही संबंधियों, धृतराष्ट्र के पुत्रों को मारने के लिए योग्य नहीं हैं। अपने ही स्वजनों को मारकर हम कैसे सुखी रह सकते हैं?
+  </div>
+  <div class="translation english">
+    <strong>English Translation:</strong><br>
+    Therefore, O Madhava! We are not fit to kill our own kinsmen, the sons of Dhritarashtra. How can we be happy by killing our own people?
+  </div>
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    अर्जुन का ह्रदय करुणा से भर जाता है। उसे लगता है कि चाहे वे युद्ध के योग्य शत्रु हों, लेकिन अपने ही लोगों को मारकर कोई सुख संभव नहीं।
+  </div>
+  <div class="reflect hindi">
+    सोचिए: क्या रिश्तों के नाम पर कर्तव्य को त्यागना सही है?
+  </div>
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    Arjuna is overwhelmed with compassion. He questions the worth of any victory that comes by killing those he considers family.
+  </div>
+  <div class="reflect english">
+    Reflect: Is it right to forsake duty in the name of relationships?
+  </div>
+</div>
+
+<!-- SHLOK 38 -->
+<div class="section">
+  <div class="sanskrit">
+    यद्यप्येते न पश्यन्ति लोभोपहतचेतसः।<br>
+    कुलक्षयकृतं दोषं मित्रद्रोहे च पातकम् ॥38॥
+  </div>
+  <div class="transliteration iast">
+    <strong>Pronunciation Guide :</strong><br>
+    yady apy ete na paśyanti lobha-upahata-cetasaḥ<br>
+    kula-kṣaya-kṛtaṁ doṣaṁ mitra-drohe ca pāpakam
+  </div>
+  <div class="word-meaning hindi">
+    <strong>शब्दार्थ:</strong><br>
+    यद्यपि – भले ही<br>
+    एते – ये लोग<br>
+    न पश्यन्ति – नहीं देखते<br>
+    लोभ – लालच<br>
+    उपहत – से ग्रस्त<br>
+    चेतसः – मन वाले<br>
+    कुलक्षयकृतम् – कुल के विनाश से होने वाले<br>
+    दोषम् – दोष<br>
+    मित्रद्रोहे – मित्रों से द्रोह<br>
+    च – और<br>
+    पातकम् – पाप
+  </div>
+  <div class="word-meaning english">
+    <strong>Word Meaning:</strong><br>
+    yady api – even though<br>
+    ete – these people<br>
+    na paśyanti – do not see<br>
+    lobha-upahata-cetasaḥ – minds overpowered by greed<br>
+    kula-kṣaya-kṛtam – caused by family destruction<br>
+    doṣam – fault<br>
+    mitra-drohe – in betrayal of friends<br>
+    ca – and<br>
+    pāpakam – sin
+  </div>
+  <div class="translation hindi">
+    <strong>हिन्दी अनुवाद:</strong><br>
+    यद्यपि ये लोभ से अंध हुए लोग न तो कुल के विनाश का दोष देखते हैं और न मित्रों से द्रोह के पाप को समझते हैं।
+  </div>
+  <div class="translation english">
+    <strong>English Translation:</strong><br>
+    Even though these men, with minds overpowered by greed, see no fault in destroying families or sin in betraying friends.
+  </div>
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    अर्जुन यह दर्शा रहे हैं कि कौरव लोभवश blinded हैं और उन्हें अपने कर्मों के दुष्परिणाम का आभास नहीं है।
+  </div>
+  <div class="reflect hindi">
+    सोचिए: क्या लोभ मनुष्य को अंधा कर सकता है?
+  </div>
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    Arjuna points out that the Kauravas are blinded by greed, unable to see the destruction and sin in their actions.
+  </div>
+  <div class="reflect english">
+    Reflect: Can greed blind people from recognizing their wrongdoings?
+  </div>
+</div>
+
+<!-- SHLOK 39 -->
+<div class="section">
+  <!-- Sanskrit Verse -->
+  <div class="sanskrit">
+    कथं न ज्ञेयमस्माभिः पापादस्मान्निवर्तितुम्।<br>
+    कुलक्षयकृतं दोषं प्रपश्यद्भिर्जनार्दन।।39।।
+  </div>
+  
+  <!-- Transliteration with IAST -->
+  <div class="transliteration iast">
+    <strong>Pronunciation Guide :</strong><br>
+    kathaṁ na jñeyam asmābhiḥ pāpād asmān nivartitum<br>
+    kula-kṣaya-kṛtaṁ doṣaṁ prapaśyadbhir janārddana
+  </div>
+  
+  <!-- Word Meanings in Hindi -->
+  <div class="word-meaning hindi">
+    <strong>शब्दार्थ:</strong><br>
+    कथं – कैसे<br>
+    न – नहीं<br>
+    ज्ञेयम् – समझा जा सकता है<br>
+    अस्माभिः – हमसे<br>
+    पापात – पाप से<br>
+    अस्मान् – हमें<br>
+    निवर्तितुम् – वापस लौटने के लिए<br>
+    कुलक्षयकृतम् – कुल के विनाश से होने वाला<br>
+    दोषम् – दोष<br>
+    प्रपश्यद्भिः – जो लोग देख रहे हैं<br>
+    जनार्दन – भगवान श्री कृष्ण
+  </div>
+  
+  <!-- Word Meanings in English -->
+  <div class="word-meaning english">
+    <strong>Word Meaning:</strong><br>
+    kathaṁ – how<br>
+    na – not<br>
+    jñeyam – to be understood<br>
+    asmābhiḥ – by us<br>
+    pāpāt – from sin<br>
+    asmān – us<br>
+    nivartitum – to return<br>
+    kula-kṣaya-kṛtam – caused by family destruction<br>
+    doṣam – fault<br>
+    prapaśyadbhir – those who see<br>
+    janārddana – O Janardana (Lord Krishna)
+  </div>
+  
+  <!-- Hindi Translation -->
+  <div class="translation hindi">
+    <strong>हिन्दी अनुवाद:</strong><br>
+    हे जनार्दन, जब हम कुल के विनाश के कारण होने वाले पाप को देख रहे हैं, तो हम कैसे उस पाप से बच सकते हैं और वापस लौट सकते हैं?
+  </div>
+  
+  <!-- English Translation -->
+  <div class="translation english">
+    <strong>English Translation:</strong><br>
+    O Janardana, how can we escape from the sin of destroying our family and return to the right path?
+  </div>
+  
+  <!-- Hindi Explanation -->
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    अर्जुन यहाँ भगवान श्री कृष्ण से यह पूछ रहे हैं कि परिवार का विनाश करने से उत्पन्न होने वाले पाप से कैसे बचा जा सकता है, जबकि सभी ये पाप देख रहे हैं।
+  </div>
+  
+  <!-- Hindi Reflection -->
+  <div class="reflect hindi">
+    सोचिए: क्या परिवार के विनाश से उत्पन्न पाप से बचने का कोई उपाय हो सकता है?
+  </div>
+  
+  <!-- English Explanation -->
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    Arjuna is asking Lord Krishna how they can escape from the sin caused by the destruction of family values, while everyone is witnessing this destruction.
+  </div>
+  
+  <!-- English Reflection -->
+  <div class="reflect english">
+    Reflect: Can there be a way to escape the sin caused by the destruction of family values?
+  </div>
+</div>
+
+<!-- SHLOK 40 -->
+<div class="section">
+  <!-- Sanskrit Verse -->
+  <div class="sanskrit">
+    कुलक्षये प्रणश्यन्ति कुलधर्माः सनातनाः।<br>
+    धर्मे नष्टे कुलं कृत्स्नमधर्मोऽभिभवत्युत।।40।।
+  </div>
+  
+  <!-- Transliteration with IAST -->
+  <div class="transliteration iast">
+    <strong>Pronunciation Guide :</strong><br>
+    kula-kṣaye praṇaśyanti kula-dharmāḥ sanātanāḥ<br>
+    dharme naṣṭe kulaṁ kṛtsnam adharmaḥ abhibhavaty uta
+  </div>
+  
+  <!-- Word Meanings in Hindi -->
+  <div class="word-meaning hindi">
+    <strong>शब्दार्थ:</strong><br>
+    कुलक्षये – कुल के नष्ट होने पर<br>
+    प्रणश्यन्ति – नष्ट हो जाते हैं<br>
+    कुलधर्माः – परिवार के धर्म<br>
+    सनातनाः – जो शाश्वत होते हैं<br>
+    धर्मे – धर्म के नष्ट होने पर<br>
+    नष्टे – नष्ट हो जाते हैं<br>
+    कुलं – कुल, परिवार<br>
+    कृत्स्नम् – सम्पूर्ण<br>
+    अधर्मः – अधर्म<br>
+    अभिभवत्युत – अत्यधिक प्रभावी हो जाता है
+  </div>
+  
+  <!-- Word Meanings in English -->
+  <div class="word-meaning english">
+    <strong>Word Meaning:</strong><br>
+    kula-kṣaye – when the family is destroyed<br>
+    praṇaśyanti – are destroyed<br>
+    kula-dharmāḥ – family values<br>
+    sanātanāḥ – eternal<br>
+    dharme – when righteousness is destroyed<br>
+    naṣṭe – is destroyed<br>
+    kulaṁ – family<br>
+    kṛtsnam – entire<br>
+    adharmaḥ – unrighteousness<br>
+    abhibhavaty – prevails<br>
+    uta – indeed
+  </div>
+  
+  <!-- Hindi Translation -->
+  <div class="translation hindi">
+    <strong>हिन्दी अनुवाद:</strong><br>
+    जब कुल का नाश हो जाता है, तब शाश्वत कुलधर्म नष्ट हो जाते हैं। और जब धर्म नष्ट हो जाता है, तो पूरा परिवार अधर्म के प्रभाव में आ जाता है।
+  </div>
+  
+  <!-- English Translation -->
+  <div class="translation english">
+    <strong>English Translation:</strong><br>
+    When the family is destroyed, the eternal family values are destroyed. And when righteousness is destroyed, the entire family falls under the influence of unrighteousness.
+  </div>
+  
+  <!-- Hindi Explanation -->
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    अर्जुन यहाँ यह दिखा रहे हैं कि जब किसी परिवार का धर्म नष्ट होता है, तब उसके सम्पूर्ण परिवार की स्थिति बिगड़ जाती है और अधर्म का प्रभाव बढ़ जाता है।
+  </div>
+  
+  <!-- Hindi Reflection -->
+  <div class="reflect hindi">
+    सोचिए: क्या एक परिवार के धर्म के नष्ट होने से उसका समाज पर भी प्रभाव पड़ता है?
+  </div>
+  
+  <!-- English Explanation -->
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    Arjuna is pointing out that when the family values are destroyed, the whole family’s integrity collapses and unrighteousness prevails.
+  </div>
+  
+  <!-- English Reflection -->
+  <div class="reflect english">
+    Reflect: Does the destruction of a family’s values impact society as a whole?
+  </div>
+</div>
+
+<!-- SHLOK 41 -->
+<div class="section">
+  <!-- Sanskrit Verse -->
+  <div class="sanskrit">
+    अधर्माभिभवात्कृष्ण प्रदुष्यन्ति कुलस्त्रियः।<br>
+    स्त्रीषु दुष्टासु वार्ष्णेय जायते वर्णसंकरः।।41।।
+  </div>
+  
+  <!-- Transliteration with IAST -->
+  <div class="transliteration iast">
+    <strong>Pronunciation Guide :</strong><br>
+    adharma-ābhibhavāt kṛṣhṇa praduṣhyanti kula-striyaḥ<br>
+    strīṣu duṣṭāsu vārṣhṇeya jāyate varṇa-saṅkaraḥ
+  </div>
+  
+  <!-- Word Meanings in Hindi -->
+  <div class="word-meaning hindi">
+    <strong>शब्दार्थ:</strong><br>
+    अधर्म – अधर्म<br>
+    आभिभवात् – प्रभुत्व से<br>
+    कृष्ण – श्री कृष्ण<br>
+    प्रदुष्यन्ति – भ्रष्ट होती हैं<br>
+    कुलस्त्रियः – कुल की स्त्रियाँ<br>
+    स्त्रीषु – स्त्रियों में<br>
+    दुष्टासु – जो दुश्चरित्र होती हैं<br>
+    वार्ष्णेय – हे अर्जुन, कृष्ण<br>
+    जायते – उत्पन्न होता है<br>
+    वर्णसंकरः – मिश्रित वर्ण, अव्यवस्थित समाज
+  </div>
+  
+  <!-- Word Meanings in English -->
+  <div class="word-meaning english">
+    <strong>Word Meaning:</strong><br>
+    adharma – unrighteousness<br>
+    ābhibhavāt – from the dominance<br>
+    kṛṣhṇa – O Krishna<br>
+    praduṣhyanti – become corrupt<br>
+    kula-striyaḥ – the women of the family<br>
+    strīṣu – in women<br>
+    duṣṭāsu – those who are immoral<br>
+    vārṣhṇeya – O son of Vasudeva<br>
+    jāyate – arises<br>
+    varṇa-saṅkaraḥ – confusion of social order
+  </div>
+  
+  <!-- Hindi Translation -->
+  <div class="translation hindi">
+    <strong>हिन्दी अनुवाद:</strong><br>
+    अधर्म के बढ़ने से, हे कृष्ण, कुल की स्त्रियाँ भ्रष्ट हो जाती हैं और जब वे भ्रष्ट होती हैं, तो समाज में मिश्रित वर्ण उत्पन्न होते हैं।
+  </div>
+  
+  <!-- English Translation -->
+  <div class="translation english">
+    <strong>English Translation:</strong><br>
+    Due to the rise of unrighteousness, O Krishna, the women of the family become corrupt, and when they become corrupt, it leads to the mixing of social classes.
+  </div>
+  
+  <!-- Hindi Explanation -->
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    अर्जुन यहाँ बताने की कोशिश कर रहे हैं कि जब समाज में अधर्म बढ़ता है, तो इसका सीधा प्रभाव परिवार की स्त्रियों पर पड़ता है, जो समाज में नैतिकता और संतुलन को बिगाड़ती हैं।
+  </div>
+  
+  <!-- Hindi Reflection -->
+  <div class="reflect hindi">
+    सोचिए: क्या समाज में अधर्म का प्रभाव केवल महिलाओं तक सीमित होता है, या फिर सम्पूर्ण समाज पर इसका असर पड़ता है?
+  </div>
+  
+  <!-- English Explanation -->
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    Arjuna is explaining that when unrighteousness grows in society, it directly impacts the women of the family, who then disrupt the balance and morality in society.
+  </div>
+  
+  <!-- English Reflection -->
+  <div class="reflect english">
+    Reflect: Is the impact of unrighteousness confined to women in society, or does it affect the entire social structure?
+  </div>
+</div>
+
+<!-- SHLOK 42 -->
+<div class="section">
+  <!-- Sanskrit Verse -->
+  <div class="sanskrit">
+    संकरो नरकायैव कुलघ्नानां कुलस्य च।<br>
+    पतन्ति पितरो ह्येषां लुप्तपिण्डोदकक्रियाः।।42।।
+  </div>
+  
+  <!-- Transliteration with IAST -->
+  <div class="transliteration iast">
+    <strong>Pronunciation Guide :</strong><br>
+    saṅkaro narakāyāiva kula-ghnānāṁ kula-sya ca<br>
+    patanti pitaro hyeṣāṁ lupta-piṇḍodaka-kriyāḥ
+  </div>
+  
+  <!-- Word Meanings in Hindi -->
+  <div class="word-meaning hindi">
+    <strong>शब्दार्थ:</strong><br>
+    संकर: – मिश्रण<br>
+    नरकाय – नरक की ओर<br>
+    एव – ही<br>
+    कुलघ्नानां – कुल के संहारक<br>
+    कुलस्य – कुल का<br>
+    च – और<br>
+    पतन्ति – गिरते हैं<br>
+    पितर: – पितर (पूर्वज)<br>
+    हि – निश्चय ही<br>
+    एषां – इन लोगों के<br>
+    लुप्त – नष्ट<br>
+    पिण्डोदकक्रिया: – श्राद्ध और तर्पण क्रियाएँ
+  </div>
+  
+  <!-- Word Meanings in English -->
+  <div class="word-meaning english">
+    <strong>Word Meaning:</strong><br>
+    saṅkaraḥ – mixing<br>
+    narakāya – to hell<br>
+    eva – indeed<br>
+    kula-ghnānāṁ – the destroyers of the family<br>
+    kula-sya – of the family<br>
+    ca – and<br>
+    patanti – fall<br>
+    pitaro – ancestors<br>
+    hi – indeed<br>
+    eṣāṁ – of these<br>
+    lupta – lost<br>
+    piṇḍodaka-kriyāḥ – the rites of offering food and water
+  </div>
+  
+  <!-- Hindi Translation -->
+  <div class="translation hindi">
+    <strong>हिन्दी अनुवाद:</strong><br>
+    जो लोग परिवार का संहार करते हैं, उनका परिवार और पितर (पूर्वज) नरक की ओर गिर जाते हैं, क्योंकि इन लोगों के द्वारा पिण्ड और तर्पण की क्रियाएँ नष्ट हो जाती हैं।
+  </div>
+  
+  <!-- English Translation -->
+  <div class="translation english">
+    <strong>English Translation:</strong><br>
+    Those who destroy the family, their family and ancestors fall to hell, as their rites of offering food and water (for the ancestors) are destroyed.
+  </div>
+  
+  <!-- Hindi Explanation -->
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    अर्जुन यह बता रहे हैं कि जब कोई व्यक्ति अपने परिवार का विनाश करता है, तो न केवल उसका परिवार, बल्कि उसके पूर्वज भी प्रभावित होते हैं, क्योंकि वे श्रद्धांजलि देने वाली क्रियाओं से वंचित हो जाते हैं। इस कारण से वे नरक में गिरते हैं।
+  </div>
+  
+  <!-- Hindi Reflection -->
+  <div class="reflect hindi">
+    सोचिए: क्या परिवार के संहार का प्रभाव केवल वर्तमान पर होता है, या भविष्य और पूर्वजों पर भी इसका असर पड़ता है?
+  </div>
+  
+  <!-- English Explanation -->
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    Arjuna is explaining that when a person destroys their family, not only the family but also the ancestors are affected, as the rites of offering food and water (for the ancestors) are disrupted. This causes them to fall into hell.
+  </div>
+  
+  <!-- English Reflection -->
+  <div class="reflect english">
+    Reflect: Does the destruction of the family affect not just the present, but also the future and ancestors?
+  </div>
+</div>
+
+<!-- SHLOK 43 -->
+<div class="section">
+  <div class="sanskrit">
+    दोषैरेतैः कुलघ्नानां वर्णसंकरकारकैः।<br>
+    उत्साद्यन्ते जातिधर्माः कुलधर्माश्च शाश्वताः।।43।।
+  </div>
+  <div class="transliteration iast">
+    <strong>Pronunciation Guide :</strong><br>
+    doṣair etaiḥ kula-ghnānāṁ varṇa-saṅkara-kārakaiḥ<br>
+    utsādyante jāti-dharmāḥ kula-dharmāś ca śāśvatāḥ
+  </div>
+  <div class="word-meaning hindi">
+    <strong>शब्दार्थ:</strong><br>
+    दोषैः – दोषों से<br>
+    एतैः – इन<br>
+    कुलघ्नानां – कुल का नाश करने वालों के<br>
+    वर्णसंकरकारकैः – वर्णसंकर उत्पन्न करने वाले<br>
+    उत्साद्यन्ते – नष्ट हो जाते हैं<br>
+    जातिधर्माः – जाति के धर्म<br>
+    कुलधर्माः – कुल के धर्म<br>
+    च – और<br>
+    शाश्वताः – सनातन
+  </div>
+  <div class="translation hindi">
+    <strong>हिन्दी अनुवाद:</strong><br>
+    इन कुलघातियों के दोषों से, जो वर्णसंकर उत्पन्न करते हैं, जाति और कुल के शाश्वत धर्म नष्ट हो जाते हैं।
+  </div>
+  <div class="translation english">
+    <strong>English Translation:</strong><br>
+    By these faults of family destroyers, which cause intermixture of castes, the eternal family and social duties are destroyed.
+  </div>
+
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    अर्जुन यह दर्शा रहे हैं कि कुलघातियों के कार्यों से समाज और परिवार के मूल सिद्धांत और नैतिकताएं नष्ट हो जाती हैं।
+  </div>
+  <div class="reflect hindi">
+    सोचिए: क्या एक व्यक्ति के गलत निर्णय से पूरे परिवार और समाज के धर्मों को नुकसान पहुँच सकता है?
+  </div>
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    Arjuna points out that the actions of family destroyers lead to the collapse of moral and ethical principles, both at the family and societal levels.
+  </div>
+  <div class="reflect english">
+    Reflect: Can the wrong decisions of one person harm the principles of an entire family or society?
+  </div>
+</div>
+
+<!-- SHLOK 44 -->
+<div class="section">
+  <div class="sanskrit">
+    उत्सन्नकुलधर्माणां मनुष्याणां जनार्दन।<br>
+    नरकेऽनियतं वासो भवतीत्यनुशुश्रुम।।44।।
+  </div>
+  <div class="transliteration iast">
+    <strong>Pronunciation Guide :</strong><br>
+    utsanna-kula-dharmāṇāṁ manuṣyāṇāṁ janārdana<br>
+    narake 'niyataṁ vāso bhavatīty anuśuśruma
+  </div>
+  <div class="word-meaning hindi">
+    <strong>शब्दार्थ:</strong><br>
+    उत्सन्न – नष्ट हुए<br>
+    कुलधर्माणाम् – कुल के धर्मों का<br>
+    मनुष्याणाम् – मनुष्यों का<br>
+    जनार्दन – हे जनार्दन (कृष्ण)<br>
+    नरके – नरक में<br>
+    अनियतं – अनिश्चितकाल तक<br>
+    वासः – निवास<br>
+    भवति – होता है<br>
+    इति – ऐसा<br>
+    अनुशुश्रुम – हमने सुना है
+  </div>
+  <div class="translation hindi">
+    <strong>हिन्दी अनुवाद:</strong><br>
+    हे जनार्दन! जिन मनुष्यों के कुलधर्म नष्ट हो जाते हैं, उनका अनिश्चित काल तक नरक में निवास होता है – ऐसा हमने सुना है।
+  </div>
+  <div class="translation english">
+    <strong>English Translation:</strong><br>
+    O Janardana, we have heard that those whose family traditions are destroyed dwell in hell for an indefinite period.
+  </div>
+
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    अर्जुन यह बताते हैं कि कुलधर्मों का नष्ट होना न केवल वर्तमान पीढ़ी के लिए, बल्कि आने वाली पीढ़ियों के लिए भी भयावह परिणाम लेकर आता है।
+  </div>
+  <div class="reflect hindi">
+    सोचिए: क्या समाज के मूल धर्मों का नष्ट होना सिर्फ इस जीवन में ही नहीं, बल्कि भविष्य में भी विपत्ति ला सकता है?
+  </div>
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    Arjuna points out that the destruction of family traditions brings disastrous consequences not only for the present generation but also for future generations.
+  </div>
+  <div class="reflect english">
+    Reflect: Can the destruction of societal values bring suffering not just in this life, but also in the future?
+  </div>
+</div>
+
+<!-- SHLOK 45 -->
+<div class="section">
+  <div class="sanskrit">
+    अहो बत महत्पापं कर्तुं व्यवसिता वयम्।<br>
+    यद्राज्यसुखलोभेन हन्तुं स्वजनमुद्यताः।।45।।
+  </div>
+  <div class="transliteration iast">
+    <strong>Pronunciation Guide :</strong><br>
+    aho bata mahat pāpaṁ kartuṁ vyavasitā vayam<br>
+    yad rājya-sukha-lobhena hantuṁ sva-janam udyatāḥ
+  </div>
+  <div class="word-meaning hindi">
+    <strong>शब्दार्थ:</strong><br>
+    अहो – हाय<br>
+    बत – सचमुच<br>
+    महत् – महान<br>
+    पापम् – पाप<br>
+    कर्तुम् – करने के लिए<br>
+    व्यवसिताः – संकल्पित हुए<br>
+    वयम् – हम<br>
+    यत् – कि जो<br>
+    राज्यसुखलोभेन – राज्य और सुख के लोभ में<br>
+    हन्तुम् – मारने के लिए<br>
+    स्वजनम् – अपने लोगों को<br>
+    उद्यताः – तैयार हुए
+  </div>
+  <div class="translation hindi">
+    <strong>हिन्दी अनुवाद:</strong><br>
+    हाय! हम कितने बड़े पाप को करने का निश्चय कर बैठे हैं, जो राज्य और सुख के लोभ में अपने ही सगे संबंधियों को मारने के लिए तैयार हो गए हैं।
+  </div>
+  <div class="translation english">
+    <strong>English Translation:</strong><br>
+    Alas! We are resolved to commit a great sin, driven by the greed for kingdom and pleasure, prepared to kill our own kinsmen.
+  </div>
+
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    अर्जुन यहाँ पर यह व्यक्त कर रहे हैं कि लोभ और सत्ता की लालसा इंसान को अपने परिजनों को भी मारने के लिए प्रेरित कर देती है, जो एक बहुत बड़ा पाप है।
+  </div>
+  <div class="reflect hindi">
+    सोचिए: क्या लोभ के प्रभाव में व्यक्ति अपने आत्मीय संबंधों की क़ीमत भूल सकता है?
+  </div>
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    Arjuna expresses that greed and the desire for power can drive a person to commit heinous acts, such as killing one’s own family, which is a grave sin.
+  </div>
+  <div class="reflect english">
+    Reflect: Can a person forget the value of familial bonds under the influence of greed?
+  </div>
+</div>
+
+<!-- SHLOK 46 -->
+<div class="section">
+  <div class="sanskrit">
+    यदि मामप्रतीकारमशस्त्रं शस्त्रपाणयः।<br>
+    धार्तराष्ट्रा रणे हन्युस्तन्मे क्षेमतरं भवेत्।।46।।
+  </div>
+  <div class="transliteration iast">
+    <strong>Pronunciation Guide :</strong><br>
+    yadi mām apratīkāram aśastraṁ śastra-pāṇayaḥ<br>
+    dhārtarāṣṭrā raṇe hanyus tan me kṣemataram bhavet
+  </div>
+  <div class="word-meaning hindi">
+    <strong>शब्दार्थ:</strong><br>
+    यदि – यदि<br>
+    माम् – मुझे<br>
+    अप्रतीकारम् – बिना प्रतिकार किए<br>
+    अशस्त्रम् – शस्त्रहीन<br>
+    शस्त्रपाणयः – शस्त्र धारण करने वाले<br>
+    धार्तराष्ट्रा – कौरवों<br>
+    रणे – युद्ध में<br>
+    हन्युः – मार डालें<br>
+    तन् – वह<br>
+    मे – मेरे लिए<br>
+    क्षेमतरं – अधिक शुभकारी<br>
+    भवेत् – होगा
+  </div>
+  <div class="translation hindi">
+    <strong>हिन्दी अनुवाद:</strong><br>
+    यदि कौरव युद्ध में मुझे शस्त्रों से बिना प्रतिकार किए मार डालें, तो वह मेरे लिए अधिक शुभकारी होगा।
+  </div>
+  <div class="translation english">
+    <strong>English Translation:</strong><br>
+    If the Kauravas kill me unarmed in battle, without retaliation, that would be better for me.
+  </div>
+
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    अर्जुन यहाँ पर यह व्यक्त कर रहे हैं कि यदि उन्हें युद्ध में बिना प्रतिकार किए मार दिया जाए, तो वह उनका सबसे अच्छा और शुभ विकल्प होगा, क्योंकि इससे उनका आक्रोश और दुःख समाप्त हो जाएगा।
+  </div>
+  <div class="reflect hindi">
+    सोचिए: क्या कभी-कभी बिना संघर्ष किए शांतिपूर्ण समाधान अधिक अच्छा होता है?
+  </div>
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    Arjuna is expressing that if he is killed in battle without retaliation, it would be the most beneficial and peaceful outcome, as it would end his sorrow and rage.
+  </div>
+  <div class="reflect english">
+    Reflect: Is there a time when a peaceful resolution, without struggle, is better?
+  </div>
+</div>
+
+<!-- SHLOK 47 -->
+<div class="section">
+  <div class="sanskrit">
+    संजय उवाच<br>
+    एवमुक्तवार्जुनः संख्ये रथोपस्थ उपाविशत्।<br>
+    विसृज्य सशरं चापं शोकसंविग्नमानसः।।47।।
+  </div>
+  <div class="transliteration iast">
+    <strong>Pronunciation Guide :</strong><br>
+    sañjaya uvāca<br>
+    evam uktvā arjunaḥ saṅkhye rathopastha upāviśat<br>
+    visṛjya saśaraṁ cāpaṁ śoka-saṁvigna-mānasaḥ
+  </div>
+  <div class="word-meaning hindi">
+    <strong>शब्दार्थ:</strong><br>
+    संजय उवाच – संजय ने कहा<br>
+    एवमुक्त्वा – इस प्रकार कहकर<br>
+    अर्जुनः – अर्जुन<br>
+    संख्ये – युद्धभूमि में<br>
+    रथोपस्थ – रथ के स्थान पर<br>
+    उपाविशत् – बैठ गए<br>
+    विसृज्य – छोड़ दिया<br>
+    सशरं – बाणों से युक्त<br>
+    चापं – धनुष<br>
+    शोकसंविग्नमानसः – शोक से व्याकुल हृदय के साथ
+  </div>
+  <div class="translation hindi">
+    <strong>हिन्दी अनुवाद:</strong><br>
+    संजय ने कहा – इस प्रकार कहकर अर्जुन युद्धभूमि में अपने रथ के स्थान पर बैठ गए और अपना धनुष तथा बाण छोड़ दिए, उनका हृदय शोक से व्याकुल था।
+  </div>
+  <div class="translation english">
+    <strong>English Translation:</strong><br>
+    Sanjaya said – Thus, after speaking these words, Arjuna sat down on the chariot, dropping his bow and arrows, with a heart overwhelmed by grief.
+  </div>
+
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    अर्जुन यहाँ पर शोक और अवसाद की स्थिति में होते हैं, और उनका मानसिक तनाव उन्हें इस स्थिति में ला देता है कि वह युद्ध से हटना चाहते हैं।
+  </div>
+  <div class="reflect hindi">
+    सोचिए: जब जीवन में शोक या अवसाद का सामना होता है, तो क्या हमें ठंडे मन से सोचकर निर्णय लेना चाहिए?
+  </div>
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    Arjuna is in a state of sorrow and despair, which leads him to a point where he feels like withdrawing from the battle due to overwhelming emotional stress.
+  </div>
+  <div class="reflect english">
+    Reflect: When faced with sorrow or despair in life, should we make decisions with a calm mind?
+  </div>
+</div>
+
+    <div class="next-day">
+      <a href="Day7.html">Next Day →</a>
+    </div>
+  </div>
+
+  <div class="progress">
+    <div class="progress-bar striped animated" style="width:100%;">
+      100%
+    </div>
+  </div>
+
+  <script>
+    function showLang(lang) {
+      const btnHindi = document.getElementById("btn-hindi");
+      const btnEnglish = document.getElementById("btn-english");
+
+      const hindi = document.querySelectorAll('.hindi');
+      const english = document.querySelectorAll('.english');
+
+      if (lang === 'hindi') {
+        btnHindi.classList.add("active");
+        btnEnglish.classList.remove("active");
+
+        hindi.forEach(el => el.style.display = 'block');
+        english.forEach(el => el.style.display = 'none');
+      } else {
+        btnHindi.classList.remove("active");
+        btnEnglish.classList.add("active");
+
+        hindi.forEach(el => el.style.display = 'none');
+        english.forEach(el => el.style.display = 'block');
+      }
+    }
+
+    // Default show Hindi
+    showLang('hindi');
+  </script>
+
+</body>
+</html>

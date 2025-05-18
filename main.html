@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhagavad Gita: An Awakening Journey</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            overflow: hidden; /* To prevent scrollbars due to the border animation */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Ensure full viewport height */
+            color: white; /* Set default text color to white */
+            font-family: Arial, sans-serif;
+        }
+
+        .neon-border {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 5px solid #0ff; /* Initial neon color */
+            box-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff;
+            pointer-events: none; /* Allows interaction with content underneath */
+            animation: neon-glow 2s infinite alternate;
+            z-index: 100; /* Keep border on top */
+        }
+
+        @keyframes neon-glow {
+            0% {
+                border-color: #0ff;
+                box-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 15px #0ff;
+            }
+            100% {
+                border-color: #f0f;
+                box-shadow: 0 0 10px #f0f, 0 0 20px #f0f, 0 0 30px #f0f;
+            }
+        }
+
+        .content {
+            color: white;
+            text-align: center;
+            z-index: 1; /* Ensure content is above the border */
+            padding: 20px; /* Add some padding around your content */
+        }
+        .container {
+    max-width: 900px;
+    margin: auto;
+    padding: 0 30px 30px 30px; /* Changed top padding to 0 */
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    position: relative;
+    z-index: 10;
+    overflow-y: auto;
+    max-height: 85vh;
+}
+        
+        .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    margin-top: 0;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 15px;
+    z-index: 20;
+    width: 100%;
+    box-sizing: border-box;
+}
+        
+        .header h1 {
+            font-size: 1.8em;
+            margin: 0;
+            color: white; /* Ensure heading is white */
+        }
+        
+        .toggle-button {
+            background-color: #333;
+            border: 1px solid #555;
+            color: white;
+            padding: 6px 12px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: background 0.3s ease;
+        }
+        
+        .toggle-button:hover {
+            background-color: #444;
+        }
+        
+        .fadein-section {
+            display: none;
+            animation: fadein 0.6s ease-in-out;
+            color: white; /* Ensure all text in sections is white */
+        }
+        
+        @keyframes fadein {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        ul, ol {
+            padding-left: 20px;
+            color: white; /* Ensure list items are white */
+        }
+        
+        h2, h3, p, li {
+            color: white; /* Ensure all text elements are white */
+        }
+        
+        /* Added styles for Hindi text */
+        #hindi-version {
+            font-family: 'Arial', sans-serif;
+        }
+        .switch {
+  position: relative;
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.switch > span {
+  position: absolute;
+  top: 14px;
+  pointer-events: none;
+  font-family: 'Helvetica', Arial, sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  text-transform: uppercase;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, .06);
+  width: 50%;
+  text-align: center;
+}
+
+input.check-toggle-round-flat:checked ~ .off {
+  color: #F36F25;
+}
+
+input.check-toggle-round-flat:checked ~ .on {
+  color: #fff;
+}
+
+.switch > span.on {
+  left: 0;
+  padding-left: 2px;
+  color: #F36F25;
+}
+
+.switch > span.off {
+  right: 0;
+  padding-right: 4px;
+  color: #fff;
+}
+
+.check-toggle {
+  position: absolute;
+  margin-left: -9999px;
+  visibility: hidden;
+}
+.check-toggle + label {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+input.check-toggle-round-flat + label {
+  padding: 2px;
+  width: 97px;
+  height: 35px;
+  background-color: #F36F25;
+  -webkit-border-radius: 60px;
+  -moz-border-radius: 60px;
+  -ms-border-radius: 60px;
+  -o-border-radius: 60px;
+  border-radius: 60px;
+}
+input.check-toggle-round-flat + label:before, input.check-toggle-round-flat + label:after {
+  display: block;
+  position: absolute;
+  content: "";
+}
+
+input.check-toggle-round-flat + label:before {
+  top: 2px;
+  left: 2px;
+  bottom: 2px;
+  right: 2px;
+  background-color: #F36F25;
+  -webkit-
+  
+  -moz-border-radius: 60px;
+  -ms-border-radius: 60px;
+  -o-border-radius: 60px;
+  border-radius: 60px;
+}
+input.check-toggle-round-flat + label:after {
+  top: 4px;
+  left: 4px;
+  bottom: 4px;
+  width: 48px;
+  background-color: #fff;
+  -webkit-border-radius: 52px;
+  -moz-border-radius: 52px;
+  -ms-border-radius: 52px;
+  -o-border-radius: 52px;
+  border-radius: 52px;
+  -webkit-transition: margin 0.2s;
+  -moz-transition: margin 0.2s;
+  -o-transition: margin 0.2s;
+  transition: margin 0.2s;
+}
+
+input.check-toggle-round-flat:checked + label {
+}
+
+input.check-toggle-round-flat:checked + label:after {
+  margin-left: 44px;
+}
+    </style>
+</head>
+<body>
+    <div class="neon-border"></div>
+    <div class="container">
+        <div class="header">
+            <div class="switch">
+  <input id="language-toggle" class="check-toggle check-toggle-round-flat" type="checkbox" onchange="toggleLanguage()">
+  <label for="language-toggle"></label>
+  <span class="on">En</span>
+  <span class="off">Hi</span>
+</div>
+        </div>
+
+        <div class="fadein-section" id="english-version" >
+            <h1>Shrimad Bhagavad Gita: An Awakening Journey from Doubt to Dharma through the Divine Voice Within – Week 1</h1>
+  <h2>Day 1 – Beginning of the Gita & Dhritarashtra’s Viewpoint</h2>
+  <p><strong>Study Scope:</strong> Chapter 1 – Verses 1 to 3</p>
+  <p><strong>Introspection Thought:</strong>
+  <span>
+    "Today, I will try to understand which aspects are clashing within me – and am I able to see myself objectively? Like Dhritarashtra, do I also secretly expect victory for my side?"
+  </span>
+  </p>
+  <p><strong>Reflection Question:</strong> "Today, did I favor my own people without thinking of fairness?
+  
+Did I try to recognize my attachments and biases today?"</p>
+  <p><strong>Real-Life Tip:</strong> Ask yourself honestly—am I neutral or partial in difficult situations?</p>
+  
+  <h2>Day 2 – The Conches Blow and Inner Conflict Begins</h2>
+  <p><strong>Study Scope:</strong> Chapter 1 – Verses 4 to 11</p>
+  <p><strong>Introspection Thought:</strong> 
+  <span>
+  "Am I scared of powerful situations or people in my life?"
+  </span>
+  </p>
+  <p><strong>Reflection Question:</strong> "Did I feel weak today in front of someone strong or dominant?"</p>
+  <p><strong>Real-Life Tip:</strong> Don’t get overwhelmed by outer strength—find your inner clarity and voice.</p>
+  
+  <h2>Day 3 – The Conch Sound: A Signal of Beginning</h2>
+<p><strong>Study Scope:</strong> Verses 12 to 19</p>
+<p><strong>Introspection Thought:</strong> "Today, I will recognize the energy and inner strength within me, just like the warriors who blow the conch."</p>
+<p><strong>Reflection Question:</strong> "What inspires the 'conch sound' in my life?"</p>
+<p><strong>Real-Life Application:</strong> Treat each day as an opportunity and begin with inner strength.</p>
+
+<h2>Day 4 – Arjuna’s Emotional Turmoil</h2>
+<p><strong>Study Scope:</strong> Verses 20 to 27</p>
+<p><strong>Introspection Thought:</strong> "I will not suppress my emotions, but try to understand them."</p>
+<p><strong>Reflection Question:</strong> "Which emotion made me feel weak or unsettled today?"</p>
+<p><strong>Real-Life Application:</strong> Learn to make decisions by understanding emotions, not denying them.</p>
+
+<h2>Day 5 – Arjuna’s Delusion and Compassion</h2>
+<p><strong>Study Scope:</strong> Verses 28 to 31</p>
+<p><strong>Introspection Thought:</strong> "I will practice balancing compassion with responsibility."</p>
+<p><strong>Reflection Question:</strong> "When does compassion distract me from my duty?"</p>
+<p><strong>Real-Life Application:</strong> Be compassionate, but never abandon your duty.</p>
+
+<h2>Day 6 – Arjuna’s Surrender</h2>
+<p><strong>Study Scope:</strong> Verses 32 to 35</p>
+<p><strong>Introspection Thought:</strong> "I will accept my weaknesses to receive true guidance and wisdom."</p>
+<p><strong>Reflection Question:</strong> "Do I honestly seek guidance during difficulties?"</p>
+<p><strong>Real-Life Application:</strong> Surrender is not weakness, but the beginning of self-awareness.</p>
+
+<h2>Day 7 – Arjuna’s Complete Surrender and Silence</h2>
+<p><strong>Study Scope:</strong> Verses 36 to 47 (End of Chapter 1)</p>
+<p><strong>Introspection Thought:</strong> "I will practice listening to the voice of the inner teacher in silence."</p>
+<p><strong>Reflection Question:</strong> "When have I chosen to be silent and let others speak?"</p>
+<p><strong>Real-Life Application:</strong> True surrender means – I am now ready to learn.</p>
+  
+  <ul>
+    <li>Hidden attachments and bias weaken our objectivity</li>
+    <li>Fear and emotions block rightful actions</li>
+    <li>Even the strongest can break under inner conflict</li>
+    <li>Justifications can be masks for fear</li>
+  </ul>
+  
+  <h3>Real-Life Benefits:</h3>
+  <ul>
+    <li>Increased self-awareness and emotional clarity</li>
+    <li>Ability to recognize bias in decision-making</li>
+    <li>Greater strength to face uncomfortable truths</li>
+  </ul>
+  
+  <h3>Pointwise Morals:</h3>
+  <ol>
+    <li>Even kings can be blind when attachment rules</li>
+    <li>Emotions are natural but must not overpower duty</li>
+    <li>True wisdom begins when self-deception ends</li>
+    <li>Right action is not always easy, but always essential</li>
+  </ol>
+</div>
+
+        <div id="hindi-version" class="fadein-section" style="display:none; font-family: 'Kalam', cursive;">
+            <h1>श्रीमद्भगवद्गीता : अन्तःस्वरेण संशयात् धर्ममार्गं प्रति बोधयात्रा – प्रथम सप्ताह</h1>
+  
+  <h2>दिवस 1 – गीता का आरंभ और धृतराष्ट्र का दृष्टिकोण</h2>
+  <p><strong>अध्ययन सीमा:</strong> अध्याय 1 (अर्जुनविषाद योग) – श्लोक 1 से 3 तक</p>
+  <p><strong>भावना:</strong> "आज मैं यह समझने का प्रयास करूँगा कि मेरे भीतर कौन-कौन से पक्ष टकरा रहे हैं – और क्या मैं स्वयं को निष्पक्ष देख पा रहा हूँ?"</p>
+  <p><strong>आत्मनिरीक्षण प्रश्न:</strong> "क्या मैंने आज अपने मोह और पक्षपात को पहचानने की कोशिश की?"</p>
+  <p><strong>वास्तविक जीवन में अनुप्रयोग:</strong> निर्णय लेते समय अपने अंदर के धृतराष्ट्र और संजय दोनों को सुनने का अभ्यास करें।</p>
+  
+  <h2>दिवस 2 – युद्धभूमि की तैयारी और महान योद्धाओं का वर्णन</h2>
+  <p><strong>अध्ययन सीमा:</strong> श्लोक 4 से 11</p>
+  <p><strong>भावना:</strong> "मैं आज जीवन की चुनौतीपूर्ण स्थितियों को स्वीकार करना सीखूंगा, जैसे योद्धा युद्धभूमि में डटते हैं।"</p>
+  <p><strong>आत्मनिरीक्षण प्रश्न:</strong> "किस चुनौती के सामने मैं भाग रहा हूँ?"</p>
+  <p><strong>वास्तविक जीवन में अनुप्रयोग:</strong> खुद को बार-बार याद दिलाएं कि आप भी एक कर्मयोद्धा हैं।</p>
+  
+  <h2>दिवस 3 – शंखनाद: शुरुआत का संकेत</h2>
+  <p><strong>अध्ययन सीमा:</strong> श्लोक 12 से 19</p>
+  <p><strong>भावना:</strong> "मैं आज अपने भीतर की ऊर्जा और आत्मबल को पहचानूंगा, जैसे योद्धा शंखनाद करते हैं।"</p>
+  <p><strong>आत्मनिरीक्षण प्रश्न:</strong> "मेरे जीवन में 'शंखनाद' कौन-सी प्रेरणा से होता है?"</p>
+  <p><strong>वास्तविक जीवन में अनुप्रयोग:</strong> हर दिन को एक अवसर समझें और आत्मबल से शुरुआत करें।</p>
+  
+  <h2>दिवस 4 – अर्जुन का भावात्मक विचलन</h2>
+  <p><strong>अध्ययन सीमा:</strong> श्लोक 20 से 27</p>
+  <p><strong>भावना:</strong> "मैं अपने भावों को दबाने की बजाय उन्हें समझने का प्रयास करूँगा।"</p>
+  <p><strong>आत्मनिरीक्षण प्रश्न:</strong> "किस भावना ने मुझे आज कमजोर या विचलित किया?"</p>
+  <p><strong>वास्तविक जीवन में अनुप्रयोग:</strong> भावनाओं को समझकर निर्णय लेना सीखें, उन्हें नकारें नहीं।</p>
+  
+  <h2>दिवस 5 – अर्जुन का मोह और करुणा</h2>
+  <p><strong>अध्ययन सीमा:</strong> श्लोक 28 से 31</p>
+  <p><strong>भावना:</strong> "करुणा और दया में संतुलन कैसे लाऊँ, इसका अभ्यास करूँगा।"</p>
+  <p><strong>आत्मनिरीक्षण प्रश्न:</strong> "कब दया मुझे अपने कर्तव्य से भटका देती है?"</p>
+  <p><strong>वास्तविक जीवन में अनुप्रयोग:</strong> करुणा रखें, पर कर्तव्य का त्याग न करें।</p>
+  
+  <h2>दिवस 6 – अर्जुन का आत्मसमर्पण</h2>
+  <p><strong>अध्ययन सीमा:</strong> श्लोक 32 से 35</p>
+  <p><strong>भावना:</strong> "मैं अपनी कमजोरियों को स्वीकार करूँगा, ताकि सच्ची मदद और ज्ञान प्राप्त हो सके।"</p>
+  <p><strong>आत्मनिरीक्षण प्रश्न:</strong> "क्या मैं अपनी कठिनाइयों में ईमानदारी से मार्गदर्शन माँगता हूँ?"</p>
+  <p><strong>वास्तविक जीवन में अनुप्रयोग:</strong> आत्मसमर्पण कमजोरी नहीं, आत्मबोध की शुरुआत है।</p>
+  
+  <h2>दिवस 7 – अर्जुन का पूर्ण शरणागति और मौन</h2>
+  <p><strong>अध्ययन सीमा:</strong> श्लोक 36 से 47 (अध्याय 1 समाप्त)</p>
+  <p><strong>भावना:</strong> "मैं मौन होकर अपने भीतर के गुरु की आवाज़ को सुनने का अभ्यास करूँगा।"</p>
+  <p><strong>आत्मनिरीक्षण प्रश्न:</strong> "कब मैंने दूसरों को बोलने दिया, और खुद को शांत रखा?"</p>
+  <p><strong>वास्तविक जीवन में अनुप्रयोग:</strong> शरणागति का अर्थ है – अब मैं सिखने को तैयार हूँ।</p>
+  
+  <h3>अध्याय 1 का सार (Reflection Summary)</h3>
+  <p><strong>अध्याय 1: अर्जुनविषाद योग</strong></p>
+  <p><strong>क्या सीखें?</strong></p>
+  <ul>
+    <li>मोह, द्वंद्व और मनोवैज्ञानिक संघर्ष को समझना</li>
+    <li>कर्तव्य और संबंधों के बीच संतुलन की कठिनाई</li>
+    <li>आत्मस्वीकृति और मार्गदर्शन माँगना</li>
+  </ul>
+  
+  <p><strong>वास्तविक जीवन में लाभ:</strong></p>
+  <ul>
+    <li>कठिन फैसलों में स्पष्टता पाना</li>
+    <li>भावनाओं की पहचान करना और उनसे पार पाना</li>
+    <li>आत्मबल और गुरु-ज्ञान की शरण में जाना</li>
+  </ul>
+  
+  <p><strong>Pointwise Morals:</strong></p>
+  <ol>
+    <li>पक्षपात और मोह से निर्णय कमजोर होते हैं</li>
+    <li>शंकाएँ स्वीकार करने से समाधान की शुरुआत होती है</li>
+    <li>भावनात्मक बुद्धिमत्ता आवश्यक है</li>
+    <li>सच्चा योद्धा वही है जो अंदर की लड़ाई भी जीत सके</li>
+    <li>गुरु को पाने की पहली शर्त है – “मैं नहीं जानता”</li>
+  </ol>
+</div>
+    </div>
+
+    <script>
+        // Initialize the fadein-section display on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById("english-version").style.display = "block";
+            document.getElementById("hindi-version").style.display = "none";
+        });
+        
+        let isEnglish = true;
+        function toggleLanguage() {
+    isEnglish = !isEnglish;
+    document.getElementById("english-version").style.display = isEnglish ? "block" : "none";
+    document.getElementById("hindi-version").style.display = isEnglish ? "none" : "block";
+}
+
+/*const h2Elements = document.querySelectorAll('#english-version h2, #hindi-version h2');
+
+
+h2Elements.forEach((h2, index) => {
+  const k = index + 1; // nth-of-type 1-आधारित है
+
+  h2.addEventListener('click', function() {
+    window.location.href = `Day${k}.html`;
+  });
+}); */
+const body = document.body;
+
+const englishH2Elements = document.querySelectorAll('#english-version h2');
+englishH2Elements.forEach((h2, index) => {
+  const k = index + 1;
+  h2.addEventListener('click', function() {
+    // यहाँ इंग्लिश वर्शन के लिए लॉजिक
+    console.log(`English H2 ${k} पर क्लिक किया गया`);
+    window.location.href = `Day${k}.html`;
+    //const outhModal = createOuthModal(k); // ऑथ मोडल बनाने का फंक्शन
+    //document.body.appendChild(outhModal);
+  });
+});
+
+const hindiH2Elements = document.querySelectorAll('#hindi-version h2');
+hindiH2Elements.forEach((h2, index) => {
+  const k = index + 1;
+  h2.addEventListener('click', function() {
+    // यहाँ हिंदी वर्शन के लिए लॉजिक
+    console.log(`Hindi H2 ${k} पर क्लिक किया गया`);
+    window.location.href = `Day${k}.html`;
+    //const outhModal = createOuthModal(k); // ऑथ मोडल बनाने का फंक्शन
+    //document.body.appendChild(outhModal);
+  });
+});
+/*
+function createOuthModal(k) {
+  // नया modal div बनाएँ
+  const outhModal = document.createElement('div');
+  outhModal.id = 'outhModal';
+  outhModal.style.display = 'block';
+  outhModal.style.position = 'fixed';
+  outhModal.style.top = '50%';
+  outhModal.style.left = '50%';
+  outhModal.style.transform = 'translate(-50%, -50%)';
+  outhModal.style.background = 'rgba(0, 0, 0, 0.3)'; // थोड़ा और गहरा रेडिश ब्लैक 
+  outhModal.style.backdropFilter = 'blur(10px)'; // ब्लर और बढ़ाया 
+  outhModal.style.webkitBackdropFilter = 'blur(10px)';
+  outhModal.style.padding = '30px'; // पैडिंग बढ़ाया 
+  outhModal.style.border = '1px solid rgba(255, 255, 255, 0.5)'; // बॉर्डर और स्पष्ट 
+  outhModal.style.borderRadius = '16px';
+  outhModal.style.boxShadow = '0 8px 30px rgba(0, 0, 0, 0.3)'; // शैडो और गहरा 
+  outhModal.style.zIndex = '1000';
+  outhModal.style.color = '#ffffff';
+  outhModal.style.textShadow = '0 0 10px rgba(255, 255, 255, 0.8)';
+  outhModal.style.width = '400px'; // विड्थ बढ़ाई 
+  outhModal.style.height = 'auto'; // हाइट ऑटो पर ताकि कंटेंट के अनुसार एडजस्ट हो 
+
+  // टाइटल को सेंटर में करें
+  const title = document.createElement('h2');
+  title.textContent = `Authentication Form ${k}`;
+  title.style.textAlign = 'center';
+  title.style.marginBottom = '20px';
+
+  // पैराग्राफ
+  const para = document.createElement('p');
+  para.textContent = ' Before starting our voyage, please fill out this short but important Outh form ✍️  for Yourself🙏.';
+  para.style.textAlign = 'center';
+  para.style.marginBottom = '20px';
+
+  // डायनामिक कोट्स
+  const quotes = document.createElement('blockquote');
+  const outhQuotes = [
+    "हर नया दिन एक नई शुरुआत है।",
+    "महान कार्य हमेशा एक छोटे से आरंभ से शुरू होते हैं।",
+    "शुरुआत करने का सबसे अच्छा समय अभी है।",
+    "अपनी यात्रा का पहला कदम उठाओ, भले ही तुम्हें पूरा रास्ता न दिखाई दे।",
+    "हर अंत एक नई शुरुआत का प्रतीक है।",
+    "डर को अपनी शुरुआत को रोकने न दो।",
+    "कभी-कभी, सबसे साहसी काम सिर्फ शुरुआत करना होता है।"
+  ];
+
+  if (k >= 1 && k <= outhQuotes.length) {
+    quotes.textContent = outhQuotes[k - 1]; // ऐरे इंडेक्स 0 से शुरू होता है
+  } else {
+    quotes.textContent = "आज के लिए कोई विशेष उद्धरण नहीं।";
+  }
+
+  quotes.style.textAlign = 'center';
+  quotes.style.marginBottom = '20px';
+  quotes.style.fontStyle = 'italic';
+
+  // फॉर्म बनाएँ
+  const form = document.createElement('form');
+  form.id = 'outhForm';
+  form.style.display = 'flex';
+  form.style.flexDirection = 'column';
+  form.style.gap = '15px';
+
+  // उपयोगकर्ता नाम लेबल और इनपुट
+  const usernameLabel = document.createElement('label');
+  usernameLabel.setAttribute('for', 'username');
+  usernameLabel.textContent = 'उपयोगकर्ता नाम:';
+  const usernameInput = document.createElement('input');
+  usernameInput.type = 'text';
+  usernameInput.id = 'username';
+  usernameInput.name = 'username';
+  usernameInput.placeholder = 'Enter name';
+  usernameInput.required = true;
+  usernameInput.style.padding = '10px';
+  usernameInput.style.borderRadius = '8px';
+  usernameInput.style.border = '1px solid #555';
+  usernameInput.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+  usernameInput.style.color = 'white';
+
+  // उपयोगकर्ता नंबर लेबल और इनपुट
+  const usernumberLabel = document.createElement('label');
+  usernumberLabel.setAttribute('for', 'usernumber');
+  usernumberLabel.textContent = 'उपयोगकर्ता नंबर:';
+  const usernumberInput = document.createElement('input');
+  usernumberInput.type = 'number';
+  usernumberInput.id = 'usernumber';
+  usernumberInput.name = 'usernumber';
+  usernumberInput.placeholder = 'Enter number';
+  usernumberInput.required = true;
+  usernumberInput.style.padding = '10px';
+  usernumberInput.style.borderRadius = '8px';
+  usernumberInput.style.border = '1px solid #555';
+  usernumberInput.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+  usernumberInput.style.color = 'white';
+
+  // कैलेंडर
+    const startDateLabel = document.createElement('label');
+  startDateLabel.setAttribute('for', 'startDate');
+  startDateLabel.textContent = 'आरंभ तिथि:';
+  const startDateInput = document.createElement('input');
+  startDateInput.type = 'date';
+  startDateInput.id = 'startDate';
+  startDateInput.name = 'startDate';
+  startDateInput.placeholder = 'Start Date';
+  startDateInput.required = true;
+  startDateInput.style.padding = '10px';
+  startDateInput.style.borderRadius = '8px';
+  startDateInput.style.border = '1px solid #555';
+  startDateInput.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+  startDateInput.style.color = 'white';
+
+  // पिछली तारीखों को सेलेक्ट करने से रोकने के लिए min एट्रीब्यूट जोड़ें
+  const today = new Date();
+  const todayString = today.toISOString().split('T')[0];
+  startDateInput.min = todayString;
+
+
+  // सबमिट बटन
+  const submitButton = document.createElement('button');
+  submitButton.type = 'submit';
+  submitButton.textContent = 'सबमिट करें';
+  submitButton.style.padding = '10px 20px';
+  submitButton.style.borderRadius = '8px';
+  submitButton.style.backgroundColor = '#5cb85c';
+  submitButton.style.color = 'white';
+  submitButton.style.border = 'none';
+  submitButton.style.cursor = 'pointer';
+  form.onsubmit = function(event) {
+    event.preventDefault();
+    outhModal.style.display = 'none';
+    revertBodyBlur();
+    window.location.href = `Day${k}.html`;
+  };
+
+  // बंद करें बटन (टॉप राइट कॉर्नर में)
+  const closeModalButton = document.createElement('button');
+  closeModalButton.id = 'closeModal';
+  closeModalButton.textContent = '❌';
+  closeModalButton.style.position = 'absolute';
+  closeModalButton.style.top = '10px';
+  closeModalButton.style.right = '10px';
+  closeModalButton.style.width = '30px';
+  closeModalButton.style.height = '30px';
+  closeModalButton.style.borderRadius = '50%';
+  closeModalButton.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+  closeModalButton.style.color = 'white';
+  closeModalButton.style.border = 'none';
+  closeModalButton.style.cursor = 'pointer';
+  closeModalButton.style.fontSize = '16px';
+  closeModalButton.style.display = 'flex';
+  closeModalButton.style.justifyContent = 'center';
+  closeModalButton.style.alignItems = 'center';
+  closeModalButton.onclick = function() {
+    outhModal.style.display = 'none';
+    revertBodyBlur();
+  };
+
+  // modal में एलिमेंट्स को जोड़ें
+  outhModal.appendChild(closeModalButton);
+  outhModal.appendChild(title);
+  outhModal.appendChild(para);
+  outhModal.appendChild(quotes);
+  outhModal.appendChild(form);
+  form.appendChild(usernameLabel);
+  form.appendChild(usernameInput);
+  form.appendChild(usernumberLabel);
+  form.appendChild(usernumberInput);
+  form.appendChild(startDateLabel);
+  form.appendChild(startDateInput);
+  form.appendChild(submitButton);
+
+  // modal को बॉडी में जोड़ें
+  body.appendChild(outhModal);
+
+  // बॉडी कंटेंट को ब्लर करें
+  applyBodyBlur();
+
+  // modal के बाहर क्लिक करने पर बंद करें
+  window.onclick = function(event) {
+    if (event.target == outhModal) {
+      outhModal.style.display = 'none';
+      revertBodyBlur();
+    }
+  };
+
+  return outhModal;
+}
+
+function applyBodyBlur() {
+  const container = document.querySelector('.container');
+  if (container) {
+    container.style.filter = 'blur(5px)';
+  }
+}
+
+function revertBodyBlur() {
+  const container = document.querySelector('.container');
+  if (container) {
+    container.style.filter = 'none';
+  }
+}
+*/
+
+    if (!window.location.hash.includes("#reloaded")) {
+    window.location.href += "#reloaded";
+    window.location.reload();
+} else {
+    // रीलोड के बाद, हैश को हटा दें (यदि आप चाहें तो)
+    history.replaceState({}, document.title, window.location.pathname + window.location.search);
+}
+
+    </script>
+</body>
+</html>

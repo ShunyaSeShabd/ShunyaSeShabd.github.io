@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shree Gita - Week 1</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f3f3f3;
+      color: #222;
+    }
+
+    header {
+      background-color: #603e26;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 2rem;
+    }
+
+    .toggle {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .toggle button {
+      background-color: #eee;
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      margin: 0 5px;
+      font-weight: bold;
+    }
+
+    .toggle button.active {
+      background-color: #603e26;
+      color: white;
+    }
+
+    .section {
+      background: white;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+
+    .sanskrit {
+      font-size: 1.4rem;
+      color: #a52a2a;
+      margin-bottom: 1rem;
+    }
+
+    .translation, .explanation, .reflect {
+      display: none;
+    }
+
+    .reflect {
+      font-style: italic;
+      background: #f9f2ec;
+      padding: 1rem;
+      border-left: 4px solid #d28c49;
+      margin-top: 1rem;
+    }
+
+    .label {
+      font-weight: bold;
+      color: #603e26;
+      margin-top: 1rem;
+    }
+
+    .audio-player {
+      margin: 2rem 0;
+      text-align: center;
+    }
+    
+    .progress {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #ddd;
+      box-shadow: 0.5px 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .progress-bar {
+  width: 10%;
+  height: 15px;
+  background: #ff8080;
+  transition: width 1s ease-in-out;
+  position: relative;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.striped {
+  background-image: linear-gradient(45deg,
+      rgba(255, 255, 255, 0.2) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0.2) 75%,
+      transparent 75%,
+      transparent);
+  background-size: 40px 40px;
+  ।
+}
+
+
+.animated {
+  animation: progress-bar-stripes 2s linear infinite;
+}
+
+@keyframes progress-bar-stripes {
+  from {
+    background-position: 40px 0;
+  }
+  
+  to {
+    background-position: 0 0;
+  }
+}
+
+    .next-day {
+      text-align: center;
+      margin: 3rem 0 1rem;
+    }
+
+    .next-day a {
+      background-color: #603e26;
+      color: white;
+      padding: 0.7rem 1.5rem;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    
+.word-meaning {
+  background: #f4f8fb;
+  border-left: 4px solid #D28C49;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 8px;
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.7;
+  font-size: 1rem;
+  color: #333;
+}
+
+.word-meaning strong {
+  display: block;
+  font-size: 1.1rem;
+  color: #603e26;
+  font-weight: 600;
+  border-bottom: 1px solid #d0e2f2;
+}
+
+
+@media screen and (max-width: 600px) {
+  .word-meaning {
+    font-size: 0.95rem;
+    padding: 0.8rem;
+  }
+}
+
+
+.transliteration {
+  background: #fffbe6;
+  border-left: 4px solid #f1c40f;
+  padding: 0;
+  margin: 10px 0;
+  border-radius: 8px;
+  font-family: 'Times New Roman', serif;
+  font-size: 1.05rem;
+  color: #6b4e00;
+  line-height: 1;
+}
+
+.transliteration strong {
+  display: block;
+  font-size: 1.1rem;
+  color: #b37f00;
+  font-weight: bold;
+  border-bottom: 1px solid #f9e79f;
+  padding-bottom: 4px;
+}
+
+@media screen and (max-width: 600px) {
+  .transliteration {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>श्रीमद्भगवद्गीता - Day 5</h1>
+    <p>अर्जुन का मोह और करुणा (Shlok 28 to 31)</p>
+  </header>
+
+  <div class="toggle">
+    <button id="btn-hindi" class="active" onclick="showLang('hindi')">हिंदी</button>
+    <button id="btn-english" onclick="showLang('english')">English</button>
+  </div>
+
+  <div class="container">
+
+    <!-- SHLOK 28 -->
+<div class="section">
+  <div class="sanskrit">दृष्ट्वेमं स्वजनं कृष्ण युयुत्सुं समागतम् |<br> उवाच पार्थः सर्वांस्तान्बन्धूनपि साक्षात्॥28॥<br>
+     Or<br>
+  अर्जुन उवाच<br>
+  दृष्ट्वेमं स्वजनं कृष्ण युयुत्सुं समुपस्थितम् ॥28॥
+  </div>
+  
+<!-- SHLOK 28 -->
+<!-- उच्चारण गाइड -->
+<div class="transliteration iast">
+  <strong>Pronunciation Guide :</strong><br>
+  arjuna uvāca<br>
+  dṛṣṭvemam sva-janam kṛṣṇa yuyutsuṁ samupasthitam
+</div>
+
+<!-- शब्दार्थ (हिंदी) -->
+<div class="word-meaning hindi">
+  <strong>शब्दार्थ:</strong><br>
+  अर्जुन उवाच – अर्जुन ने कहा<br>
+  दृष्ट्वा – देखकर<br>
+  इमम् – इस<br>
+  स्वजनम् – अपने स्वजनों को<br>
+  कृष्ण – हे कृष्ण<br>
+  युयुत्सुम् – युद्ध के लिए तत्पर<br>
+  समुपस्थितम् – सामने खड़ा हुआ / उपस्थित
+</div>
+
+<!-- Word Meaning (English) -->
+<div class="word-meaning english">
+  <strong>Word Meaning:</strong><br>
+  arjuna uvāca – Arjuna said<br>
+  dṛṣṭvā – having seen<br>
+  imam – this<br>
+  sva-janam – kinsmen / own people<br>
+  kṛṣṇa – O Krishna<br>
+  yuyutsum – desiring to fight<br>
+  samupasthitam – present / assembled
+</div>
+  
+  <div class="translation hindi">         <strong>हिन्दी अनुवाद:</strong><br>
+    अर्जुन ने कहा: हे कृष्ण! देखो, मेरे स्वजन इस युद्ध के लिए आ गए हैं, और वे सब मेरे सामने खड़े हैं, तैयार होकर एक-दूसरे से भिड़ने के लिए।
+  </div>
+  <div class="translation english">     <strong>English Translation:</strong><br>
+    Arjuna said: O Krishna! See, my kinsmen have come for battle, and they are all standing before me, ready to fight one another.
+  </div>
+  
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    अर्जुन अपने अंतर्मन में हो रहे द्वंद्व को व्यक्त कर रहे हैं। वह देख रहे हैं कि जिनसे वह प्रेम करते हैं, वे ही अब एक-दूसरे से युद्ध करने के लिए तैयार हैं। यह दृश्य अर्जुन के लिए मानसिक अशांति का कारण बनता है।<br><br>यह श्लोक हमें बताता है कि जब कोई व्यक्ति अपने प्रियजनों को विरोधी के रूप में देखता है, तो उसका मन कितना विचलित हो जाता है। यह मनोवैज्ञानिक संघर्ष और द्वंद्व की गहरी स्थिति को उजागर करता है।
+  </div>
+  <div class="reflect hindi">सोचिए: क्या हम भी कभी किसी ऐसे परिस्थिति में फंसे हैं, जहाँ कर्तव्य और परिवार के बीच चयन करना पड़ा हो?</div>
+  
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    Arjuna expresses the inner conflict he is experiencing. He is witnessing that those whom he loves are now ready to fight against each other. This sight causes great emotional turmoil for him.<br><br>This verse reflects the deep psychological conflict and dilemma faced when one sees loved ones as adversaries. It shows the overwhelming effect of familial attachment in times of conflict.
+  </div>
+  <div class="reflect english">Reflect: Have we ever been caught in a situation where we had to choose between duty and family?</div>
+</div>
+
+<!-- SHLOK 29 -->
+<div class="section">
+  <div class="sanskrit">
+    सीदन्ति मम गात्राणि मुखं च परिशुष्यति |<br>
+    वेपथुश्च शरीरे मे रोम hairsश्च जायते ॥29॥
+  </div>
+  
+<!-- SHLOK 29 -->
+<div class="transliteration iast">
+  <strong>Pronunciation Guide :</strong><br>
+  sīdanti mama gātrāṇi mukhaṁ ca pariśuṣyati<br>
+  vepathuś ca śarīre me roma-harṣaś ca jāyate
+</div>
+
+<div class="word-meaning hindi">
+  <strong>शब्दार्थ:</strong><br>
+  सीदन्ति – कांप रहे हैं<br>
+  मम – मेरे<br>
+  गात्राणि – अंग<br>
+  मुखम् – मुख<br>
+  च – और<br>
+  परिशुष्यति – सूख रहा है<br>
+  वेपथुः – कंपकंपी<br>
+  च – और<br>
+  शरीर में – शरीर में<br>
+  रोमहर्षः – रोमांच<br>
+  च – भी<br>
+  जायते – उत्पन्न हो रहा है
+</div>
+
+<div class="word-meaning english">
+  <strong>Word Meaning:</strong><br>
+  sīdanti – are weakening<br>
+  mama – my<br>
+  gātrāṇi – limbs<br>
+  mukham – mouth<br>
+  ca – and<br>
+  pariśuṣyati – is drying up<br>
+  vepathuḥ – trembling<br>
+  ca – and<br>
+  śarīre – in body<br>
+  me – my<br>
+  roma-harṣaḥ – hair standing on end<br>
+  ca – also<br>
+  jāyate – is occurring
+</div>
+
+  <div class="translation hindi">         <strong>हिन्दी अनुवाद:</strong><br>
+    मेरे अंग शिथिल हो रहे हैं, मुख सूख रहा है, शरीर कांप रहा है और रोमांच हो रहा है।
+  </div>
+
+  <div class="translation english">     <strong>English Translation:</strong><br>
+    My limbs are failing, my mouth is drying up, my body trembles, and my hair stands on end.
+  </div>
+
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    यह श्लोक अर्जुन की गहन मानसिक और शारीरिक स्थिति को दर्शाता है। जब वह युद्ध भूमि में अपने सगे-सम्बंधियों को शस्त्रों के साथ खड़ा देखता है, तो उसका मन डर, मोह और करुणा से भर जाता है। शरीर पर उसका पूरा प्रभाव पड़ता है — अंग शिथिल हो जाते हैं, शरीर कांपता है, और मुख सूख जाता है।<br><br>
+    यह दशा दर्शाती है कि केवल बाहरी संघर्ष नहीं, बल्कि आंतरिक संघर्ष भी अत्यंत शक्तिशाली होता है। अर्जुन का युद्ध केवल बाहरी नहीं है — वह अपने मन, भावना और कर्तव्य के बीच युद्ध कर रहा है।
+  </div>
+  <div class="reflect hindi">
+    सोचिए: क्या आपने कभी ऐसा मानसिक द्वंद्व महसूस किया है, जिसमें शरीर तक प्रतिक्रिया देने लगे?
+  </div>
+
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    This verse expresses Arjuna’s intense emotional and physical reaction upon seeing his own relatives ready to fight. Overwhelmed by fear, sorrow, and attachment, his body weakens, trembles, and his mouth dries up.<br><br>
+    It reveals that inner conflicts can be just as debilitating as external battles. Arjuna is not just facing a war of arrows, but of emotions and duty.
+  </div>
+  <div class="reflect english">
+    Reflect: Have you ever experienced emotional turmoil so deep that your body physically reacted to it?
+  </div>
+</div>
+
+<!-- SHLOK 30 -->
+<div class="section">
+  <div class="sanskrit">
+    गाण्डीवं स्रंसते हस्तात् त्वक् चैव परिदह्यते |<br>
+    न च शक्नोम्यवस्थातुं भ्र्मतीव च मे मनः ॥30॥
+  </div>
+  
+<!-- SHLOK 30 -->
+<div class="transliteration iast">
+  <strong>Pronunciation Guide :</strong><br>
+  gaṇḍīvaṁ sraṁsate hastāt tvak caiva paridahyate<br>
+  na ca śaknomy avasthātuṁ bhramatīva ca me manaḥ
+</div>
+
+<div class="word-meaning hindi">
+  <strong>शब्दार्थ:</strong><br>
+  गांडीवम् – गांडीव धनुष<br>
+  स्रंसते – फिसल रहा है<br>
+  हस्तात् – हाथ से<br>
+  त्वक् – त्वचा<br>
+  च – और<br>
+  एव – ही<br>
+  परिदह्यते – जल रही है<br>
+  न – नहीं<br>
+  च – और<br>
+  शक्नोमि – मैं कर पा रहा हूँ<br>
+  अवस्थातुम् – खड़े रहने में<br>
+  भ्रमति – चक्कर खा रहा है<br>
+  इव – जैसे<br>
+  मे – मेरा<br>
+  मनः – मन
+</div>
+
+<div class="word-meaning english">
+  <strong>Word Meaning:</strong><br>
+  gaṇḍīvam – Gandiva (Arjuna’s bow)<br>
+  sraṁsate – is slipping<br>
+  hastāt – from the hand<br>
+  tvak – skin<br>
+  ca – and<br>
+  eva – also<br>
+  paridahyate – is burning<br>
+  na – not<br>
+  ca – and<br>
+  śaknomi – I am able<br>
+  avasthātum – to stand<br>
+  bhramati – is whirling<br>
+  iva – as if<br>
+  me – my<br>
+  manaḥ – mind
+</div>
+
+  <div class="translation hindi">         <strong>हिन्दी अनुवाद:</strong><br>
+    मेरा गाण्डीव धनुष हाथ से गिर रहा है, त्वचा जलती सी प्रतीत हो रही है, मैं खड़ा नहीं रह पा रहा हूं, और मेरा मन चक्कर खा रहा है।
+  </div>
+
+  <div class="translation english">     <strong>English Translation:</strong><br>
+    My Gandiva bow is slipping from my hand, my skin burns, I am unable to stand, and my mind seems to be whirling.
+  </div>
+
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    यह श्लोक अर्जुन के आंतरिक द्वंद्व का चरम बिंदु है। अब वह केवल मानसिक ही नहीं, शारीरिक रूप से भी युद्ध के लिए अक्षम हो चुका है। उसका प्रिय धनुष "गाण्डीव", जो वीरता और संकल्प का प्रतीक था, अब हाथ से छूट रहा है। त्वचा जल रही है — यह मानसिक ताप और तनाव का संकेत है।<br><br>
+    अर्जुन स्थिर नहीं रह पा रहा, उसका मन भ्रमित हो गया है। यह वह क्षण है जब एक योद्धा अपने सबसे गहरे भावनात्मक संकट से गुजरता है। यह अवस्था हमें यह दिखाती है कि केवल बाहरी तैयारी ही नहीं, आंतरिक संतुलन भी आवश्यक है।
+  </div>
+  <div class="reflect hindi">
+   सोचिए: क्या आपने कभी ऐसा अनुभव किया है, जब आपकी सबसे बड़ी ताकत ही बोझ लगने लगे?
+  </div>
+
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    This verse marks the peak of Arjuna’s emotional collapse. His mighty Gandiva bow, once his source of strength, now slips from his hand. Burning skin and inability to stand reflect the overwhelming physical effect of his inner turmoil.<br><br>
+    His mind reels — disoriented and overwhelmed. This shows us that even the strongest warriors falter when emotion clouds clarity. True strength comes from inner stability.
+  </div>
+  <div class="reflect english">
+   Reflect : Have you ever felt so overwhelmed that even your greatest strengths began to feel like burdens?
+  </div>
+</div>
+
+<!-- SHLOK 31 -->
+<div class="section">
+  <div class="sanskrit">
+    निमित्तानि च पश्यामि विपरीतानि केशव |<br>
+    न च श्रेयोऽनुपश्यामि हत्वा स्वजनमाहवे ॥31॥
+  </div>
+  
+  <!-- उच्चारण गाइड -->
+  <div class="transliteration iast">
+    <strong>Pronunciation Guide:</strong><br>
+    nimittāni ca paśyāmi viparītāni keśava <br>
+    na ca śreyo'nupaśyāmi hatvā svajanam āhave
+  </div>
+  
+  <!-- शब्दार्थ -->
+  <div class="word-meaning hindi">
+    <strong>शब्दार्थ:</strong><br>
+    निमित्तानि – लक्षण / संकेत <br>
+    च – और <br>
+    पश्यामि – मैं देख रहा हूँ <br>
+    विपरीतानि – उल्टे / अशुभ <br>
+    केशव – हे केशव (कृष्ण) <br>
+    न – नहीं <br>
+    च – और <br>
+    श्रेयः – कल्याण <br>
+    अनुपश्यामि – मैं देख रहा हूँ / समझ पा रहा हूँ <br>
+    हत्वा – मारकर <br>
+    स्वजनम् – अपने लोगों को <br>
+    आहवे – युद्ध में
+  </div>
+  
+  <!-- Word Meaning in English -->
+<div class="word-meaning english">
+  <strong>Word Meaning:</strong><br>
+  nimittāni – omens / signs<br>
+  ca – and<br>
+  paśyāmi – I see<br>
+  viparītāni – adverse / inauspicious<br>
+  keśava – O Keshava (Krishna)<br>
+  na – not<br>
+  ca – and<br>
+  śreyaḥ – good / auspicious outcome<br>
+  anupaśyāmi – I foresee / I perceive<br>
+  hatvā – having killed<br>
+  svajanam – own people / kinsmen<br>
+  āhave – in battle
+</div>
+
+  <div class="translation hindi">         <strong>हिन्दी अनुवाद:</strong><br>
+    हे केशव! मैं अनिष्ट के लक्षण ही देख रहा हूँ और युद्ध में अपने स्वजनों को मारकर कोई कल्याण नहीं देख पा रहा हूँ।
+  </div>
+  
+  <div class="translation english">
+    <strong>English Translation:</strong><br>
+    O Keshava, I see only adverse omens, and I find no good in killing my own people in battle.
+  </div>
+  
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    अर्जुन अब युद्ध से पूर्णतः विमुख हो चुका है। उसे चारों ओर अशुभ संकेत (निमित्त) दिख रहे हैं — यह उसके भय और भ्रम की मानसिक स्थिति को दर्शाता है। वह सोचता है कि अपने ही स्वजनों की हत्या कर कोई भी हित या धर्म की प्राप्ति नहीं हो सकती।<br><br>
+    यह श्लोक गहरी नैतिक उलझन और करुणा को दर्शाता है। अर्जुन के शब्द आत्मनिरीक्षण और मानवीय संवेदनाओं से भरे हैं। वह धर्मयुद्ध को भी अधर्म जैसा अनुभव कर रहा है क्योंकि उसमें अपनों की हत्या सम्मिलित है।
+  </div>
+  <div class="reflect hindi">
+    सोचिए : जब धर्म और करुणा टकराते हैं, तब निर्णय कितना कठिन हो जाता है — क्या आपने कभी ऐसा अनुभव किया है?
+  </div>
+  
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    Arjuna now sees only evil omens — a reflection of his inner dread and moral confusion. He cannot envision any good coming from killing his own kin, even if it’s a righteous war. <br><br>
+    This verse expresses the deep ethical conflict that can arise when one's duty seems to contradict compassion. It shows that even in justified causes, the emotional toll can be profound.
+  </div>
+  <div class="reflect english">
+    Reflect : Have you ever faced a choice where doing the right thing still felt emotionally wrong?
+  </div>
+</div>
+
+    <div class="next-day">
+      <a href="Day6.html">Next Day →</a>
+    </div>
+  </div>
+
+  <div class="progress">
+    <div class="progress-bar striped animated" style="width:71.4%;">
+      71%
+    </div>
+  </div>
+
+  <script>
+    function showLang(lang) {
+      const btnHindi = document.getElementById("btn-hindi");
+      const btnEnglish = document.getElementById("btn-english");
+
+      const hindi = document.querySelectorAll('.hindi');
+      const english = document.querySelectorAll('.english');
+
+      if (lang === 'hindi') {
+        btnHindi.classList.add("active");
+        btnEnglish.classList.remove("active");
+
+        hindi.forEach(el => el.style.display = 'block');
+        english.forEach(el => el.style.display = 'none');
+      } else {
+        btnHindi.classList.remove("active");
+        btnEnglish.classList.add("active");
+
+        hindi.forEach(el => el.style.display = 'none');
+        english.forEach(el => el.style.display = 'block');
+      }
+    }
+
+    // Default show Hindi
+    showLang('hindi');
+  </script>
+
+</body>
+</html>

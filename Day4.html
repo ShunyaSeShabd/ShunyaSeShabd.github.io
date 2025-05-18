@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shree Gita - Week 1</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f3f3f3;
+      color: #222;
+    }
+
+    header {
+      background-color: #603e26;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 2rem;
+    }
+
+    .toggle {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .toggle button {
+      background-color: #eee;
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      margin: 0 5px;
+      font-weight: bold;
+    }
+
+    .toggle button.active {
+      background-color: #603e26;
+      color: white;
+    }
+
+    .section {
+      background: white;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+
+    .sanskrit {
+      font-size: 1.4rem;
+      color: #a52a2a;
+      margin-bottom: 1rem;
+    }
+
+    .translation, .explanation, .reflect {
+      display: none;
+    }
+
+    .reflect {
+      font-style: italic;
+      background: #f9f2ec;
+      padding: 1rem;
+      border-left: 4px solid #d28c49;
+      margin-top: 1rem;
+    }
+
+    .label {
+      font-weight: bold;
+      color: #603e26;
+      margin-top: 1rem;
+    }
+
+    .audio-player {
+      margin: 2rem 0;
+      text-align: center;
+    }
+
+    .progress {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #ddd;
+      box-shadow: 0.5px 1px 3px rgba(0,0,0,0.1);
+    }
+    .progress-bar {
+  width: 10%;
+  height: 15px;
+  background: #ff8080;
+  transition: width 1s ease-in-out;
+  position: relative;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.striped {
+  background-image: linear-gradient(45deg,
+      rgba(255, 255, 255, 0.2) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0.2) 75%,
+      transparent 75%,
+      transparent);
+  background-size: 40px 40px;
+  ।
+}
+
+
+.animated {
+  animation: progress-bar-stripes 2s linear infinite;
+}
+
+@keyframes progress-bar-stripes {
+  from {
+    background-position: 40px 0;
+  }
+  
+  to {
+    background-position: 0 0;
+  }
+}
+
+    .next-day {
+      text-align: center;
+      margin: 3rem 0 1rem;
+    }
+
+          .word-meaning {   background: #f4f8fb;   border-left: 4px solid #D28C49;   padding: 1rem;   margin: 1rem 0;   border-radius: 8px;   font-family: 'Segoe UI', sans-serif;   line-height: 1.7;   font-size: 1rem;   color: #333; }  .word-meaning strong {   display: block;   font-size: 1.1rem;   color: #603e26;   font-weight: 600;   border-bottom: 1px solid #d0e2f2; }   @media screen and (max-width: 600px) {   .word-meaning {     font-size: 0.95rem;     padding: 0.8rem;   } }   .transliteration {   background: #fffbe6;   border-left: 4px solid #f1c40f;   padding: 0;   margin: 10px 0;   border-radius: 8px;   font-family: 'Times New Roman', serif;   font-size: 1.05rem;   color: #6b4e00;   line-height: 1; }  .transliteration strong {   display: block;   font-size: 1.1rem;   color: #b37f00;   font-weight: bold;   border-bottom: 1px solid #f9e79f;   padding-bottom: 4px; }  @media screen and (max-width: 600px) {   .transliteration {     font-size: 1rem;     padding: 0.8rem;   } }
+    .next-day a{
+      background-color: #603e26;
+      color: white;
+      padding: 0.7rem 1.5rem;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>श्रीमद्भगवद्गीता - Day 4</h1>
+    <p>अर्जुन का भावात्मक विचलन (Shlok 20 to 27)</p>
+  </header>
+
+  <div class="toggle">
+    <button id="btn-hindi" class="active" onclick="showLang('hindi')">हिंदी</button>
+    <button id="btn-english" onclick="showLang('english')">English</button>
+  </div>
+
+  <div class="container">
+
+    <!-- SHLOK 20 -->
+<div class="section">
+  <div class="sanskrit">अथ व्यवस्थितान् दृष्ट्वा धार्तराष्ट्रान् कपिध्वजः |<br> प्रवृत्ते शस्त्रसम्पाते धनुरुद्यम्य पाण्डवः ||<br> हृषीकेशं तदा वाक्यमिदमाह महीपते ॥20॥</div>
+  
+<!-- SHLOK 20 -->
+<div class="transliteration iast">
+  <strong>Pronunciation Guide :</strong><br>
+  atha vyavasthitān dṛṣṭvā dhārtarāṣṭrān kapidhvajaḥ<br>
+  pravṛtte śastra-sampāte dhanur udyamya pāṇḍavaḥ<br>
+  hṛṣīkeśaṁ tadā vākyam idam āha mahīpate
+</div>
+
+<div class="word-meaning hindi">
+  <strong>शब्दार्थ:</strong><br>
+  अथ – तब<br>
+  व्यवस्थितान् – व्यवस्थित (सज्ज होकर खड़े हुए)<br>
+  दृष्ट्वा – देखकर<br>
+  धार्तराष्ट्रान् – धृतराष्ट्र के पुत्रों को<br>
+  कपिध्वजः – कपि (हनुमान) के ध्वज वाला (अर्जुन)<br>
+  प्रवृत्ते – प्रारंभ हो चुके<br>
+  शस्त्रसम्पाते – शस्त्रों की वर्षा (युद्ध)<br>
+  धनुः – धनुष को<br>
+  उद्यम्य – उठाकर<br>
+  पाण्डवः – पांडव (अर्जुन)<br>
+  हृषीकेशम् – श्रीकृष्ण को<br>
+  तदा – तब<br>
+  वाक्यम् – वाक्य<br>
+  इदम् – यह<br>
+  आह – कहा<br>
+  महीपते – हे राजन् (धृतराष्ट्र)
+</div>
+
+<div class="word-meaning english">
+  <strong>Word Meaning:</strong><br>
+  atha – then<br>
+  vyavasthitān – arrayed<br>
+  dṛṣṭvā – having seen<br>
+  dhārtarāṣṭrān – the sons of Dhritarashtra<br>
+  kapidhvajaḥ – he whose banner bears Hanuman (Arjuna)<br>
+  pravṛtte – when commenced<br>
+  śastra-sampāte – the discharge of weapons<br>
+  dhanur – bow<br>
+  udyamya – lifting up<br>
+  pāṇḍavaḥ – the son of Pandu (Arjuna)<br>
+  hṛṣīkeśam – to Hrishikesha (Krishna)<br>
+  tadā – then<br>
+  vākyam – words<br>
+  idam – these<br>
+  āha – spoke<br>
+  mahīpate – O King (Dhritarashtra)
+</div>
+  
+  <div class="translation hindi">         <strong>हिन्दी अनुवाद:</strong><br>
+    संजय बोले: हे राजन! जब युद्ध आरम्भ होने को था, तब कपिध्वज अर्जुन ने धृतराष्ट्र पुत्रों को युद्ध के लिए खड़ा देखा और श्रीकृष्ण से यह वचन कहा :  हे अच्युत ! मेरे रथ को दोनों सेनाओं के बीच में खड़ा कीजिए |
+  </div>
+  <div class="translation english">     <strong>English Translation:</strong><br>
+    Sanjaya said: O King! Seeing the sons of Dhritarashtra standing in military formation, and the battle about to begin, Arjuna (whose flag bore Hanuman) raised his bow and spoke to Lord Krishna.
+  </div>
+  
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    यहाँ से अर्जुन का युद्ध के प्रति मानसिक द्वंद्व शुरू होता है।<br>
+    "कपिध्वज" अर्थात् जिनके रथ पर हनुमान हैं – यह दर्शाता है कि अर्जुन धर्म के साथ हैं।<br>
+    युद्ध प्रारंभ होने से पूर्व अर्जुन की प्रतिक्रिया स्वाभाविक है – वह चिंतनशील है, और मार्गदर्शन हेतु भगवान से संवाद करता है।
+  </div>
+  <div class="reflect hindi">सोचिए: जब बड़ा निर्णय सामने हो, तब हम किससे मार्गदर्शन लेते हैं?</div>
+  
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    Arjuna, seeing the battle about to begin, reacts thoughtfully.<br>
+    The mention of “Kapidhvaja” (Hanuman on the flag) signifies divine presence.<br>
+    Even a mighty warrior pauses before war—showing that introspection precedes action.
+  </div>
+  <div class="reflect english">Reflect: Before a big decision, who do you turn to for wisdom?</div>
+</div>
+
+<!-- SHLOK 21 -->
+<div class="section">
+  <div class="sanskrit">अर्जुन उवाच |<br> सेनयोरुभयोर्मध्ये रथं स्थापय मेऽच्युत ॥21॥</div>
+
+<!-- SHLOK 21 -->
+<div class="transliteration iast">
+  <strong>Pronunciation Guide :</strong><br>
+  arjuna uvāca<br>
+  senayor ubhayor madhye rathaṁ sthāpaya me ’cyuta
+</div>
+
+<div class="word-meaning hindi">
+  <strong>शब्दार्थ:</strong><br>
+  अर्जुन उवाच – अर्जुन ने कहा<br>
+  सेनयोः – दोनों सेनाओं के<br>
+  उभयोः – दोनों के<br>
+  मध्ये – बीच में<br>
+  रथम् – रथ को<br>
+  स्थापय – स्थिर करो, ले चलो<br>
+  मे – मेरा<br>
+  अच्युत – हे अच्युत (कृष्ण)
+</div>
+
+<div class="word-meaning english">
+  <strong>Word Meaning:</strong><br>
+  arjuna uvāca – Arjuna said<br>
+  senayoḥ – of the armies<br>
+  ubhayoḥ – of both sides<br>
+  madhye – in the middle<br>
+  ratham – the chariot<br>
+  sthāpaya – place<br>
+  me – my<br>
+  acyuta – O Achyuta (Krishna)
+</div>
+
+  <div class="translation hindi">         <strong>हिन्दी अनुवाद:</strong><br>
+    अर्जुन ने कहा: हे अच्युत! कृपया मेरा रथ दोनों सेनाओं के बीच खड़ा करें।
+  </div>
+  <div class="translation english">     <strong>English Translation:</strong><br>
+    Arjuna said: O Achyuta, please place my chariot between the two armies.
+  </div>
+  
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    अर्जुन युद्ध से पहले शत्रु पक्ष को देखना चाहता है।<br>
+    "अच्युत" शब्द प्रयोग से उसका प्रेम और सम्मान प्रकट होता है।<br>
+    यह श्लोक दर्शाता है कि निर्णय लेने से पहले स्थिति का स्पष्ट अवलोकन आवश्यक है।
+  </div>
+  <div class="reflect hindi">सोचिए: क्या हम कोई निर्णय लेने से पहले पूरी स्थिति को देखते हैं?</div>
+  
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    Arjuna seeks clarity by requesting Krishna to position the chariot between both armies.<br>
+    He addresses Krishna as "Achyuta" — the infallible one — expressing trust and devotion.<br>
+    Seeing the reality before action is a sign of wisdom.
+  </div>
+  <div class="reflect english">Reflect: Do you assess the full picture before making a decision?</div>
+</div>
+
+<!-- SHLOK 22 -->
+<div class="section">
+  <div class="sanskrit">यावदेतान्निरीक्षेऽहं योद्धुकामानवस्थितान् |<br> कैर्मया सह योद्धव्यमस्मिन् रणसमुद्यमे ॥22॥</div>
+  
+<!-- SHLOK 22 -->
+<div class="transliteration iast">
+  <strong>Pronunciation Guide :</strong><br>
+  yāvad etān nirīkṣe ’haṁ yoddhu-kāmān avasthitān<br>
+  kair mayā saha yoddhavyam asmin raṇa-samudyame
+</div>
+
+<div class="word-meaning hindi">
+  <strong>शब्दार्थ:</strong><br>
+  यावत् – जब तक<br>
+  एतान् – इनको<br>
+  निरीक्षे – मैं देख लूँ<br>
+  अहम् – मैं<br>
+  युद्धुकामान् – युद्ध की इच्छा रखने वाले<br>
+  अवस्थीतान् – जो खड़े हुए हैं<br>
+  कैः – किनके साथ<br>
+  मया – मुझसे<br>
+  सह – साथ<br>
+  युद्धव्यम् – युद्ध करना है<br>
+  अस्मिन् – इस<br>
+  रणसमुद्यमे – युद्ध के प्रयत्न में
+</div>
+
+<div class="word-meaning english">
+  <strong>Word Meaning:</strong><br>
+  yāvat – until<br>
+  etān – these<br>
+  nirīkṣe – I may observe<br>
+  aham – I<br>
+  yoddhu-kāmān – desirous of fighting<br>
+  avasthitān – arrayed<br>
+  kaiḥ – with whom<br>
+  mayā – by me<br>
+  saha – together<br>
+  yoddhavyam – must fight<br>
+  asmin – in this<br>
+  raṇa-samudyame – great combat
+</div>
+  
+  <div class="translation hindi">         <strong>हिन्दी अनुवाद:</strong><br>
+    अर्जुन बोले: जब तक मैं उन योद्धाओं को न देख लूं जो युद्ध की इच्छा से यहाँ खड़े हैं, और जिनसे मुझे इस संग्राम में युद्ध करना है।
+  </div>
+  <div class="translation english">     <strong>English Translation:</strong><br>
+    Arjuna said: Until I see those warriors assembled here, desiring to fight, and whom I must battle in this great conflict.
+  </div>
+  
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    अर्जुन युद्ध को केवल शारीरिक संघर्ष नहीं, बल्कि नैतिक संघर्ष भी मानता है।<br>
+    वह स्पष्ट देखना चाहता है कि किससे और क्यों लड़ना है।<br>
+    यह आत्ममंथन की शुरुआत है – जब हम खुद से सवाल पूछते हैं।
+  </div>
+  <div class="reflect hindi">सोचिए: क्या हम अपने कार्यों का उद्देश्य पहले समझते हैं?</div>
+  
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    Arjuna’s intent is not just to fight, but to understand whom and why he must fight.<br>
+    This verse marks the beginning of self-inquiry.<br>
+    Right action begins with right understanding.
+  </div>
+  <div class="reflect english">Reflect: Do you clarify your intentions before you act?</div>
+</div>
+
+<!-- SHLOK 23 -->
+<div class="section">
+  <div class="sanskrit">योत्स्यमानानवेक्षेऽहं य एतेऽत्र समागताः |<br> धार्तराष्ट्रस्य दुर्बुद्धेर्युद्धे प्रियचिकीर्षवः ॥23॥</div>
+  
+<!-- SHLOK 23 -->
+<div class="transliteration iast">
+  <strong>Pronunciation Guide :</strong><br>
+  yo ’tsyaitān han tum icchāmi saṁgrāme ’smin durātmanaḥ<br>
+  dhārtarāṣṭrasya durbuddher yuddhe priya-cikīrṣavaḥ
+</div>
+
+<div class="word-meaning hindi">
+  <strong>शब्दार्थ:</strong><br>
+  ये – जो<br>
+  एतान् – इनको<br>
+  हन्तुम् – मारने के लिये<br>
+  इच्छामि – मैं इच्छुक हूँ<br>
+  संग्रामे – युद्ध में<br>
+  अस्मिन् – इस<br>
+  दुरात्मनः – दुष्टात्मा<br>
+  धार्तराष्ट्रस्य – धृतराष्ट्र के पुत्र का<br>
+  दुर्बुद्धेः – whose intellect is evil<br>
+  युद्धे – युद्ध में<br>
+  प्रियचिकीर्षवः – प्रिय करने के इच्छुक (सहयोगी)
+</div>
+
+<div class="word-meaning english">
+  <strong>Word Meaning:</strong><br>
+  ye – who<br>
+  etān – these<br>
+  hantum – to slay<br>
+  icchāmi – I wish<br>
+  saṁgrāme – in battle<br>
+  asmin – in this<br>
+  durātmanaḥ – evil-minded<br>
+  dhārtarāṣṭrasya – of Dhritarashtra's son<br>
+  durbuddheḥ – of evil intellect<br>
+  yuddhe – in war<br>
+  priya-cikīrṣavaḥ – wishing to please
+</div>
+  
+  <div class="translation hindi">         <strong>हिन्दी अनुवाद:</strong><br>
+    मैं देखना चाहता हूँ उन लोगों को जो इस युद्ध में धृतराष्ट्र के दुरबुद्धि पुत्र की प्रसन्नता के लिए युद्ध करने आए हैं।
+  </div>
+  <div class="translation english">     <strong>English Translation:</strong><br>
+    I wish to see those who have come here to please the evil-minded son of Dhritarashtra by fighting in this battle.
+  </div>
+  
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    अर्जुन यहां दुर्योधन को “दुर्बुद्धि” कहता है – वह जानता है कि यह युद्ध अधर्म के कारण हो रहा है।<br>
+    फिर भी वह युद्ध से पहले शत्रुपक्ष का मूल्यांकन करना चाहता है।<br>
+    यह दिखाता है कि ज्ञानवान व्यक्ति भी निर्णय से पूर्व प्रत्येक पहलू देखता है।
+  </div>
+  <div class="reflect hindi">सोचिए: क्या हम अपने विरोधियों की नीयत समझने का प्रयास करते हैं?</div>
+  
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    Arjuna calls Duryodhana “evil-minded,” revealing his moral judgment.<br>
+    Still, he seeks to understand who supports him.<br>
+    Even the righteous must evaluate the forces they face.
+  </div>
+  <div class="reflect english">Reflect: Do you try to understand the mindset of those you oppose?</div>
+</div>
+
+<!-- SHLOK 24 -->
+<div class="section">
+  <div class="sanskrit">सञ्जय उवाच |<br> एवमुक्तो हृषीकेशो गुडाकेशेन भारत |<br> सेनयोरुभयोर्मध्ये स्थापयित्वा रथोत्तमम् ॥24॥</div>
+  
+<!-- SHLOK 24 -->
+<div class="transliteration iast">
+  <strong>Pronunciation Guide :</strong><br>
+  sañjaya uvāca<br>
+  evam ukto hṛṣīkeśo guḍākeśena bhārata<br>
+  senayor ubhayor madhye sthāpayitvā rathottamam
+</div>
+
+<div class="word-meaning hindi">
+  <strong>शब्दार्थ:</strong><br>
+  संजय उवाच – संजय ने कहा<br>
+  एवम् – इस प्रकार<br>
+  उक्तः – कहे जाने पर<br>
+  हृषीकेशः – श्रीकृष्ण<br>
+  गुडाकेशेन – अर्जुन द्वारा (नींद पर विजय पाने वाले)<br>
+  भारत – हे भारत (धृतराष्ट्र)<br>
+  सेनयोः – दोनों सेनाओं के<br>
+  उभयोः – दोनों के<br>
+  मध्ये – बीच में<br>
+  स्थापयित्वा – स्थापित कर के<br>
+  रथोत्तमम् – श्रेष्ठ रथ को
+</div>
+
+<div class="word-meaning english">
+  <strong>Word Meaning:</strong><br>
+  sañjaya uvāca – Sanjaya said<br>
+  evam – thus<br>
+  uktaḥ – addressed<br>
+  hṛṣīkeśaḥ – Hrishikesha (Krishna)<br>
+  guḍākeśena – by Gudakesha (Arjuna)<br>
+  bhārata – O Bharata (Dhritarashtra)<br>
+  senayoḥ – of the armies<br>
+  ubhayoḥ – of both<br>
+  madhye – between<br>
+  sthāpayitvā – having placed<br>
+  rathottamam – the finest chariot
+</div>
+  
+  <div class="translation hindi">         <strong>हिन्दी अनुवाद:</strong><br>
+    संजय ने कहा: भारत (धृतराष्ट्र), जब गुडाकेश (अर्जुन) ने इस प्रकार कहा, तब हृषीकेश (श्रीकृष्ण) ने उत्तम रथ को दोनों सेनाओं के बीच में खड़ा कर दिया।
+  </div>
+  <div class="translation english">     <strong>English Translation:</strong><br>
+    Sanjaya said: O Bharata (Dhritarashtra), thus addressed by Gudakesha (Arjuna), Hrishikesha (Krishna) placed the best of chariots between the two armies.
+  </div>
+  
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    अर्जुन के आदेश पर श्रीकृष्ण ने रथ को दोनों सेनाओं के मध्य ले जाकर खड़ा कर दिया।<br>
+    “हृषीकेश” का अर्थ है इंद्रियों के स्वामी — श्रीकृष्ण अर्जुन की इंद्रियों के नियंत्रक बनकर उसे धर्म का मार्ग दिखाने वाले बनते हैं।<br>
+    “गुडाकेश” — अर्थात जिसने नींद (आलस्य) पर विजय पाई हो, यानी अर्जुन अब जागरूक अवस्था में है।
+  </div>
+  <div class="reflect hindi">सोचिए: क्या हम भी अपने जीवन के रथ को आत्मनियंत्रण और जागरूकता से चलाते हैं?</div>
+  
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    Krishna, referred to as Hrishikesha — the Lord of the senses — obeys Arjuna's request and places the chariot between the armies.<br>
+    Arjuna is called Gudakesha, meaning one who has conquered sleep — symbolizing alertness and readiness for higher awareness.<br>
+    This moment sets the stage for deep philosophical dialogue.
+  </div>
+  <div class="reflect english">Reflect: Are we in control of our senses and awake to the truth before acting?</div>
+</div>
+
+<!-- SHLOK 25 -->
+<div class="section">
+  <div class="sanskrit">भीष्मद्रोणप्रमुखतः सर्वेषां च महीक्षिताम् |<br> उवाच पार्थ पश्यैतान् समवेतान् कुरूनिति ॥25॥</div>
+  
+<!-- SHLOK 25 -->
+<div class="transliteration iast">
+  <strong>Pronunciation Guide :</strong><br>
+  bhīṣma-droṇa-pramukhataḥ sarveṣāṁ ca mahīkṣitām<br>
+  uvāca pārtha paśyaitān samavetān kurūn iti
+</div>
+
+<div class="word-meaning hindi">
+  <strong>शब्दार्थ:</strong><br>
+  भीष्म-द्रोण-प्रमुखतः – भीष्म और द्रोण के सामने<br>
+  सर्वेषाम् – सभी के<br>
+  च – और<br>
+  महीक्षिताम् – राजाओं के<br>
+  उवाच – कहा<br>
+  पार्थ – हे पार्थ (अर्जुन)<br>
+  पश्य – देखो<br>
+  एतान् – इनको<br>
+  समवेतान् – एकत्र हुए<br>
+  कुरून् – कौरवों को<br>
+  इति – ऐसा
+</div>
+
+<div class="word-meaning english">
+  <strong>Word Meaning:</strong><br>
+  bhīṣma-droṇa-pramukhataḥ – in front of Bhishma and Drona<br>
+  sarveṣām – of all<br>
+  ca – and<br>
+  mahīkṣitām – kings<br>
+  uvāca – said<br>
+  pārtha – O Partha (Arjuna)<br>
+  paśya – behold<br>
+  etān – these<br>
+  samavetān – assembled<br>
+  kurūn – Kurus<br>
+  iti – thus
+</div>
+  
+  <div class="translation hindi">         <strong>हिन्दी अनुवाद:</strong><br>
+    (श्रीकृष्ण ने) भीष्म, द्रोण और अन्य सभी राजाओं के सामने अर्जुन से कहा: हे पार्थ! देखो इन एकत्रित कौरवों को।
+  </div>
+  <div class="translation english">     <strong>English Translation:</strong><br>
+    In front of Bhishma, Drona, and all the rulers of the earth, Krishna said: O Partha, behold these assembled Kurus.
+  </div>
+  
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    श्रीकृष्ण अर्जुन से कहते हैं – “हे पार्थ, इन कौरवों को देखो”। यह वाक्य केवल देखने का नहीं, विचार का निमंत्रण है।<br>
+    श्रीकृष्ण जानबूझकर अर्जुन को उन लोगों की ओर देखने को कहते हैं जो उसके सगे-संबंधी हैं। यही भावनात्मक संघर्ष की शुरुआत है।
+  </div>
+  <div class="reflect hindi">सोचिए: क्या कभी हमारे निर्णय भावनाओं से प्रभावित हो जाते हैं?</div>
+  
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    Krishna tells Arjuna to behold his opponents — including revered elders like Bhishma and Drona.<br>
+    This is not just visual; it’s emotional. It triggers Arjuna’s inner conflict between duty and attachment.
+  </div>
+  <div class="reflect english">Reflect: Do emotions sometimes cloud your sense of duty?</div>
+</div>
+
+<!-- SHLOK 26 -->
+<div class="section">
+  <div class="sanskrit">तत्रापश्यत्स्थितान् पार्थः पितॄनथ पितामहान् |<br> आचार्यान्मातुलान्भ्रातॄन्पुत्रान्पौत्रान्सखींस्तथा ॥26॥</div>
+  
+<!-- SHLOK 26 -->
+<div class="transliteration iast">
+  <strong>Pronunciation Guide :</strong><br>
+  tatra paśyati sthitān pārthaḥ pitṝn atha pitāmahān<br>
+  ācāryān mātulān bhrātṝn putrān pautrān sakhīṁs tathā
+</div>
+
+<div class="word-meaning hindi">
+  <strong>शब्दार्थ:</strong><br>
+  तत्र – वहाँ<br>
+  पश्यति – देखे<br>
+  स्थितान् – खड़े हुए<br>
+  पार्थः – अर्जुन<br>
+  पितॄन् – पितरों को (पिता आदि को)<br>
+  अथ – और<br>
+  पितामहान् – पितामह (दादा-परदादा)<br>
+  आचार्यान् – गुरुओं को<br>
+  मातुलान् – मामाओं को<br>
+  भ्रातॄन् – भाइयों को<br>
+  पुत्रान् – पुत्रों को<br>
+  पौत्रान् – पौत्रों को (पोते)<br>
+  सखीन् – मित्रों को<br>
+  तथा – तथा
+</div>
+
+<div class="word-meaning english">
+  <strong>Word Meaning:</strong><br>
+  tatra – there<br>
+  paśyati – sees<br>
+  sthitān – standing<br>
+  pārthaḥ – Partha (Arjuna)<br>
+  pitṝn – fathers<br>
+  atha – also<br>
+  pitāmahān – grandfathers<br>
+  ācāryān – teachers<br>
+  mātulān – maternal uncles<br>
+  bhrātṝn – brothers<br>
+  putrān – sons<br>
+  pautrān – grandsons<br>
+  sakhīn – friends<br>
+  tathā – also
+</div>
+  
+  <div class="translation hindi">         <strong>हिन्दी अनुवाद:</strong><br>
+    वहाँ अर्जुन ने अपने सामने खड़े हुए देखा – अपने पितरों को, पितामहों को, आचार्यों को, मामाओं को, भाइयों को, पुत्रों को, पौत्रों को और मित्रों को भी।
+  </div>
+  <div class="translation english">     <strong>English Translation:</strong><br>
+    There Arjuna saw stationed in both armies his fathers, grandfathers, teachers, uncles, brothers, sons, grandsons, and also friends.
+  </div>
+  
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    युद्धभूमि में खड़े होकर अर्जुन को अपने ही परिवार और प्रियजन शत्रु रूप में खड़े दिखाई देते हैं। यह दृश्य उसके हृदय को झकझोर देता है।
+  </div>
+  <div class="reflect hindi">सोचिए: जब अपने ही विरोध में हों, तो मन कितना विचलित होता है?</div>
+  
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    Arjuna is emotionally shaken on seeing his own family and loved ones on the battlefield. The conflict becomes deeply personal.
+  </div>
+  <div class="reflect english">Reflect: How do we respond when conflict arises among loved ones?</div>
+</div>
+
+<!-- SHLOK 27 -->
+<div class="section">
+  <div class="sanskrit">श्वशुरान्सुहृदश्चैव सेनयोरुभयोः अपि |<br> तान्समीक्ष्य स कौन्तेयः सर्वान्बन्धूनवस्थितान् ॥27॥</div>
+  
+<!-- SHLOK 27 -->
+<div class="transliteration iast">
+  <strong>Pronunciation Guide :</strong><br>
+  śvaśurān suhṛdaś caiva senayor ubhayor api<br>
+  tān samīkṣya sa kaunteyaḥ sarvān bandhun avasthitān
+</div>
+
+<div class="word-meaning hindi">
+  <strong>शब्दार्थ:</strong><br>
+  श्वशुरान् – ससुरों को<br>
+  सुहृदः – मित्रों को<br>
+  च – और<br>
+  एव – भी<br>
+  सेनयोः – दोनों सेनाओं में<br>
+  उभयोः – दोनों में<br>
+  अपि – भी<br>
+  तान् – उन्हें<br>
+  समीक्ष्य – देखकर<br>
+  सः – वह (अर्जुन)<br>
+  कौन्तेयः – कुन्तीपुत्र अर्जुन<br>
+  सर्वान् – सभी<br>
+  बन्धून् – संबंधियों को<br>
+  अवस्थितान् – खड़े हुए
+</div>
+
+<div class="word-meaning english">
+  <strong>Word Meaning:</strong><br>
+  śvaśurān – fathers-in-law<br>
+  suhṛdaḥ – well-wishers<br>
+  ca – and<br>
+  eva – also<br>
+  senayoḥ – of the armies<br>
+  ubhayor – of both sides<br>
+  api – even<br>
+  tān – them<br>
+  samīkṣya – seeing<br>
+  saḥ – he<br>
+  kaunteyaḥ – son of Kunti<br>
+  sarvān – all<br>
+  bandhūn – relatives<br>
+  avasthitān – present
+</div>
+  
+  <div class="translation hindi">         <strong>हिन्दी अनुवाद:</strong><br>
+    उसने अपने ससुरों और सुहृदों (स्नेहीजनों) को भी दोनों सेनाओं में खड़ा देखा। इस प्रकार, कौन्तेय अर्जुन ने अपने चारों ओर खड़े हुए अपने सभी संबंधियों को देखा।
+  </div>
+  <div class="translation english">     <strong>English Translation:</strong><br>
+    He also saw fathers-in-law and well-wishers in both armies. Thus seeing all his kinsmen present there, Arjuna was deeply moved.
+  </div>
+  
+  <div class="label hindi">भावार्थ / चिंतन:</div>
+  <div class="explanation hindi">
+    अर्जुन के लिए यह युद्ध अब केवल धर्मयुद्ध नहीं, एक पारिवारिक संघर्ष बन गया है। वह आत्मीयता और मोह में बंधता जा रहा है।
+  </div>
+  <div class="reflect hindi">सोचिए: कर्तव्य और भावनाओं के बीच संतुलन कैसे रखें?</div>
+  
+  <div class="label english">Explanation / Reflection:</div>
+  <div class="explanation english">
+    The battlefield becomes a place of emotional turmoil for Arjuna as he sees family on both sides. His heart is overwhelmed by attachment.
+  </div>
+  <div class="reflect english">Reflect: How do we balance duty when emotions are involved?</div>
+</div>
+
+    <div class="next-day">
+      <a href="Day5.html">Next Day →</a>
+    </div>
+  </div>
+
+  <div class="progress">
+    <div class="progress-bar striped animated" style="width:57.1%;">
+      57%
+    </div>
+  </div>
+
+  <script>
+    function showLang(lang) {
+      const btnHindi = document.getElementById("btn-hindi");
+      const btnEnglish = document.getElementById("btn-english");
+
+      const hindi = document.querySelectorAll('.hindi');
+      const english = document.querySelectorAll('.english');
+
+      if (lang === 'hindi') {
+        btnHindi.classList.add("active");
+        btnEnglish.classList.remove("active");
+
+        hindi.forEach(el => el.style.display = 'block');
+        english.forEach(el => el.style.display = 'none');
+      } else {
+        btnHindi.classList.remove("active");
+        btnEnglish.classList.add("active");
+
+        hindi.forEach(el => el.style.display = 'none');
+        english.forEach(el => el.style.display = 'block');
+      }
+    }
+
+    // Default show Hindi
+    showLang('hindi');
+  </script>
+
+</body>
+</html>

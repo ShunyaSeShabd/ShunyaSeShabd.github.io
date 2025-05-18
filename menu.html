@@ -1,0 +1,245 @@
+ <!DOCTYPE html>
+ <html lang="en">
+   <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Spiritual Texts</title>
+     <style>
+       body {
+         margin: 0;
+         padding: 0;
+         background-color: black;
+         overflow: hidden;
+         /* To prevent scrollbars due to the border animation */
+         justify-content: center;
+         align-items: center;
+         min-height: 100vh;
+         /* Ensure full viewport height */
+         color: white;
+         /* Set default text color to white */
+         font-family: Arial, sans-serif;
+       }
+
+       .neon-border {
+         position: fixed;
+         top: 10px;
+         left: 10px;
+         right: 10px;
+         bottom: 10px;
+         border: 5px solid #0ff;
+         /* Initial neon color */
+         box-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff;
+         pointer-events: none;
+         /* Allows interaction with content underneath */
+         animation: neon-glow 2s infinite alternate;
+         z-index: 100;
+         /* Keep border on top */
+       }
+
+       @keyframes neon-glow {
+         0% {
+           border-color: #0ff;
+           box-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 15px #0ff;
+         }
+
+         100% {
+           border-color: #f0f;
+           box-shadow: 0 0 10px #f0f, 0 0 20px #f0f, 0 0 30px #f0f;
+         }
+       }
+
+       .container {
+         display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+         gap: 20px;
+         box-sizing: border-box;
+         /* Use the generated image as a border */
+         border: 10px solid transparent;
+         background-image: url("http://googleusercontent.com/image_generation_content/0");
+         background-size: cover;
+         /* or contain, depending on the desired effect */
+         background-repeat: no-repeat;
+         background-position: center;
+         max-width: 900px;
+         margin: auto;
+         padding: 40px 10px 10px 10px;
+         /* Changed top padding to 0 */
+         border-radius: 12px;
+         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+         background-color: rgba(0, 0, 0, 0.7);
+         color: white;
+         position: relative;
+         z-index: 10;
+         overflow-y: auto;
+         max-height: 97vh;
+       }
+
+       .grid-item {
+         background: rgba(255, 255, 255, 0.1);
+         border-radius: 16px;
+         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+         backdrop-filter: blur(3px);
+         -webkit-backdrop-filter: blur(3px);
+         /* White shine effect */
+         position: relative;
+         overflow: hidden;
+         /* Required for the shine effect */
+       }
+
+       .grid-item::before {
+         content: "";
+         position: absolute;
+         top: 0;
+         left: -100%;
+         width: 100%;
+         height: 100%;
+         background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+         animation: shine 5s infinite;
+       }
+
+       @keyframes shine {
+         0% {
+           left: -100%;
+         }
+
+         20% {
+           left: 100%;
+         }
+
+         25% {
+           left: 100%;
+         }
+
+         40% {
+           left: -100%;
+         }
+
+         45% {
+           left: 100%;
+         }
+
+         60% {
+           left: -100%;
+         }
+
+         60% {
+           Right: 100%;
+         }
+
+         80% {
+           Right: -100%;
+         }
+       }
+
+       .grid-item p {
+         padding: 20px;
+         text-align: center;
+         color: white;
+         position: relative;
+         /* Ensure text is above shine effect */
+         z-index: 1;
+       }
+
+       .grid-item img {
+         max-width: 50px;
+         margin-bottom: 10px;
+         position: relative;
+         /* Ensure image is above shine effect */
+         z-index: 1;
+       }
+
+       /* Glowing and moving border */
+       .grid-item {
+         border: 2px solid rgba(255, 255, 255, 0.5);
+         /* Initial border */
+         box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+         /* Initial glow */
+         animation: glowing-border 5s linear infinite;
+       }
+
+       @keyframes glowing-border {
+         0% {
+           border-color: rgba(255, 255, 255, 0.5);
+           box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+         }
+
+         50% {
+           border-color: rgba(255, 255, 255, 1);
+           box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+         }
+
+         100% {
+           border-color: rgba(255, 255, 255, 0.5);
+           box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+         }
+       }
+     </style>
+   </head>
+   <body>
+     <div class="neon-border"></div>
+     <div class="container">
+       <div class="grid-item" style="background-color: rgba(250, 164, 153, 0.7); background-image: linear-gradient(319deg, rgba(255, 174, 66, 0.3), rgba(255, 255, 49, 0.3) 37%, rgba(248, 222, 126, 0.3) 100%);">
+         <img src="" alt="Bhagavad Gita Icon">
+         <p>श्रीम्भगवद्गीता</p>
+       </div>
+       <div class="grid-item">
+         <img src="http://googleusercontent.com/image_generation_content/3" alt="Katha Upanishad Icon">
+         <p>कठोपनिषद</p>
+       </div>
+       <div class="grid-item">
+         <img src="http://googleusercontent.com/image_generation_content/3" alt="Kena Upanishad Icon">
+         <p>केनोपनिषद</p>
+       </div>
+       <div class="grid-item">
+         <img src="http://googleusercontent.com/image_generation_content/3" alt="Isha Upanishad Icon">
+         <p>ईशावुपनिषद</p>
+       </div>
+       <div class="grid-item">
+         <img src="http://googleusercontent.com/image_generation_content/3" alt="Mundaka Upanishad Icon">
+         <p>मुंडकोपनिषद</p>
+       </div>
+       <div class="grid-item">
+         <img src="http://googleusercontent.com/image_generation_content/3" alt="Prashna Upanishad Icon">
+         <p>प्रश्नोपनिषद</p>
+       </div>
+       <div class="grid-item">
+         <img src="http://googleusercontent.com/image_generation_content/3" alt="Taittiriya Upanishad Icon">
+         <p>तैत्तिरीयोपनिषद</p>
+       </div>
+       <div class="grid-item">
+         <img src="http://googleusercontent.com/image_generation_content/3" alt="Chandogya Upanishad Icon">
+         <p>छान्दोग्योपनिषद</p>
+       </div>
+       <div class="grid-item">
+         <img src="http://googleusercontent.com/image_generation_content/3" alt="Brihadaranyaka Upanishad Icon">
+         <p>बृहदारण्यकोपनिषद</p>
+       </div>
+       <div class="grid-item">
+         <img src="http://googleusercontent.com/image_generation_content/3" alt="Mandukya Upanishad Icon">
+         <p>माण्डूक्योपनिषद</p>
+       </div>
+       <div class="grid-item">
+         <img src="http://googleusercontent.com/image_generation_content/3" alt="Aitareya Upanishad Icon">
+         <p>ऐतरेयोपनिषद</p>
+       </div>
+       <div class="grid-item">
+         <img src="http://googleusercontent.com/image_generation_content/3" alt="Kaushitaki Upanishad Icon">
+         <p>कौशितकि उपनिषद</p>
+       </div>
+       <div class="grid-item">
+         <img src="http://googleusercontent.com/image_generation_content/3" alt="Shvetashvatara Upanishad Icon">
+         <p>श्वेताश्वतर उपनिषद</p>
+       </div>
+       <div class="grid-item">
+         <img src="http://googleusercontent.com/image_generation_content/3" alt="Maitrayaniya Upanishad Icon">
+         <p>मैत्रायणी उपनिषद</p>
+       </div>
+     </div>
+     <script>
+       document.querySelector('.grid-item:nth-child(1)').addEventListener('click', function() {
+           window.location.href = 'main.html';
+         });
+
+     </script>
+   </body>
+ </html>

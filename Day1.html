@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shree Gita - Week 1</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f3f3f3;
+      color: #222;
+    }
+
+    header {
+      background-color: #603e26;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 2rem;
+    }
+
+    .toggle {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .toggle button {
+      background-color: #eee;
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      margin: 0 5px;
+      font-weight: bold;
+    }
+
+    .toggle button.active {
+      background-color: #603e26;
+      color: white;
+    }
+
+    .section {
+      background: white;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+
+    .sanskrit {
+      font-size: 1.4rem;
+      color: #a52a2a;
+      margin-bottom: 1rem;
+    }
+
+    .translation, .explanation, .reflect {
+      display: none;
+    }
+
+    .reflect {
+      font-style: italic;
+      background: #f9f2ec;
+      padding: 1rem;
+      border-left: 4px solid #d28c49;
+      margin-top: 1rem;
+    }
+
+    .label {
+      font-weight: bold;
+      color: #603e26;
+      margin-top: 1rem;
+    }
+
+    .audio-player {
+      margin: 2rem 0;
+      text-align: center;
+    }
+
+    .progress {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: #ddd;
+      box-shadow: 0.5px 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .progress-bar {
+      width: 10%;
+      height: 15px;
+      background: #ff8080;
+      transition: width 1s ease-in-out;
+      position: relative;
+      border-radius: 5px;
+    }
+    
+    .striped {
+        background-image: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.2) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(255, 255, 255, 0.2) 50%,
+        rgba(255, 255, 255, 0.2) 75%,
+        transparent 75%,
+        transparent
+    );
+        background-size: 40px 40px;
+।   }
+
+
+        .animated {
+            animation: progress-bar-stripes 2s linear infinite;
+        }
+
+        @keyframes progress-bar-stripes {
+            from {
+                background-position: 40px 0;
+            }
+            to {
+                background-position: 0 0;
+            }
+        }
+
+    .next-day {
+      text-align: center;
+      margin: 3rem 0 1rem;
+    }
+
+    .next-day a {
+      background-color: #603e26;
+      color: white;
+      padding: 0.7rem 1.5rem;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    
+.word-meaning {
+  background: #f4f8fb;
+  border-left: 4px solid #D28C49;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 8px;
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.7;
+  font-size: 1rem;
+  color: #333;
+}
+
+.word-meaning strong {
+  display: block;
+  font-size: 1.1rem;
+  color: #603e26;
+  font-weight: 600;
+  border-bottom: 1px solid #d0e2f2;
+}
+
+
+@media screen and (max-width: 600px) {
+  .word-meaning {
+    font-size: 0.95rem;
+    padding: 0.8rem;
+  }
+}
+
+
+.transliteration {
+  background: #fffbe6;
+  border-left: 4px solid #f1c40f;
+  padding: 0;
+  margin: 10px 0;
+  border-radius: 8px;
+  font-family: 'Times New Roman', serif;
+  font-size: 1.05rem;
+  color: #6b4e00;
+  line-height: 1;
+}
+
+.transliteration strong {
+  display: block;
+  font-size: 1.1rem;
+  color: #b37f00;
+  font-weight: bold;
+  border-bottom: 1px solid #f9e79f;
+  padding-bottom: 4px;
+}
+
+@media screen and (max-width: 600px) {
+  .transliteration {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+}
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>श्रीमद्भगवद्गीता - Day 1</h1>
+    <p>गीता का आरंभ और धृतराष्ट्र का दृष्टिकोण (Shlok 1 to 3)</p>
+  </header>
+
+  <div class="toggle">
+    <button id="btn-hindi" class="active" onclick="showLang('hindi')">हिंदी</button>
+    <button id="btn-english" onclick="showLang('english')">English</button>
+  </div>
+
+  <div class="container">
+
+    <!-- SHLOK 1 -->
+    <div class="section">
+      <div class="sanskrit">धृतराष्ट्र उवाच |<br> धर्मक्षेत्रे कुरुक्षेत्रे समवेता युयुत्सवः |<br> मामकाः पाण्डवाश्चैव किमकुर्वत सञ्जय ॥1॥</div>
+      
+<!-- उच्चारण गाइड -->
+<div class="transliteration iast">
+  <strong>Pronunciation Guide :</strong><br>
+  dharma-kṣetre kuru-kṣetre samavetā yuyutsavaḥ<br>
+  māmakāḥ pāṇḍavāścaiva kimakurvata sañjaya
+</div>
+
+<!-- शब्दार्थ (हिंदी) -->
+<div class="word-meaning hindi">
+  <strong>शब्दार्थ:</strong><br>
+  धर्मक्षेत्रे – धर्मभूमि में (कुरुक्षेत्र)<br>
+  कुरुक्षेत्रे – कुरुओं की भूमि में<br>
+  समवेताः – एकत्र हुए<br>
+  युयुत्सवः – युद्ध की इच्छा वाले<br>
+  मामकाः – मेरे (धृतराष्ट्र के पुत्र)<br>
+  पाण्डवाः – पांडु के पुत्र<br>
+  च – और<br>
+  एव – निश्चित ही<br>
+  किम् – क्या<br>
+  अकुर्वत – उन्होंने किया<br>
+  सञ्जय – हे संजय
+</div>
+
+<!-- Word Meaning in English -->
+<div class="word-meaning english">
+  <strong>Word Meaning:</strong><br>
+  dharma-kṣetre – in the land of dharma (Kurukshetra)<br>
+  kuru-kṣetre – in the land of the Kurus<br>
+  samavetāḥ – assembled<br>
+  yuyutsavaḥ – desirous to fight<br>
+  māmakāḥ – my sons<br>
+  pāṇḍavāḥ – the sons of Pandu<br>
+  ca – and<br>
+  eva – certainly<br>
+  kim – what<br>
+  akurvata – did they do<br>
+  sañjaya – O Sanjaya
+</div>
+
+      <div class="translation hindi">
+        <strong>हिन्दी अनुवाद:</strong><br>
+        धृतराष्ट्र ने कहा: हे संजय! धर्मभूमि कुरुक्षेत्र में एकत्रित युद्ध की इच्छा रखने वाले मेरे पुत्रों और पांडवों ने क्या किया?
+      </div>
+      <div class="translation english">
+        <strong>English Translation:</strong><br>
+        Dhritarashtra said: O Sanjaya, assembled in the holy land of Kurukshetra and eager for battle, what did my sons and the sons of Pandu do?
+      </div>
+
+      <div class="label hindi">भावार्थ / चिंतन:</div>
+      <div class="explanation hindi">
+        यह गीता का प्रथम श्लोक है। इसमें धृतराष्ट्र युद्ध आरंभ होने से पहले संजय से पूछते हैं कि धर्मभूमि कुरुक्षेत्र में एकत्र हुए मेरे पुत्रों और पांडवों ने क्या किया।<br><br>
+यह श्लोक साधारण प्रश्न की तरह लगता है, लेकिन इसमें गहरी मनोवैज्ञानिक स्थिति छिपी है:<br>
+धृतराष्ट्र ने "मामकाः पाण्डवाः च" कहा – यानी "मेरे पुत्र और पांडु के पुत्र", जिससे उनकी पक्षपाती भावना झलकती है। वो पांडवों को भी अपना नहीं मानते।<br>
+वो कुरुक्षेत्र को "धर्मक्षेत्र" कहते हैं – यह दर्शाता है कि वो जानते हैं कि उनका पक्ष नैतिक दृष्टि से कमजोर है।<br>
+यह श्लोक दिखाता है कि गीता केवल युद्ध की कथा नहीं, बल्कि मानव मन की द्वंद्वात्मक स्थिति की शुरुआत है।
+      </div>
+      <div class="reflect hindi">सोचिए: क्या हम भी कभी परिस्थितियों से डरकर सवाल पूछते हैं? क्या हमें निष्पक्ष रहना आता है?</div>
+
+      <div class="label english">Explanation / Reflection:</div>
+      <div class="explanation english">
+        This is the first and only verse spoken by King Dhritarashtra in the entire Gita.<br>
+His attachment is clear—he says "māmakāḥ" (my sons) and "pāṇḍavāḥ" (sons of Pandu), showing his partiality.<br>
+By referring to Kurukshetra as "Dharmakshetra," he acknowledges the spiritual context of the war—yet reveals anxiety that his sons might lean toward righteousness.<br>
+The Gita begins not with action, but with the human dilemma of attachment, ego, and moral conflict.
+      </div>
+      <div class="reflect english">Reflect: Do we also question situations out of fear? Can we stay unbiased in tough situations?</div>
+    </div>
+
+    <!-- SHLOK 2 -->
+    <div class="section">
+      <div class="sanskrit">सञ्जय उवाच |<br> दृष्ट्वा तु पाण्डवानीकं व्यूढं दुर्योधनस्तदा |<br> आचार्यमुपसङ्गम्य राजा वचनमब्रवीत् ॥2॥</div>
+      
+<!-- उच्चारण गाइड -->
+<div class="transliteration iast">
+  <strong>Pronunciation Guide :</strong><br>
+  sañjaya uvāca<br>
+  dṛṣṭvā tu pāṇḍavānīkaṁ vyūḍhaṁ duryodhanastadā<br>
+  ācāryam upasaṅgamya rājā vacanamabravīt
+</div>
+
+<!-- शब्दार्थ (हिंदी) -->
+<div class="word-meaning hindi">
+  <strong>शब्दार्थ:</strong><br>
+  संजय उवाच – संजय ने कहा<br>
+  दृष्ट्वा – देखकर<br>
+  तु – परंतु<br>
+  पाण्डव-अनीकम् – पाण्डवों की सेना को<br>
+  व्यूढम् – युद्ध के लिए व्यवस्थित<br>
+  दुर्योधनः – दुर्योधन<br>
+  तदा – तब<br>
+  आचार्यम् – अपने गुरु (द्रोणाचार्य) के पास<br>
+  उपसंगम्य – जाकर<br>
+  राजा – राजा (दुर्योधन)<br>
+  वचनम् – वचन / बात<br>
+  अब्रवीत् – कहा
+</div>
+
+<!-- Word Meaning in English -->
+<div class="word-meaning english">
+  <strong>Word Meaning:</strong><br>
+  sañjaya uvāca – Sanjaya said<br>
+  dṛṣṭvā – seeing<br>
+  tu – but<br>
+  pāṇḍava-anīkam – the army of the Pandavas<br>
+  vyūḍham – arranged in military formation<br>
+  duryodhanaḥ – Duryodhana<br>
+  tadā – then<br>
+  ācāryam – the teacher (Dronacharya)<br>
+  upasaṅgamya – approaching<br>
+  rājā – the king (Duryodhana)<br>
+  vacanam – words / speech<br>
+  abravīt – spoke
+</div>
+
+      <div class="translation hindi">         <strong>हिन्दी अनुवाद:</strong><br>
+        संजय ने कहा: उस समय राजा दुर्योधन ने पांडवों की सेना को व्यूह में खड़ा देखा और अपने गुरु द्रोणाचार्य के पास जाकर यह वचन कहा।
+      </div>
+      <div class="translation english">     <strong>English Translation:</strong><br>
+        Sanjaya said: Seeing the Pandava army arranged in military formation, King Duryodhana approached his teacher Dronacharya and spoke the following words.
+      </div>
+
+      <div class="label hindi">भावार्थ / चिंतन:</div>
+      <div class="explanation hindi">
+        संजय कहते हैं: उस समय जब दुर्योधन ने पांडवों की सेना को व्यूह में सुसज्जित देखा, तब वह अपने गुरु द्रोणाचार्य के पास गया और उनसे बात करने लगा।<br><br>
+यह श्लोक युद्ध के आरंभ का संकेत देता है। दुर्योधन की बेचैनी और चिंता झलकती है। वह तुरंत अपने गुरु के पास जाता है – यह दिखाता है कि वह आश्वासन और रणनीति चाहता है।<br>
+यह संकेत है कि शत्रु को देखकर घबराहट स्वाभाविक है – लेकिन उसका उत्तर संयम और मार्गदर्शन में है।
+      </div>
+      <div class="reflect hindi">सोचिए: क्या हम किसी चुनौती को देखकर डर जाते हैं या रणनीति बनाते हैं?</div>
+
+      <div class="label english">Explanation / Reflection:</div>
+      <div class="explanation english">
+        Sanjaya begins his narration. Duryodhana, upon seeing the Pandava army arranged for battle, approaches his teacher Dronacharya and speaks.<br>
+This verse reveals Duryodhana’s mental state—he’s alert, perhaps anxious, and seeks reassurance and guidance.<br>
+Even the strongest feel nervous when facing a righteous and well-prepared opposition. The wise turn to their mentors for clarity.
+      </div>
+      <div class="reflect english">Reflect: When facing a challenge, do we panic or plan?</div>
+    </div>
+
+    <!-- SHLOK 3 -->
+    <div class="section">
+      <div class="sanskrit">पश्यैतां पाण्डुपुत्राणामाचार्य महतीं चमूम् |<br> व्यूढां द्रुपदपुत्रेण तव शिष्येण धीमता ॥3॥</div>
+
+<!-- उच्चारण गाइड -->
+<div class="transliteration iast">
+  <strong>Pronunciation Guide :</strong><br>
+  paśyaitāṁ pāṇḍu-putrāṇām ācārya mahatīṁ camūm<br>
+  vyūḍhāṁ drupada-putreṇa tava śiṣyeṇa dhīmatā
+</div>
+
+<!-- शब्दार्थ (हिंदी) -->
+<div class="word-meaning hindi">
+  <strong>शब्दार्थ:</strong><br>
+  पश्य – देखो<br>
+  एताम् – इस<br>
+  पाण्डुपुत्राणाम् – पांडवों के पुत्रों की<br>
+  आचार्य – हे आचार्य (द्रोणाचार्य)<br>
+  महतीम् – विशाल<br>
+  चमूम् – सेना को<br>
+  व्यूढाम् – व्यवस्थित<br>
+  द्रुपदपुत्रेण – द्रुपद के पुत्र द्वारा<br>
+  तव – आपके<br>
+  शिष्येण – शिष्य द्वारा<br>
+  धीमत – बुद्धिमान
+</div>
+
+<!-- Word Meaning in English -->
+<div class="word-meaning english">
+  <strong>Word Meaning:</strong><br>
+  paśya – behold / see<br>
+  etām – this<br>
+  pāṇḍu-putrāṇām – of the sons of Pandu<br>
+  ācārya – O teacher (Drona)<br>
+  mahatīm – great / vast<br>
+  camūm – army<br>
+  vyūḍhām – arranged (in formation)<br>
+  drupada-putreṇa – by the son of Drupada<br>
+  tava – your<br>
+  śiṣyeṇa – disciple<br>
+  dhīmatā – intelligent / wise
+</div>
+
+      <div class="translation hindi">         <strong>हिन्दी अनुवाद:</strong><br>
+        दुर्योधन बोला: आचार्य! देखिए, पांडवों की विशाल सेना को, जिसे आपके ही बुद्धिमान शिष्य द्रुपदपुत्र धृष्टद्युम्न ने सजाया है।
+      </div>
+      <div class="translation english">     <strong>English Translation:</strong><br>
+        Duryodhana said: Behold, O teacher, the mighty army of the sons of Pandu, arrayed by the intelligent son of Drupada — your own student.
+      </div>
+
+      <div class="label hindi">भावार्थ / चिंतन:</div>
+      <div class="explanation hindi">
+          दुर्योधन अपने गुरु द्रोण से कहता है: “गुरुदेव! देखिए पांडवों की इस विशाल सेना को, जो आपके ही बुद्धिमान शिष्य द्रुपदपुत्र धृष्टद्युम्न ने व्यवस्थित की है।”<br><br>
+यह व्यंग्य है – दुर्योधन अपने गुरु को याद दिलाता है कि उन्होंने जिस शिष्य को शिक्षा दी, वही आज शत्रुपक्ष में सेनापति है।<br>
+यह हमें सिखाता है कि ज्ञान का प्रयोग किसके लिए और कैसे किया जाए – यह अत्यंत महत्वपूर्ण है।
+      </div>
+      <div class="reflect hindi">सोचिए: क्या हम अपनों की सफलता से असुरक्षित महसूस करते हैं?</div>
+
+      <div class="label english">Explanation / Reflection:</div>
+      <div class="explanation english">
+        Duryodhana tells his teacher: “Behold this mighty army of the sons of Pandu, arranged by your wise disciple—the son of Drupada.”<br>
+There is sarcasm here. He subtly blames Dronacharya for training someone who is now leading the enemy army.<br>
+It reminds us that knowledge without dharma can lead to conflict. Wisdom must be imparted with values, not just skill.
+      </div>
+      <div class="reflect english">Reflect: Do we feel insecure seeing our close ones succeed?</div>
+    </div>
+
+    <div class="next-day">
+      <a href="Day2.html">Next Day →</a>
+    </div>
+  </div>
+
+  <div class="progress">
+    <div class="progress-bar striped animated" style="width:14.3%;">
+      14.3%
+    </div>
+  </div>
+
+
+  <script>
+    function showLang(lang) {
+      const btnHindi = document.getElementById("btn-hindi");
+      const btnEnglish = document.getElementById("btn-english");
+
+      const hindi = document.querySelectorAll('.hindi');
+      const english = document.querySelectorAll('.english');
+
+      if (lang === 'hindi') {
+        btnHindi.classList.add("active");
+        btnEnglish.classList.remove("active");
+
+        hindi.forEach(el => el.style.display = 'block');
+        english.forEach(el => el.style.display = 'none');
+      } else {
+        btnHindi.classList.remove("active");
+        btnEnglish.classList.add("active");
+
+        hindi.forEach(el => el.style.display = 'none');
+        english.forEach(el => el.style.display = 'block');
+      }
+    }
+
+    // Default show Hindi
+    showLang('hindi');
+  </script>
+
+</body>
+</html>
